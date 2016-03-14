@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="overant.asako.tpv.Admin.Administracion"
+    android:orientation="vertical"
+    android:background="#123">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:orientation="horizontal"
+        android:background="@drawable/ficha">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:src="@drawable/logo"
+            android:layout_weight="4"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Nombre de la empresa"
+            android:id="@+id/textView"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ficha"
+
+            android:nestedScrollingEnabled="false">
+
+        <Button
+            android:id="@+id/btnAdmEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_custom"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="Empresa"/>
+
+        <Button
+            android:id="@+id/btnAdmPuntoVenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_custom"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="Puntos de venta"/>
+
+        <Button
+            android:id="@+id/btnAdmCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_custom"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="Clientes"/>
+
+        <Button
+            android:id="@+id/btnAdmArticulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_custom"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="Articulos"/>
+
+        <Button
+            android:id="@+id/btnAdmAlmacen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_custom"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="Almacenes"/>
+
+        <Button
+            android:id="@+id/btnAdmProveedor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_custom"
+            android:text="proveedores"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,210 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="overant.asako.tpv.Admin.AdmEmpresa"
+    android:orientation="vertical"
+    android:background="#123">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:orientation="horizontal"
+        android:background="@drawable/ficha">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:src="@drawable/logo"
+            android:layout_weight="4"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Administrar la empresa"
+            android:id="@+id/textView"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ficha">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre comercial:" />
+            <TextView
+                android:id="@+id/admEmpNombre"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:text="@string/andresako"
+                android:clickable="true"
+                android:onClick="editThis"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Razón social:" />
+            <TextView
+                android:id="@+id/admEmpRazon"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:text="testRazon"
+                android:clickable="true"
+                android:onClick="editThis"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="CIF:" />
+            <TextView
+                android:id="@+id/admEmpCIF"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:text="testCIF"
+                android:clickable="true"
+                android:onClick="editThis"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Dirección:" />
+            <TextView
+                android:id="@+id/admEmpDireccion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:text="testDireccion"
+                android:clickable="true"
+                android:onClick="editThis"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Localidad:" />
+            <TextView
+                android:id="@+id/admEmpLocalidad"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:text="testEmpresa"
+                android:clickable="true"
+                android:onClick="editThis"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Provincia:" />
+            <TextView
+                android:id="@+id/admEmpProvincia"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:text="testEmpresa"
+                android:clickable="true"
+                android:onClick="editThis"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Código postal:" />
+            <TextView
+                android:id="@+id/admEmpCodPostal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:inputType="number"
+                android:singleLine="true"
+                android:text="testEmpresa"
+                android:clickable="true"
+                android:onClick="editThis"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Teléfono:" />
+            <TextView
+                android:id="@+id/admEmpTelf"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:text="testEmpresa"
+                android:clickable="true"
+                android:onClick="editThis"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="E-mail:" />
+            <TextView
+                android:id="@+id/admEmpMail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:text="testEmpresa"
+                android:clickable="true"
+                android:onClick="editThis"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp">
+                <Button
+                    android:id="@+id/admEmpBtnOK"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Aceptar"
+                    android:background="@drawable/boton_custom"/>
+                <Button
+                    android:id="@+id/admEmpBtnCanc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cancelar"
+                    android:background="@drawable/boton_custom"/>
+                <Button
+                android:id="@+id/admEmpBtnBaja"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dar de baja"
+                android:background="@drawable/boton_custom"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
