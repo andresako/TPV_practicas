@@ -101,11 +101,12 @@ public class Login extends Activity implements OnClickListener {
                 Log.d("request!", "starting user:" + username + ", pass:" + password);
 
                 // getting product details by making HTTP request
-                JSONObject json = jsonParser.peticionHttp(LOGIN_URL, "POST",
-                        params);
+                JSONObject json = jsonParser.peticionHttp(LOGIN_URL, "POST", params);
 
                 // check your log for json response
                 Log.d("Login attempt", json.toString());
+
+
 
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);

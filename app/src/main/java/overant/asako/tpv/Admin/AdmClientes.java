@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import overant.asako.tpv.R;
@@ -30,9 +32,10 @@ import overant.asako.tpv.Utils.JSONParser;
 public class AdmClientes extends Activity {
 
     // Direccion de testeo      // Rayco PC
-    private static final String URL_CLIENT = "http://overant.es/clientes.php";
+    private static final String URL_CLIENT = "http://overant.es/clientes.php?app=1";
 
     // Respuestas del JSON php Script;
+    private static final String TAG_CLIENTE = "clientes";
     private static final String TAG_ID = "id";
     private static final String TAG_NOMBRE = "nombre";
     private static final String TAG_APELLIDOS = "apellidos";
@@ -51,6 +54,8 @@ public class AdmClientes extends Activity {
     //Datos
     private JSONParser jsonParser = new JSONParser();
     private JSONObject joDatos;
+    private JSONArray mCliente = null;
+    private ArrayList<HashMap<String, String>> userList;
     private List<Cliente> items;
     private ProgressDialog pDialog;
 
@@ -83,7 +88,36 @@ public class AdmClientes extends Activity {
         items.add(new Cliente(3, "Pablo", "Garcia", "12312312G", "Avd/ nas, 123", "Alicante", "Alicante", "03560", "666123123", "andresako@gmail.com"));
 
         //Clientes reales
-        //TODO: Arraylist de JsonObjects
+        items = new ArrayList<>();
+        JSONParser jParser = new JSONParser();
+        JSONObject json = jParser.getJSONFromUrl(URL_CLIENT);
+
+        try {
+
+            mCliente = json.getJSONArray(TAG_CLIENTE);
+
+            for (int i = 0; i < mCliente.length(); i++) {
+                JSONObject c = mCliente.getJSONObject(i);
+
+                Cliente ctCli = new Cliente(
+                        c.getInt(TAG_ID),
+                        c.getString(TAG_NOMBRE),
+                        c.getString(TAG_APELLIDOS),
+                        c.getString(TAG_DNI),
+                        c.getString(TAG_DIRECCION),
+                        c.getString(TAG_LOCALIDAD),
+                        c.getString(TAG_PROVINCIA),
+                        c.getString(TAG_C_POSTAL),
+                        c.getString(TAG_TELEFONO),
+                        c.getString(TAG_EMAIL));
+
+                items.add(ctCli);
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void mostrarClientes(){
