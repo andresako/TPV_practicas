@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#123"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="overant.asako.tpv.Admin.AdmListaEmpresa">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/ficha"
+        android:text="Selecciona empresa a editar"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true">
+
+        <ListView
+            android:id="@+id/admListaEmpresas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ficha">
+
+        </ListView>
+    </ScrollView>
+</LinearLayout>
