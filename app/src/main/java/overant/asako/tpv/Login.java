@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import overant.asako.tpv.Admin.AdmListaEmpresa;
 import overant.asako.tpv.Admin.Administracion;
 import overant.asako.tpv.Utils.JSONParser;
 
@@ -44,6 +45,7 @@ public class Login extends Activity implements OnClickListener {
     // Posibles respuestas del JSON php Script;
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+    private static final String TAG_ADMIN = "admin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,19 +109,30 @@ public class Login extends Activity implements OnClickListener {
                 Log.d("Login attempt", json.toString());
 
 
-
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
+
                     Log.d("Login Successful!", json.toString());
+
                     // save user data
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Login.this);
                     SharedPreferences.Editor edit = sp.edit();
                     edit.putString("username", username);
+                    edit.putString("empresaId", json.getString("id_empresa"));
                     edit.commit();
 
-                    Intent i = new Intent(Login.this, Administracion.class);
-                    finish();
+                    // starting intent
+                    String admin = json.getString(TAG_ADMIN);
+                    Intent i = null;
+                    if (admin.equalsIgnoreCase("A")) {
+                        i = new Intent(Login.this, Administracion.class);
+                        finish();
+                    } else if (admin.equalsIgnoreCase("S")) {
+                        i = new Intent(Login.this, AdmListaEmpresa.class);
+                        finish();
+                    }
+
                     startActivity(i);
 
                     return json.getString(TAG_MESSAGE);
@@ -130,20 +143,15 @@ public class Login extends Activity implements OnClickListener {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             return null;
-
         }
 
-        protected void onPostExecute(String file_url) {
+        protected void onPostExecute(String message) {
             // dismiss the dialog once product deleted
             pDialog.dismiss();
-            if (file_url != null) {
-                Toast.makeText(Login.this, file_url, Toast.LENGTH_LONG).show();
+            if (message != null) {
+                Toast.makeText(Login.this, message, Toast.LENGTH_LONG).show();
             }
-
         }
-
     }
-
 }

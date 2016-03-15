@@ -30,6 +30,10 @@
             android:name=".Admin.AdmClientes"
             android:label="@string/title_activity_adm_clientes" >
         </activity>
+        <activity
+            android:name=".Admin.AdmListaEmpresa"
+            android:label="@string/title_activity_adm_lista_empresa" >
+        </activity>
     </application>
 
 </manifest>

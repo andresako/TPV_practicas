@@ -32,7 +32,7 @@ import overant.asako.tpv.Utils.JSONParser;
 public class AdmClientes extends Activity {
 
     // Direccion de testeo      // Rayco PC
-    private static final String URL_CLIENT = "http://overant.es/clientes.php?app=1";
+    private static final String URL_CLIENT = "http://overant.es/clientes.php";
 
     // Respuestas del JSON php Script;
     private static final String TAG_CLIENTE = "clientes";
@@ -89,12 +89,15 @@ public class AdmClientes extends Activity {
 
         //Clientes reales
         items = new ArrayList<>();
-        JSONParser jParser = new JSONParser();
-        JSONObject json = jParser.getJSONFromUrl(URL_CLIENT);
+
+        List<NameValuePair> params = new ArrayList<>();
+        params.add(new BasicNameValuePair("app", "1"));
+
+        joDatos = jsonParser.peticionHttp(URL_CLIENT, "POST", params);
 
         try {
 
-            mCliente = json.getJSONArray(TAG_CLIENTE);
+            mCliente = joDatos.getJSONArray(TAG_CLIENTE);
 
             for (int i = 0; i < mCliente.length(); i++) {
                 JSONObject c = mCliente.getJSONObject(i);

@@ -17,4 +17,5 @@
     <string name="title_activity_adm_empresa">Empresa</string>
     <string name="andresako">andresako</string>
     <string name="title_activity_adm_clientes">AdmClientes</string>
+    <string name="title_activity_adm_lista_empresa">AdmListaEmpresa</string>
 </resources>

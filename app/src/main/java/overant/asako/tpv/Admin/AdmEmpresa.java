@@ -12,24 +12,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import overant.asako.tpv.R;
+import overant.asako.tpv.Utils.Herramientas;
 import overant.asako.tpv.Utils.JSONParser;
 
 public class AdmEmpresa extends Activity {
 
-    // Direccion de testeo      // Rayco PC
-    // private static final String URL = "http://192.168.1.35/overant/tpv/empresas.php";
     private static final String URL = "http://overant.es/empresas.php";
 
     // Respuestas del JSON php Script;
@@ -42,6 +44,7 @@ public class AdmEmpresa extends Activity {
     private static final String TAG_C_POSTAL = "cpostal";
     private static final String TAG_TELEFONO = "telefono";
     private static final String TAG_EMAIL = "email";
+    private static final String TAG_LOGO = "logo";
     private static final String TAG_BAJA = "baja";
 
     private static final String TAG_SUCCESS = "success";
@@ -50,9 +53,11 @@ public class AdmEmpresa extends Activity {
     //Componentes
     private boolean eBaja = false;
     private TextView eNombre, eRazon, eCif, eDireccion, eLocalidad, eProvincia, eCpostal, eTelefono, eEmail;
+    private ImageView eLogo;
 
     //Datos
-    private JSONParser jsonParser = new JSONParser();
+    private JSONParser jsonParser;
+    private Herramientas tools;
     private JSONObject joDatos;
     private ProgressDialog pDialog;
 
@@ -74,10 +79,14 @@ public class AdmEmpresa extends Activity {
         eCpostal = (TextView) findViewById(R.id.admEmpCodPostal);
         eTelefono = (TextView) findViewById(R.id.admEmpTelf);
         eEmail = (TextView) findViewById(R.id.admEmpMail);
+        eLogo = (ImageView) findViewById(R.id.admEmpLogo);
 
         Button bOk = (Button) findViewById(R.id.admEmpBtnOK);
         Button bCanc = (Button) findViewById(R.id.admEmpBtnCanc);
         Button bBaja = (Button) findViewById(R.id.admEmpBtnBaja);
+
+        jsonParser = new JSONParser();
+        tools = new Herramientas();
 
         //Click Listeners
         bOk.setOnClickListener(new View.OnClickListener() {
@@ -163,9 +172,9 @@ public class AdmEmpresa extends Activity {
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("app", "1"));
-            params.add(new BasicNameValuePair("username", sp.getString("username", "Desconocido")));
+            params.add(new BasicNameValuePair("id_empresa", sp.getString("empresaId", "0")));
 
-            joDatos = jsonParser.peticionHttp(URL, "GET", params);
+            joDatos = jsonParser.peticionHttp(URL, "POST", params);
             return null;
         }
 
@@ -175,6 +184,21 @@ public class AdmEmpresa extends Activity {
             if (file_url != null) {
                 Toast.makeText(AdmEmpresa.this, file_url, Toast.LENGTH_LONG).show();
             }
+
+            JSONArray mEmpresa = null;
+
+            try {
+                mEmpresa = joDatos.getJSONArray("empresas");
+
+                if (mEmpresa.length() == 1) {
+                    joDatos = mEmpresa.getJSONObject(0);
+                } else {
+                    joDatos = null;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             try {
                 if (joDatos != null) {
                     eNombre.setText(joDatos.get(TAG_NOMBRE).toString());
@@ -188,12 +212,18 @@ public class AdmEmpresa extends Activity {
                     eEmail.setText(joDatos.get(TAG_EMAIL).toString());
                     if (joDatos.get(TAG_BAJA).equals(null)) eBaja = false;
                     else eBaja = true;
+                    if (!joDatos.getString(TAG_LOGO).equals(null)) {
+                        new Herramientas.ponerImagen(eLogo).execute(joDatos.getString(TAG_LOGO));
+                    }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+
+
     }
+
 
     class GuardarEmpresa extends AsyncTask<String, String, String> {
 
@@ -246,7 +276,7 @@ public class AdmEmpresa extends Activity {
                     Log.d("Fallo al guardar!", json.getString(TAG_MESSAGE));
                     return json.getString(TAG_MESSAGE);
                 }
-            }catch (JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             return null;

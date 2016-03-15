@@ -10,20 +10,18 @@ import overant.asako.tpv.R;
 
 public class Administracion extends Activity implements View.OnClickListener {
 
-    private Button mEmpresa, mPuntVenta, mArticulo, mCliente, mAlmacen, mProveedor;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administracion);
 
         // setear botones
-        mEmpresa = (Button) findViewById(R.id.btnAdmEmpresa);
-        mPuntVenta = (Button) findViewById(R.id.btnAdmPuntoVenta);
-        mArticulo = (Button) findViewById(R.id.btnAdmArticulo);
-        mCliente = (Button) findViewById(R.id.btnAdmCliente);
-        mAlmacen = (Button) findViewById(R.id.btnAdmAlmacen);
-        mProveedor = (Button) findViewById(R.id.btnAdmProveedor);
+        Button mEmpresa = (Button) findViewById(R.id.btnAdmEmpresa);
+        Button mPuntVenta = (Button) findViewById(R.id.btnAdmPuntoVenta);
+        Button mArticulo = (Button) findViewById(R.id.btnAdmArticulo);
+        Button mCliente = (Button) findViewById(R.id.btnAdmCliente);
+        Button mAlmacen = (Button) findViewById(R.id.btnAdmAlmacen);
+        Button mProveedor = (Button) findViewById(R.id.btnAdmProveedor);
 
         mEmpresa.setOnClickListener(this);
         mPuntVenta.setOnClickListener(this);
