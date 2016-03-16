@@ -38,8 +38,6 @@ public class Login extends Activity implements OnClickListener {
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
 
-    // Direccion de testeo      // Rayco PC
-    //private static final String LOGIN_URL = "http://192.168.1.35/overant/tpv/json_login.php";
     private static final String LOGIN_URL = "http://overant.es/json_login.php";
 
     // Posibles respuestas del JSON php Script;

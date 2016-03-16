@@ -19,8 +19,24 @@ public class Cliente {
         this.mail = mail;
     }
 
+    public Cliente(String nombre, String apellido, String dni, String direccion, String localidad, String provincia, String cPostal, String telefono, String mail) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.direccion = direccion;
+        this.localidad = localidad;
+        this.provincia = provincia;
+        this.cPostal = cPostal;
+        this.telefono = telefono;
+        this.mail = mail;
+    }
+
     public int getId() {
         return this.ID;
+    }
+
+    public void setId(int id) {
+        this.ID = id;
     }
 
     public String getNombre() {

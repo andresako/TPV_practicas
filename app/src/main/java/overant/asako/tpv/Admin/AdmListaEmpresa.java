@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ import overant.asako.tpv.Utils.JSONParser;
 
 public class AdmListaEmpresa extends Activity {
 
+    private SharedPreferences sp;
+
     private static final String URL = "http://overant.es/empresas.php";
     private static final String TAG_EMPRESAS = "empresas";
     private static final String TAG_NOMBRE = "nombre";
@@ -40,6 +43,7 @@ public class AdmListaEmpresa extends Activity {
     private JSONParser jsonParser = new JSONParser();
 
     private ListView listaEmpresas;
+    private Button bNuevaEmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +54,15 @@ public class AdmListaEmpresa extends Activity {
     }
 
     private void setUi() {
+        sp = PreferenceManager.getDefaultSharedPreferences(AdmListaEmpresa.this);
         listaEmpresas = (ListView) findViewById(R.id.admListaEmpresas);
-        mEmpresasList = new ArrayList<>();
+        bNuevaEmp = (Button) findViewById(R.id.AdmListBoton);
+
         listaEmpresas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 // save user data
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(AdmListaEmpresa.this);
                 SharedPreferences.Editor edit = sp.edit();
                 edit.putString("empresaId", mEmpresasList.get(position).get(TAG_ID));
                 edit.commit();
@@ -67,7 +72,20 @@ public class AdmListaEmpresa extends Activity {
 
             }
         });
-        new MostrarListaEmpresas().execute();
+
+        bNuevaEmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // save user data
+                SharedPreferences.Editor edit = sp.edit();
+                edit.putString("empresaId", "0");
+                edit.commit();
+
+                Intent i = new Intent(AdmListaEmpresa.this, AdmEmpresa.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 
@@ -127,5 +145,10 @@ public class AdmListaEmpresa extends Activity {
         listaEmpresas.setAdapter(arrayAdapter);
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mEmpresasList = new ArrayList<>();
+        new MostrarListaEmpresas().execute();
+    }
 }

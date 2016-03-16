@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,11 +18,13 @@ import overant.asako.tpv.R;
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHolder> {
 
     private List<Cliente> items;
+    private static AdmClientes papi;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private int pos;
+        public int pos;
         public TextView cTitulo, cNombre, cApellido, cDNI, cDirecc, cLocal, cProv, cCpostal, cTelf, cMail;
+        public CheckBox cBaja;
         public ImageButton cExpand, cContraer, cSave;
         public LinearLayout llBot;
 
@@ -37,6 +40,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
             cCpostal = (TextView) v.findViewById(R.id.cardCPostal);
             cTelf = (TextView) v.findViewById(R.id.cardTelefono);
             cMail = (TextView) v.findViewById(R.id.cardEmail);
+            cBaja = (CheckBox) v.findViewById(R.id.cardBajaCheck);
 
             llBot = (LinearLayout) v.findViewById(R.id.cardLayoutBot);
 
@@ -70,13 +74,14 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
                     cExpand.setVisibility(View.VISIBLE);
                     cContraer.setVisibility(View.GONE);
                     cSave.setVisibility(View.GONE);
-                    new AdmClientes().guardarCliente(pos);
+                    papi.actualizarCliente(this);
                     break;
             }
         }
     }
 
-    public ClienteAdapter(List<Cliente> items) {
+    public ClienteAdapter(List<Cliente> items, AdmClientes padre) {
+        this.papi = padre;
         this.items = items;
     }
 
@@ -99,6 +104,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
         holder.cCpostal.setText(items.get(posicion).getcPostal());
         holder.cTelf.setText(items.get(posicion).getTelefono());
         holder.cMail.setText(items.get(posicion).getMail());
+        holder.cBaja.setChecked(items.get(posicion).isBaja());
     }
 
     @Override

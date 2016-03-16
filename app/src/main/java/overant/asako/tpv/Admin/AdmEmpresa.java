@@ -5,11 +5,14 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,6 +36,7 @@ import overant.asako.tpv.Utils.JSONParser;
 public class AdmEmpresa extends Activity {
 
     private static final String URL = "http://overant.es/empresas.php";
+    private static final String URL_GUARDAR = "http://overant.es/json_guardar_empresa.php";
 
     // Respuestas del JSON php Script;
     private static final String TAG_NOMBRE = "nombre";
@@ -51,8 +55,11 @@ public class AdmEmpresa extends Activity {
     private static final String TAG_MESSAGE = "message";
 
     //Componentes
+    private SharedPreferences sp;
     private boolean eBaja = false;
-    private TextView eNombre, eRazon, eCif, eDireccion, eLocalidad, eProvincia, eCpostal, eTelefono, eEmail;
+    private String ID;
+    private TextView eTitulo, eNombre, eRazon, eCif, eDireccion, eLocalidad, eProvincia, eCpostal, eTelefono, eEmail;
+    private Button bOk, bCanc, bBaja;
     private ImageView eLogo;
 
     //Datos
@@ -69,7 +76,11 @@ public class AdmEmpresa extends Activity {
     }
 
     private void setUI() {
+        sp = PreferenceManager.getDefaultSharedPreferences(AdmEmpresa.this);
+        ID = sp.getString("empresaId", "0");
+
         //inicializar componentes
+        eTitulo = (TextView) findViewById(R.id.admEmpTitulo);
         eNombre = (TextView) findViewById(R.id.admEmpNombre);
         eRazon = (TextView) findViewById(R.id.admEmpRazon);
         eCif = (TextView) findViewById(R.id.admEmpCIF);
@@ -81,9 +92,9 @@ public class AdmEmpresa extends Activity {
         eEmail = (TextView) findViewById(R.id.admEmpMail);
         eLogo = (ImageView) findViewById(R.id.admEmpLogo);
 
-        Button bOk = (Button) findViewById(R.id.admEmpBtnOK);
-        Button bCanc = (Button) findViewById(R.id.admEmpBtnCanc);
-        Button bBaja = (Button) findViewById(R.id.admEmpBtnBaja);
+        bOk = (Button) findViewById(R.id.admEmpBtnOK);
+        bCanc = (Button) findViewById(R.id.admEmpBtnCanc);
+        bBaja = (Button) findViewById(R.id.admEmpBtnBaja);
 
         jsonParser = new JSONParser();
         tools = new Herramientas();
@@ -93,6 +104,7 @@ public class AdmEmpresa extends Activity {
             @Override
             public void onClick(View v) {
                 guardarDatos();
+                finish();
             }
         });
         bCanc.setOnClickListener(new View.OnClickListener() {
@@ -105,16 +117,22 @@ public class AdmEmpresa extends Activity {
             @Override
             public void onClick(View v) {
                 darBaja();
+                guardarDatos();
+                finish();
             }
         });
-
-        // Relleno datos
-        new IntentoRellenarDatos().execute();
+        if (!ID.equals("0")) {
+            // Relleno datos
+            new IntentoRellenarDatos().execute();
+        } else {
+            // Creo nueva empresa
+            bBaja.setVisibility(View.GONE);
+        }
 
     }
 
     private void darBaja() {
-        //TODO: preguntar si dar de baja o no;  aplicar.
+        eBaja = !eBaja;
     }
 
     private void guardarDatos() {
@@ -157,22 +175,14 @@ public class AdmEmpresa extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(AdmEmpresa.this);
-            pDialog.setMessage("Cargando datos...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
         }
 
         @Override
         protected String doInBackground(String... args) {
-
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(AdmEmpresa.this);
-
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("app", "1"));
-            params.add(new BasicNameValuePair("id_empresa", sp.getString("empresaId", "0")));
+            params.add(new BasicNameValuePair("id_empresa", ID));
 
             joDatos = jsonParser.peticionHttp(URL, "POST", params);
             return null;
@@ -180,7 +190,7 @@ public class AdmEmpresa extends Activity {
 
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once product deleted
-            pDialog.dismiss();
+            //pDialog.dismiss();
             if (file_url != null) {
                 Toast.makeText(AdmEmpresa.this, file_url, Toast.LENGTH_LONG).show();
             }
@@ -210,39 +220,43 @@ public class AdmEmpresa extends Activity {
                     eCpostal.setText(joDatos.get(TAG_C_POSTAL).toString());
                     eTelefono.setText(joDatos.get(TAG_TELEFONO).toString());
                     eEmail.setText(joDatos.get(TAG_EMAIL).toString());
-                    if (joDatos.get(TAG_BAJA).equals(null)) eBaja = false;
-                    else eBaja = true;
-                    if (!joDatos.getString(TAG_LOGO).equals(null)) {
-                        new Herramientas.ponerImagen(eLogo).execute(joDatos.getString(TAG_LOGO));
+                    if (!joDatos.get(TAG_BAJA).toString().equalsIgnoreCase("S")) {
+                        eBaja = false;
+                        bBaja.setText("Dar de baja");
+                    } else {
+                        eBaja = true;
+                        bBaja.setText("Dar de alta");
+                        eTitulo.setPaintFlags(eTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     }
+                    if (joDatos.getString(TAG_LOGO) != null)
+                        new Herramientas.ponerImagen(eLogo).execute(joDatos.getString(TAG_LOGO));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
-
     }
-
 
     class GuardarEmpresa extends AsyncTask<String, String, String> {
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(AdmEmpresa.this);
-            pDialog.setMessage("Actualizando...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
-        }
-
-        @Override
         protected String doInBackground(String... args) {
-
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();
-            params.add(new BasicNameValuePair("app", "2"));
+            params.add(new BasicNameValuePair("app", "1"));
+
+            if (ID.equals("0")) {     //nueva empresa
+                params.add(new BasicNameValuePair("json_accion", "1"));
+            } else {                  //actualizar empresa
+                params.add(new BasicNameValuePair("json_accion", "2"));
+                params.add(new BasicNameValuePair("id", ID));
+
+                String ctBaja = "";
+                if (eBaja) ctBaja = "S";
+                params.add(new BasicNameValuePair(TAG_BAJA, ctBaja));
+            }
+
+
             params.add(new BasicNameValuePair(TAG_NOMBRE, eNombre.getText().toString()));
             params.add(new BasicNameValuePair(TAG_RAZON, eRazon.getText().toString()));
             params.add(new BasicNameValuePair(TAG_CIF, eCif.getText().toString()));
@@ -252,15 +266,13 @@ public class AdmEmpresa extends Activity {
             params.add(new BasicNameValuePair(TAG_C_POSTAL, eCpostal.getText().toString()));
             params.add(new BasicNameValuePair(TAG_TELEFONO, eTelefono.getText().toString()));
             params.add(new BasicNameValuePair(TAG_EMAIL, eEmail.getText().toString()));
-            String ctBaja = null;
-            if (eBaja) ctBaja = "S";
-            params.add(new BasicNameValuePair(TAG_BAJA, ctBaja));
+
 
             Log.d("request!", "starting");
 
             try {
                 //Posting user data to script
-                JSONObject json = jsonParser.peticionHttp(URL, "POST", params);
+                JSONObject json = jsonParser.peticionHttp(URL_GUARDAR, "POST", params);
 
                 // full json response
                 Log.d("Post Comment attempt", json.toString());
@@ -284,10 +296,13 @@ public class AdmEmpresa extends Activity {
 
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once product deleted
-            pDialog.dismiss();
+            // pDialog.dismiss();
             if (file_url != null) {
                 Toast.makeText(AdmEmpresa.this, file_url, Toast.LENGTH_LONG).show();
             }
+
+            new IntentoRellenarDatos().execute();
+
         }
     }
 }

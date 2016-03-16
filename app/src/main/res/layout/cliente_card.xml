@@ -208,6 +208,15 @@
                 android:clickable="true"
                 android:onClick="editThis"/>
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Baja:" />
+            <CheckBox
+                android:id="@+id/cardBajaCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
 
         </LinearLayout>
