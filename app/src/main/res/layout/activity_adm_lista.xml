@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#123"
+    android:padding="16dp"
+    tools:context="overant.asako.tpv.Admin.AdmLista">
+
+    <TextView
+        android:id="@+id/AdmListaTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/ficha"
+        android:layout_alignParentTop="true"
+        android:text="Selecciona item a editar"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/AdmListaBoton"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/boton_custom"
+        android:text="Nuevo item" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:fillViewport="true"
+        android:layout_below="@+id/AdmListaTitulo"
+        android:layout_above="@+id/AdmListaBoton">
+
+        <ListView
+            android:id="@+id/admListaView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ficha">
+
+        </ListView>
+    </ScrollView>
+</RelativeLayout>

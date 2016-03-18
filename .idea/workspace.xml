@@ -10,22 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3de4889-4833-471a-a46d-bcd14f0714a6" name="Default" comment="17/03">
-      <change type="DELETED" beforePath="C:\Users\andre\AndroidStudioProjects\TPV\app\src\main\java\overant\asako\tpv\Admin\AdmClientes.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\andre\AndroidStudioProjects\TPV\app\src\main\java\overant\asako\tpv\Utils\ClienteAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\andre\AndroidStudioProjects\TPV\app\src\main\res\layout\activity_adm_clientes.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\andre\AndroidStudioProjects\TPV\app\src\main\res\layout\activity_adm_lista_empresa.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\andre\AndroidStudioProjects\TPV\app\src\main\res\layout\cliente_card.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmEmpresa.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmEmpresa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaEmpresa.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaEmpresa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Cliente.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Cliente.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/Herramientas.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/Herramientas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_empresa.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_empresa.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_clientes.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_clientes.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cliente.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/empresa.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmCliente.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaClientes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_cliente.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_lista.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_new_cliente.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TPV.iws" />
@@ -121,8 +112,8 @@
       <file leaf-file-name="AdmEmpresa.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmEmpresa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2103825">
-              <caret line="264" column="62" selection-start-line="264" selection-start-column="62" selection-end-line="264" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.48907104">
+              <caret line="270" column="0" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
               <folding>
                 <element signature="method#onCreate#0;class#AdmEmpresa#0" expanded="false" />
                 <element signature="method#editThis#0;class#AdmEmpresa#0" expanded="false" />
@@ -1952,20 +1943,27 @@
       <option name="number" value="Default" />
       <updated>1458199877810</updated>
     </task>
+    <task id="LOCAL-00001" summary="17/03">
+      <created>1458286668749</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1458286668749</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2005,7 +2003,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2282,8 +2280,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmEmpresa.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2103825">
-          <caret line="264" column="62" selection-start-line="264" selection-start-column="62" selection-end-line="264" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.48907104">
+          <caret line="270" column="0" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
           <folding>
             <element signature="method#onCreate#0;class#AdmEmpresa#0" expanded="false" />
             <element signature="method#editThis#0;class#AdmEmpresa#0" expanded="false" />
