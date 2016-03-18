@@ -205,7 +205,6 @@
                     android:text="Dar de baja" />
             </LinearLayout>
 
-
         </LinearLayout>
     </ScrollView>
 

@@ -27,7 +27,11 @@
             android:label="@string/title_activity_adm_empresa" >
         </activity>
         <activity
-            android:name=".Admin.AdmClientes"
+            android:name=".Admin.AdmCliente"
+            android:label="@string/title_activity_adm_clientes" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmListaClientes"
             android:label="@string/title_activity_adm_clientes" >
         </activity>
         <activity

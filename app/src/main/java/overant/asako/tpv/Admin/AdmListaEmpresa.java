@@ -1,7 +1,6 @@
 package overant.asako.tpv.Admin;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -13,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -42,34 +42,37 @@ public class AdmListaEmpresa extends Activity {
     private JSONObject joDatos;
     private JSONParser jsonParser = new JSONParser();
 
+    private TextView tituloLista;
     private ListView listaEmpresas;
     private Button bNuevaEmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adm_lista_empresa);
+        setContentView(R.layout.activity_adm_lista);
         setUi();
 
     }
 
     private void setUi() {
         sp = PreferenceManager.getDefaultSharedPreferences(AdmListaEmpresa.this);
-        listaEmpresas = (ListView) findViewById(R.id.admListaEmpresas);
-        bNuevaEmp = (Button) findViewById(R.id.AdmListBoton);
+        tituloLista = (TextView)findViewById(R.id.AdmListaTitulo);
+        listaEmpresas = (ListView) findViewById(R.id.admListaView);
+        bNuevaEmp = (Button) findViewById(R.id.AdmListaBoton);
+
+        tituloLista.setText("Selecciona Empresa a editar.");
+        bNuevaEmp.setText("Nueva empresa");
 
         listaEmpresas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 // save user data
                 SharedPreferences.Editor edit = sp.edit();
                 edit.putString("empresaId", mEmpresasList.get(position).get(TAG_ID));
-                edit.commit();
+                edit.apply();
 
                 Intent i = new Intent(AdmListaEmpresa.this, Administracion.class);
                 startActivity(i);
-
             }
         });
 
@@ -79,7 +82,7 @@ public class AdmListaEmpresa extends Activity {
                 // save user data
                 SharedPreferences.Editor edit = sp.edit();
                 edit.putString("empresaId", "0");
-                edit.commit();
+                edit.apply();
 
                 Intent i = new Intent(AdmListaEmpresa.this, AdmEmpresa.class);
                 startActivity(i);
@@ -111,7 +114,7 @@ public class AdmListaEmpresa extends Activity {
                     JSONObject c = joLista.getJSONObject(i);
 
                     // creating new HashMap
-                    HashMap<String, String> map = new HashMap<String, String>();
+                    HashMap<String, String> map = new HashMap<>();
                     map.put(TAG_NOMBRE, c.getString(TAG_NOMBRE));
                     map.put(TAG_ID, c.get(TAG_ID).toString());
 
@@ -136,11 +139,11 @@ public class AdmListaEmpresa extends Activity {
     }
 
     private void pintarLista() {
-        List<String> listaCt = new ArrayList<String>();
+        List<String> listaCt = new ArrayList<>();
         for (int x = 0; x < mEmpresasList.size(); x++) {
             listaCt.add(mEmpresasList.get(x).get(TAG_NOMBRE));
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaCt);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaCt);
 
         listaEmpresas.setAdapter(arrayAdapter);
     }

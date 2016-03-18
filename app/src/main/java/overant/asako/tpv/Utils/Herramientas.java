@@ -1,9 +1,11 @@
 package overant.asako.tpv.Utils;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -34,5 +36,9 @@ public class Herramientas {
             imageView.setImageBitmap(result);
         }
 
+    }
+
+    public void mensaje(String msg, Activity act){
+        Toast.makeText(act, msg, Toast.LENGTH_LONG).show();
     }
 }

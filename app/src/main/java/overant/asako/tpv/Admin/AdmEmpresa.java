@@ -175,6 +175,11 @@ public class AdmEmpresa extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            pDialog = new ProgressDialog(AdmEmpresa.this);
+            pDialog.setMessage("Cargando datos...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
         }
 
         @Override
@@ -190,12 +195,12 @@ public class AdmEmpresa extends Activity {
 
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once product deleted
-            //pDialog.dismiss();
+            pDialog.dismiss();
             if (file_url != null) {
                 Toast.makeText(AdmEmpresa.this, file_url, Toast.LENGTH_LONG).show();
             }
 
-            JSONArray mEmpresa = null;
+            JSONArray mEmpresa;
 
             try {
                 mEmpresa = joDatos.getJSONArray("empresas");
