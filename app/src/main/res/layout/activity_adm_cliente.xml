@@ -1,15 +1,16 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#123"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context="overant.asako.tpv.Admin.AdmCliente">
 
     <LinearLayout
+        android:id="@+id/admClillTop"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentTop="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:background="@drawable/ficha"
         android:orientation="horizontal">
@@ -47,9 +48,44 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/admClillBot"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/admCliBtnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_custom"
+            android:text="Aceptar" />
+
+        <Button
+            android:id="@+id/admCliBtnCanc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_custom"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/admCliBtnBaja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_custom"
+            android:text="Dar de baja" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/admClillBot"
+        android:layout_below="@+id/admClillTop"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
 
         <LinearLayout
             android:id="@+id/admCliDatos"
@@ -77,7 +113,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -93,7 +128,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -109,7 +143,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -125,7 +158,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -141,7 +173,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -157,7 +188,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -173,7 +203,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -189,7 +218,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -205,7 +233,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
 
@@ -229,7 +256,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -245,7 +271,6 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -261,42 +286,9 @@
                     android:clickable="true"
                     android:onClick="editThis"
                     android:singleLine="true"
-                    android:text="testNombre"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/admCliBtnOK"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/boton_custom"
-                    android:text="Aceptar" />
-
-                <Button
-                    android:id="@+id/admCliBtnCanc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/boton_custom"
-                    android:text="Cancelar" />
-
-                <Button
-                    android:id="@+id/admCliBtnBaja"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/boton_custom"
-                    android:text="Dar de baja" />
-            </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
-</LinearLayout>
+
+</RelativeLayout>

@@ -42,6 +42,11 @@ public class Administracion extends Activity implements View.OnClickListener {
 
                 break;
             case R.id.btnAdmPuntoVenta:
+
+                Intent admPVenta = new Intent(Administracion.this, AdmListaPuntoVenta.class);
+                admPVenta.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(admPVenta);
+
                 break;
             case R.id.btnAdmArticulo:
                 break;

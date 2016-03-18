@@ -38,6 +38,22 @@
             android:name=".Admin.AdmListaEmpresa"
             android:label="@string/title_activity_adm_lista_empresa" >
         </activity>
+        <activity
+            android:name=".Admin.AdmListaPuntoVenta"
+            android:label="@string/title_activity_adm_lista_punto_venta" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmPuntoVenta"
+            android:label="@string/title_activity_adm_punto_venta" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmListaUsuarios"
+            android:label="@string/title_activity_adm_lista_usuarios" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmUsuario"
+            android:label="@string/title_activity_adm_usuario" >
+        </activity>
     </application>
 
 </manifest>

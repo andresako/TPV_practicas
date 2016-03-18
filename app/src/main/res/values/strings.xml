@@ -18,4 +18,8 @@
     <string name="andresako">andresako</string>
     <string name="title_activity_adm_clientes">AdmClientes</string>
     <string name="title_activity_adm_lista_empresa">AdmListaEmpresa</string>
+    <string name="title_activity_adm_lista_punto_venta">AdmListaPuntoVenta</string>
+    <string name="title_activity_adm_punto_venta">AdmPuntoVenta</string>
+    <string name="title_activity_adm_lista_usuarios">AdmListaUsuarios</string>
+    <string name="title_activity_adm_usuario">AdmUsuario</string>
 </resources>

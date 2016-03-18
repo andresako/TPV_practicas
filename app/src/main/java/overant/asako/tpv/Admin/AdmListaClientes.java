@@ -56,8 +56,6 @@ public class AdmListaClientes extends Activity {
 
     //Datos
     private JSONParser jsonParser = new JSONParser();
-    private JSONObject joDatos;
-    private JSONArray mCliente = null;
     public List<Cliente> listaClientes;
     private ProgressDialog pDialog;
 
@@ -89,7 +87,6 @@ public class AdmListaClientes extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(AdmListaClientes.this, AdmCliente.class);
                 i.putExtra("cliente", listaClientes.get(position));
-                i.putExtra("pos", position);
                 startActivity(i);
             }
         });
@@ -117,11 +114,11 @@ public class AdmListaClientes extends Activity {
         params.add(new BasicNameValuePair("app", "1"));
         params.add(new BasicNameValuePair(TAG_ID_EMPRESA, sp.getString("empresaId", "0")));
 
-        joDatos = jsonParser.peticionHttp(URL, "POST", params);
+        JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
         System.out.println(joDatos);
         try {
 
-            mCliente = joDatos.getJSONArray(TAG_CLIENTE);
+            JSONArray mCliente = joDatos.getJSONArray(TAG_CLIENTE);
 
             for (int i = 0; i < mCliente.length(); i++) {
                 JSONObject c = mCliente.getJSONObject(i);
@@ -151,11 +148,11 @@ public class AdmListaClientes extends Activity {
     }
 
     private void mostrarClientes() {
-        List<String> listaCt = new ArrayList<String>();
+        List<String> listaCt = new ArrayList<>();
         for (int x = 0; x < listaClientes.size(); x++) {
             listaCt.add(listaClientes.get(x).getNombre() + " " + listaClientes.get(x).getApellido());
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaCt);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaCt);
         lvClientes.setAdapter(arrayAdapter);
         lvClientes.setDividerHeight(10);
     }
@@ -181,8 +178,8 @@ public class AdmListaClientes extends Activity {
         protected void onPostExecute(Boolean resultado) {
             // dismiss the dialog once product deleted
             super.onPostExecute(resultado);
-            pDialog.dismiss();
             mostrarClientes();
+            pDialog.dismiss();
         }
     }
 }

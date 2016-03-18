@@ -94,7 +94,7 @@ public class Login extends Activity implements OnClickListener {
             String password = pass.getText().toString();
             try {
                 // Building Parameters
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                List<NameValuePair> params = new ArrayList<>();
                 params.add(new BasicNameValuePair("username", username));
                 params.add(new BasicNameValuePair("password", password));
 
@@ -118,7 +118,6 @@ public class Login extends Activity implements OnClickListener {
                     SharedPreferences.Editor edit = sp.edit();
                     edit.putString("username", username);
                     edit.putString("empresaId", json.getString("id_empresa"));
-                    edit.commit();
 
                     // starting intent
                     String admin = json.getString(TAG_ADMIN);
@@ -130,6 +129,10 @@ public class Login extends Activity implements OnClickListener {
                         i = new Intent(Login.this, AdmListaEmpresa.class);
                         finish();
                     }
+
+                    edit.putString("admin", admin);
+                    edit.commit();
+
 
                     startActivity(i);
 
