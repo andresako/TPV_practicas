@@ -1,0 +1,177 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#123"
+    android:padding="16dp"
+    tools:context="overant.asako.tpv.Admin.AdmArticulo">
+
+    <LinearLayout
+        android:id="@+id/admArtllTop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/ficha"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/admArtTitulo"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ficha"
+            android:gravity="center"
+            android:text="ID"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageView
+            android:id="@+id/admArtFoto"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/no_image"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/admArtllBot"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/admArtBtnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_custom"
+            android:text="Aceptar" />
+
+        <Button
+            android:id="@+id/admArtBtnCanc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_custom"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/admArtBtnBaja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_custom"
+            android:text="Dar de baja" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/admArtllBot"
+        android:layout_below="@+id/admArtllTop"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ficha"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="EAN:" />
+            <TextView
+                android:id="@+id/admArtEAN"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:clickable="true"
+                android:onClick="editThis"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre:" />
+            <TextView
+                android:id="@+id/admArtNombre"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:clickable="true"
+                android:onClick="editThis"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria:" />
+            <TextView
+                android:id="@+id/admArtCategoriaT"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:clickable="true"
+                android:onClick="editThis"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <Spinner
+                android:id="@+id/admArtCategoriaS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Precio:" />
+            <TextView
+                android:id="@+id/admArtPrecio"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:clickable="true"
+                android:onClick="editThis"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Descuento:" />
+            <TextView
+                android:id="@+id/admArtDescuento"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:clickable="true"
+                android:onClick="editThis"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="IVA:" />
+            <TextView
+                android:id="@+id/admArtIvaT"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:clickable="true"
+                android:onClick="editThis"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <Spinner
+                android:id="@+id/admArtIvaS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

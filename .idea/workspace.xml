@@ -16,15 +16,35 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3de4889-4833-471a-a46d-bcd14f0714a6" name="Default" comment=" Viernes 18">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_usuario.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout-h5000dp/activity_adm_usuario.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_usuario.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaUsuarios.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaUsuarios.java" />
+    <list default="true" id="f3de4889-4833-471a-a46d-bcd14f0714a6" name="Default" comment="Lunes 21">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/no_image.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmAlmacen.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmArticulo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmCategoria.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaAlmacenes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaArticulos.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaCategorias.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Almacen.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Articulo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Categoria.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/TipoIVA.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_almacen.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_articulo.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_categoria.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_almacen.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_articulo.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_categoria.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_lista_almacenes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_lista_articulos.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_adm_lista_categorias.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaClientes.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaClientes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Login.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Login.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_empresa.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_empresa.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Usuario.java" afterPath="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Usuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_cliente.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_cliente.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_administracion.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_administracion.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -54,139 +74,118 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AdmListaClientes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaClientes.java">
+      <file leaf-file-name="AdmArticulo.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmArticulo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.65847">
+              <caret line="177" column="6" selection-start-line="177" selection-start-column="6" selection-end-line="177" selection-end-column="6" />
+              <folding>
+                <element signature="method#onCreate#0;class#AdmArticulo#0" expanded="false" />
+                <element signature="method#rellenarDatos#0;class#AdmArticulo#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#GuardarArticulo#0;class#AdmArticulo#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Administracion.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="154" column="61" selection-start-line="154" selection-start-column="61" selection-end-line="154" selection-end-column="61" />
-              <folding>
-                <element signature="method#onCreate#0;class#AdmListaClientes#0" expanded="false" />
-                <element signature="method#onResume#0;class#AdmListaClientes#0" expanded="false" />
-                <element signature="method#actualizarClientes#0;class#AdmListaClientes#0" expanded="false" />
-                <element signature="class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
-                <element signature="method#onPreExecute#0;class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
-                <element signature="method#doInBackground#0;class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
-                <element signature="method#onPostExecute#0;class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdmListaUsuarios.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaUsuarios.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="86" column="94" selection-start-line="86" selection-start-column="94" selection-end-line="86" selection-end-column="94" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2708#2989#0" expanded="true" />
-                <element signature="e#2988#2989#0" expanded="true" />
-                <element signature="e#3034#3393#0" expanded="true" />
-                <element signature="e#3392#3393#0" expanded="true" />
-                <element signature="class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
-                <element signature="method#onPreExecute#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
-                <element signature="method#doInBackground#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
-                <element signature="method#onPostExecute#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_adm_usuario.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_usuario.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5172415">
-              <caret line="215" column="43" selection-start-line="215" selection-start-column="43" selection-end-line="215" selection-end-column="43" />
-              <folding>
-                <element signature="e#325#998#0" expanded="false" />
-                <element signature="e#539#572#0" expanded="true" />
-                <element signature="e#669#978#0" expanded="false" />
-                <element signature="e#1004#2126#0" expanded="false" />
-                <element signature="e#1243#1521#0" expanded="false" />
-                <element signature="e#1531#1812#0" expanded="false" />
-                <element signature="e#1822#2106#0" expanded="false" />
-                <element signature="e#2363#2396#0" expanded="true" />
-                <element signature="e#2624#2779#0" expanded="false" />
-                <element signature="e#2792#3234#0" expanded="false" />
-                <element signature="e#2997#3030#0" expanded="true" />
-                <element signature="e#3248#3406#0" expanded="false" />
-                <element signature="e#3419#3863#0" expanded="false" />
-                <element signature="e#3626#3659#0" expanded="true" />
-                <element signature="e#3877#4029#0" expanded="false" />
-                <element signature="e#4042#4481#0" expanded="false" />
-                <element signature="e#4244#4277#0" expanded="true" />
-                <element signature="e#4495#4653#0" expanded="false" />
-                <element signature="e#4666#5111#0" expanded="false" />
-                <element signature="e#4874#4907#0" expanded="true" />
-                <element signature="e#5125#5283#0" expanded="false" />
-                <element signature="e#5296#5741#0" expanded="false" />
-                <element signature="e#5504#5537#0" expanded="true" />
-                <element signature="e#5755#5913#0" expanded="false" />
-                <element signature="e#5926#6371#0" expanded="false" />
-                <element signature="e#6385#6545#0" expanded="false" />
-                <element signature="e#6558#7001#0" expanded="false" />
-                <element signature="e#6764#6797#0" expanded="true" />
-                <element signature="e#7015#7172#0" expanded="false" />
-                <element signature="e#7185#7629#0" expanded="false" />
-                <element signature="e#7392#7425#0" expanded="true" />
-                <element signature="e#7643#7798#0" expanded="false" />
-                <element signature="e#7811#8251#0" expanded="false" />
-                <element signature="e#8014#8047#0" expanded="true" />
-                <element signature="e#8265#8424#0" expanded="false" />
-                <element signature="e#8437#8917#0" expanded="false" />
-                <element signature="e#8640#8673#0" expanded="true" />
-                <element signature="e#8931#9088#0" expanded="false" />
-                <element signature="e#9259#9292#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdmUsuario.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
-              <folding>
-                <element signature="method#onCreate#0;class#AdmUsuario#0" expanded="false" />
-                <element signature="e#3707#3876#0" expanded="true" />
-                <element signature="e#3875#3876#0" expanded="true" />
-                <element signature="e#3912#4054#0" expanded="true" />
-                <element signature="e#4053#4054#0" expanded="true" />
-                <element signature="e#4092#4244#0" expanded="true" />
-                <element signature="e#4243#4244#0" expanded="true" />
-                <element signature="method#rellenarDatos#0;class#AdmUsuario#0" expanded="false" />
-                <element signature="method#editThis#0;class#AdmUsuario#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Login.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334">
-              <caret line="96" column="59" selection-start-line="96" selection-start-column="59" selection-end-line="96" selection-end-column="59" />
+              <caret line="84" column="22" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdmPuntoVenta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmPuntoVenta.java">
+      <file leaf-file-name="AdmCategoria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmCategoria.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="174" selection-end-column="5" />
+              <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="106" selection-end-column="9" />
               <folding>
-                <element signature="method#onCreate#0;class#AdmPuntoVenta#0" expanded="false" />
-                <element signature="method#rellenarDatos#0;class#AdmPuntoVenta#0" expanded="false" />
-                <element signature="method#refrescarDatos#0;class#AdmPuntoVenta#0" expanded="false" />
-                <element signature="method#editThis#0;class#AdmPuntoVenta#0" expanded="false" />
-                <element signature="class#GuardarCambios#0;class#AdmPuntoVenta#0" expanded="false" />
-                <element signature="method#doInBackground#0;class#GuardarCambios#0;class#AdmPuntoVenta#0" expanded="false" />
+                <element signature="method#onCreate#0;class#AdmCategoria#0" expanded="false" />
+                <element signature="method#setUi#0;class#AdmCategoria#0" expanded="false" />
+                <element signature="method#editThis#0;class#AdmCategoria#0" expanded="false" />
+                <element signature="class#GuardarCategoria#0;class#AdmCategoria#0" expanded="false" />
+                <element signature="method#doInBackground#0;class#GuardarCategoria#0;class#AdmCategoria#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#GuardarCategoria#0;class#AdmCategoria#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdmListaArticulos.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaArticulos.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+              <folding>
+                <element signature="method#onCreate#0;class#AdmListaArticulos#0" expanded="false" />
+                <element signature="method#setUi#0;class#AdmListaArticulos#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#rellenarArticulos#0;class#AdmListaArticulos#0" expanded="false" />
+                <element signature="method#doInBackground#0;class#rellenarArticulos#0;class#AdmListaArticulos#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#rellenarArticulos#0;class#AdmListaArticulos#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdmAlmacen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmAlmacen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="140" column="5" selection-start-line="116" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+              <folding>
+                <element signature="method#setUi#0;class#AdmAlmacen#0" expanded="false" />
+                <element signature="method#rellenarDatos#0;class#AdmAlmacen#0" expanded="false" />
+                <element signature="method#editThis#0;class#AdmAlmacen#0" expanded="false" />
+                <element signature="e#5148#5149#0" expanded="true" />
+                <element signature="e#5194#5195#0" expanded="true" />
+                <element signature="class#GuardarAlmacen#0;class#AdmAlmacen#0" expanded="false" />
+                <element signature="method#doInBackground#0;class#GuardarAlmacen#0;class#AdmAlmacen#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#GuardarAlmacen#0;class#AdmAlmacen#0" expanded="false" />
+                <element signature="e#7569#7611#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Categoria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Categoria.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+              <folding>
+                <element signature="method#Categoria#0;class#Categoria#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Articulo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Articulo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+              <folding>
+                <element signature="e#2308#2309#0" expanded="true" />
+                <element signature="e#2337#2338#0" expanded="true" />
+                <element signature="e#2379#2380#0" expanded="true" />
+                <element signature="e#2415#2416#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Almacen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Almacen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+              <folding>
+                <element signature="method#Almacen#0;class#Almacen#0" expanded="false" />
+                <element signature="method#Almacen#1;class#Almacen#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -199,6 +198,7 @@
       <list>
         <option value="layoutResourceFile_vertical" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -1670,27 +1670,49 @@
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/ClienteAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/AdmCliente.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/cliente_card.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/Herramientas.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Cliente.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmCliente.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaEmpresa.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmEmpresa.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/PuntoVenta.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_lista_usuarios.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Usuario.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmPuntoVenta.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_cliente.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_punto_venta.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaClientes.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaPuntoVenta.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_empresa.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaUsuarios.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_usuario.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Login.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Usuario.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaClientes.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Almacen.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_cliente.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaAlmacenes.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_almacen.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmAlmacen.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/TipoIVA.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/no_imagen.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_categoria.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/Herramientas.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_administracion.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaCategorias.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adm_articulo.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmCategoria.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Articulo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaArticulos.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Categoria.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmArticulo.java" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="NamedScopeManager">
@@ -1699,7 +1721,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -1744,10 +1766,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1769,10 +1790,6 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1788,26 +1805,8 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dimens.xml" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TPV" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1898,6 +1897,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1907,8 +1907,9 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="PO001570" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
     <property name="FullScreen" value="false" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.SHOW" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2129,7 +2130,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458301318463</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=" Viernes 18">
+      <created>1458308376218</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1458308376218</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -2142,29 +2149,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11875945" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" x="92" y="92" width="1182" height="544" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" x="92" y="92" width="1182" height="544" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23373677" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2336874" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.85519594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5689949" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.55706984" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21028744" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21016692" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21482602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21471927" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2219,15 +2226,95 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="17/03" />
     <MESSAGE value=" Viernes 18" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Viernes 18" />
+    <MESSAGE value="Lunes 21" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lunes 21" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_usuario.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="215" column="43" selection-start-line="215" selection-start-column="43" selection-end-line="215" selection-end-column="43" />
+          <folding>
+            <element signature="e#325#998#0" expanded="false" />
+            <element signature="e#669#978#0" expanded="false" />
+            <element signature="e#1004#2126#0" expanded="false" />
+            <element signature="e#1243#1521#0" expanded="false" />
+            <element signature="e#1531#1812#0" expanded="false" />
+            <element signature="e#1822#2106#0" expanded="false" />
+            <element signature="e#2624#2779#0" expanded="false" />
+            <element signature="e#2792#3234#0" expanded="false" />
+            <element signature="e#3248#3406#0" expanded="false" />
+            <element signature="e#3419#3863#0" expanded="false" />
+            <element signature="e#3877#4029#0" expanded="false" />
+            <element signature="e#4042#4481#0" expanded="false" />
+            <element signature="e#4495#4653#0" expanded="false" />
+            <element signature="e#4666#5111#0" expanded="false" />
+            <element signature="e#5125#5283#0" expanded="false" />
+            <element signature="e#5296#5741#0" expanded="false" />
+            <element signature="e#5755#5913#0" expanded="false" />
+            <element signature="e#5926#6371#0" expanded="false" />
+            <element signature="e#6385#6545#0" expanded="false" />
+            <element signature="e#6558#7001#0" expanded="false" />
+            <element signature="e#7015#7172#0" expanded="false" />
+            <element signature="e#7185#7629#0" expanded="false" />
+            <element signature="e#7643#7798#0" expanded="false" />
+            <element signature="e#7811#8251#0" expanded="false" />
+            <element signature="e#8265#8424#0" expanded="false" />
+            <element signature="e#8437#8917#0" expanded="false" />
+            <element signature="e#8931#9088#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#onCreate#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#rellenarDatos#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="false" />
+            <element signature="e#7019#7020#0" expanded="false" />
+            <element signature="class#GuardarEmpresa#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GuardarEmpresa#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GuardarEmpresa#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="e#10382#10424#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmPuntoVenta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="174" selection-end-column="5" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="method#rellenarDatos#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="method#refrescarDatos#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="method#editThis#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="class#GuardarCambios#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GuardarCambios#0;class#AdmPuntoVenta#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaClientes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2236,6 +2323,9 @@
             <element signature="method#onCreate#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#setUi#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#onResume#0;class#AdmListaClientes#0" expanded="false" />
+            <element signature="method#actualizarClientes#0;class#AdmListaClientes#0" expanded="false" />
+            <element signature="method#mostrarClientes#0;class#AdmListaClientes#0" expanded="false" />
+            <element signature="class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#onPreExecute#0;class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#doInBackground#0;class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#onPostExecute#0;class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
@@ -2249,8 +2339,6 @@
           <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
           <folding>
             <element signature="method#Cliente#0;class#Cliente#0" expanded="false" />
-            <element signature="e#2784#2785#0" expanded="false" />
-            <element signature="e#2816#2817#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2262,7 +2350,6 @@
           <folding>
             <element signature="method#onCreate#0;class#AdmCliente#0" expanded="false" />
             <element signature="method#refrescarDatos#0;class#AdmCliente#0" expanded="false" />
-            <element signature="method#editThis#0;class#AdmCliente#0" expanded="false" />
             <element signature="class#GuardarCambios#0;class#AdmCliente#0" expanded="false" />
             <element signature="method#doInBackground#0;class#GuardarCambios#0;class#AdmCliente#0" expanded="false" />
           </folding>
@@ -2285,17 +2372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/Herramientas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="class#ponerImagen#0;class#Herramientas#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#ponerImagen#0;class#Herramientas#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/JSONParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2310,12 +2386,12 @@
           <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
           <folding>
             <element signature="e#328#346#0" expanded="true" />
-            <element signature="e#1259#1296#0" expanded="true" />
-            <element signature="e#1413#1455#0" expanded="true" />
-            <element signature="e#1575#1621#0" expanded="true" />
-            <element signature="e#1736#1776#0" expanded="true" />
-            <element signature="e#1894#1937#0" expanded="true" />
-            <element signature="e#2049#2085#0" expanded="true" />
+            <element signature="e#2204#2248#0" expanded="true" />
+            <element signature="e#2360#2396#0" expanded="true" />
+            <element signature="e#2516#2561#0" expanded="true" />
+            <element signature="e#2675#2713#0" expanded="true" />
+            <element signature="e#2832#2876#0" expanded="true" />
+            <element signature="e#2989#3026#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2328,30 +2404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmEmpresa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="270" column="0" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
-          <folding>
-            <element signature="method#onCreate#0;class#AdmEmpresa#0" expanded="false" />
-            <element signature="method#editThis#0;class#AdmEmpresa#0" expanded="false" />
-            <element signature="method#onPause#0;class#AdmEmpresa#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#IntentoRellenarDatos#0;class#AdmEmpresa#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#IntentoRellenarDatos#0;class#AdmEmpresa#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#GuardarEmpresa#0;class#AdmEmpresa#0" expanded="false" />
-            <element signature="e#11306#11348#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1860465">
-          <caret line="45" column="85" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/PuntoVenta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15205725">
@@ -2360,41 +2412,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmCliente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6010929">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
-          <folding>
-            <element signature="method#onCreate#0;class#AdmCliente#0" expanded="false" />
-            <element signature="method#refrescarDatos#0;class#AdmCliente#0" expanded="false" />
-            <element signature="method#editThis#0;class#AdmCliente#0" expanded="false" />
-            <element signature="class#GuardarCambios#0;class#AdmCliente#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#GuardarCambios#0;class#AdmCliente#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaEmpresa.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.63522">
           <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding>
-            <element signature="method#onCreate#0;class#AdmListaEmpresa#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#MostrarListaEmpresas#0;class#AdmListaEmpresa#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#MostrarListaEmpresas#0;class#AdmListaEmpresa#0" expanded="false" />
-            <element signature="method#pintarLista#0;class#AdmListaEmpresa#0" expanded="false" />
-            <element signature="method#onResume#0;class#AdmListaEmpresa#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Cliente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.030411448">
-          <caret line="4" column="44" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="44" />
-          <folding>
-            <element signature="method#Cliente#0;class#Cliente#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2420,67 +2441,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_cliente.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#325#1886#0" expanded="false" />
-            <element signature="e#669#1045#0" expanded="false" />
-            <element signature="e#1055#1436#0" expanded="false" />
-            <element signature="e#1446#1865#0" expanded="false" />
-            <element signature="e#1892#3014#0" expanded="false" />
-            <element signature="e#2131#2409#0" expanded="false" />
-            <element signature="e#2419#2700#0" expanded="false" />
-            <element signature="e#2710#2994#0" expanded="false" />
-            <element signature="e#3020#12300#0" expanded="false" />
-            <element signature="e#3295#12282#0" expanded="false" />
-            <element signature="e#3554#9913#0" expanded="false" />
-            <element signature="e#3783#3950#0" expanded="false" />
-            <element signature="e#3968#4442#0" expanded="false" />
-            <element signature="e#4460#4630#0" expanded="false" />
-            <element signature="e#4648#5125#0" expanded="false" />
-            <element signature="e#5143#5307#0" expanded="false" />
-            <element signature="e#5325#5796#0" expanded="false" />
-            <element signature="e#5814#5984#0" expanded="false" />
-            <element signature="e#6002#6479#0" expanded="false" />
-            <element signature="e#6497#6667#0" expanded="false" />
-            <element signature="e#6685#7162#0" expanded="false" />
-            <element signature="e#7180#7350#0" expanded="false" />
-            <element signature="e#7368#7845#0" expanded="false" />
-            <element signature="e#7863#8035#0" expanded="false" />
-            <element signature="e#8053#8528#0" expanded="false" />
-            <element signature="e#8546#8715#0" expanded="false" />
-            <element signature="e#8733#9209#0" expanded="false" />
-            <element signature="e#9227#9394#0" expanded="false" />
-            <element signature="e#9412#9885#0" expanded="false" />
-            <element signature="e#9927#12258#0" expanded="false" />
-            <element signature="e#10198#10375#0" expanded="false" />
-            <element signature="e#10393#10873#0" expanded="false" />
-            <element signature="e#10891#11064#0" expanded="false" />
-            <element signature="e#11082#11559#0" expanded="false" />
-            <element signature="e#11577#11741#0" expanded="false" />
-            <element signature="e#11759#12230#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaPuntoVenta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="161" column="61" selection-start-line="161" selection-start-column="61" selection-end-line="161" selection-end-column="61" />
-          <folding>
-            <element signature="method#onCreate#0;class#AdmListaPuntoVenta#0" expanded="false" />
-            <element signature="method#setUi#0;class#AdmListaPuntoVenta#0" expanded="false" />
-            <element signature="method#onResume#0;class#AdmListaPuntoVenta#0" expanded="false" />
-            <element signature="class#rellenarPuntos#0;class#AdmListaPuntoVenta#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#rellenarPuntos#0;class#AdmListaPuntoVenta#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#rellenarPuntos#0;class#AdmListaPuntoVenta#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#rellenarPuntos#0;class#AdmListaPuntoVenta#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2512,10 +2476,100 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-h5000dp/activity_adm_usuario.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.026833631">
+          <caret line="132" column="46" selection-start-line="132" selection-start-column="46" selection-end-line="132" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmPuntoVenta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69588554">
+          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="174" selection-end-column="5" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="method#rellenarDatos#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="method#refrescarDatos#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="method#editThis#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="class#GuardarCambios#0;class#AdmPuntoVenta#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GuardarCambios#0;class#AdmPuntoVenta#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_usuario.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09622642">
+          <caret line="215" column="43" selection-start-line="215" selection-start-column="43" selection-end-line="215" selection-end-column="43" />
+          <folding>
+            <element signature="e#325#998#0" expanded="false" />
+            <element signature="e#669#978#0" expanded="false" />
+            <element signature="e#1004#2126#0" expanded="false" />
+            <element signature="e#1243#1521#0" expanded="false" />
+            <element signature="e#1531#1812#0" expanded="false" />
+            <element signature="e#1822#2106#0" expanded="false" />
+            <element signature="e#2624#2779#0" expanded="false" />
+            <element signature="e#2792#3234#0" expanded="false" />
+            <element signature="e#3248#3406#0" expanded="false" />
+            <element signature="e#3419#3863#0" expanded="false" />
+            <element signature="e#3877#4029#0" expanded="false" />
+            <element signature="e#4042#4481#0" expanded="false" />
+            <element signature="e#4495#4653#0" expanded="false" />
+            <element signature="e#4666#5111#0" expanded="false" />
+            <element signature="e#5125#5283#0" expanded="false" />
+            <element signature="e#5296#5741#0" expanded="false" />
+            <element signature="e#5755#5913#0" expanded="false" />
+            <element signature="e#5926#6371#0" expanded="false" />
+            <element signature="e#6385#6545#0" expanded="false" />
+            <element signature="e#6558#7001#0" expanded="false" />
+            <element signature="e#7015#7172#0" expanded="false" />
+            <element signature="e#7185#7629#0" expanded="false" />
+            <element signature="e#7643#7798#0" expanded="false" />
+            <element signature="e#7811#8251#0" expanded="false" />
+            <element signature="e#8265#8424#0" expanded="false" />
+            <element signature="e#8437#8917#0" expanded="false" />
+            <element signature="e#8931#9088#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaUsuarios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7298748">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="method#setUi#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="method#onResume#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="method#actualizarListaUsers#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="method#mostrarListaUsers#0;class#AdmListaUsuarios#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_empresa.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5172415">
-          <caret line="66" column="4" selection-start-line="66" selection-start-column="4" selection-end-line="92" selection-end-column="77" />
+        <state vertical-scroll-proportion="0.032075472">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#329#1242#0" expanded="false" />
             <element signature="e#1248#2370#0" expanded="false" />
@@ -2545,25 +2599,173 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-h5000dp/activity_adm_usuario.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaAlmacenes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.90518785">
+          <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmListaAlmacenes#0" expanded="false" />
+            <element signature="method#onResume#0;class#AdmListaAlmacenes#0" expanded="false" />
+            <element signature="class#rellenarAlmacenes#0;class#AdmListaAlmacenes#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#rellenarAlmacenes#0;class#AdmListaAlmacenes#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#rellenarAlmacenes#0;class#AdmListaAlmacenes#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#rellenarAlmacenes#0;class#AdmListaAlmacenes#0" expanded="false" />
+            <element signature="method#mostrarAlmacenes#0;class#AdmListaAlmacenes#0" expanded="false" />
+            <element signature="method#actualizarAlmacenes#0;class#AdmListaAlmacenes#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6386404">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="54" selection-end-column="56" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#onCreate#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#rellenarDatos#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="e#6975#6976#0" expanded="false" />
+            <element signature="e#7019#7020#0" expanded="false" />
+            <element signature="class#GuardarEmpresa#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GuardarEmpresa#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GuardarEmpresa#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="e#10382#10424#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="method#Cliente#0;class#Cliente#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/TipoIVA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12164579">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding>
+            <element signature="method#TipoIVA#0;class#TipoIVA#0" expanded="false" />
+            <element signature="method#TipoIVA#1;class#TipoIVA#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5474061">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/logo.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_play_light.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_cliente.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.896552">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="e#673#1049#0" expanded="false" />
+            <element signature="e#1059#1440#0" expanded="false" />
+            <element signature="e#1450#1869#0" expanded="false" />
+            <element signature="e#1896#3018#0" expanded="false" />
+            <element signature="e#2135#2413#0" expanded="false" />
+            <element signature="e#2423#2704#0" expanded="false" />
+            <element signature="e#2714#2998#0" expanded="false" />
+            <element signature="e#3024#12304#0" expanded="false" />
+            <element signature="e#3299#12286#0" expanded="false" />
+            <element signature="e#3558#9917#0" expanded="false" />
+            <element signature="e#3787#3954#0" expanded="false" />
+            <element signature="e#3972#4446#0" expanded="false" />
+            <element signature="e#4464#4634#0" expanded="false" />
+            <element signature="e#4652#5129#0" expanded="false" />
+            <element signature="e#5147#5311#0" expanded="false" />
+            <element signature="e#5329#5800#0" expanded="false" />
+            <element signature="e#5818#5988#0" expanded="false" />
+            <element signature="e#6006#6483#0" expanded="false" />
+            <element signature="e#6501#6671#0" expanded="false" />
+            <element signature="e#6689#7166#0" expanded="false" />
+            <element signature="e#7184#7354#0" expanded="false" />
+            <element signature="e#7372#7849#0" expanded="false" />
+            <element signature="e#7867#8039#0" expanded="false" />
+            <element signature="e#8057#8532#0" expanded="false" />
+            <element signature="e#8550#8719#0" expanded="false" />
+            <element signature="e#8737#9213#0" expanded="false" />
+            <element signature="e#9231#9398#0" expanded="false" />
+            <element signature="e#9416#9889#0" expanded="false" />
+            <element signature="e#9931#12262#0" expanded="false" />
+            <element signature="e#10202#10379#0" expanded="false" />
+            <element signature="e#10397#10877#0" expanded="false" />
+            <element signature="e#10895#11068#0" expanded="false" />
+            <element signature="e#11086#11563#0" expanded="false" />
+            <element signature="e#11581#11745#0" expanded="false" />
+            <element signature="e#11763#12234#0" expanded="false" />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/no_image.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Utils/Herramientas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46448088">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding>
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmEmpresa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2431694">
+          <caret line="172" column="73" selection-start-line="172" selection-start-column="73" selection-end-line="172" selection-end-column="73" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="method#editThis#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="method#onPause#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="class#IntentoRellenarDatos#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#IntentoRellenarDatos#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#IntentoRellenarDatos#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#IntentoRellenarDatos#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="class#GuardarEmpresa#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GuardarEmpresa#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GuardarEmpresa#0;class#AdmEmpresa#0" expanded="false" />
+            <element signature="e#11306#11348#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaClientes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="154" column="61" selection-start-line="154" selection-start-column="61" selection-end-line="154" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.27322406">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
           <folding>
             <element signature="method#onCreate#0;class#AdmListaClientes#0" expanded="false" />
+            <element signature="method#setUi#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#onResume#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#actualizarClientes#0;class#AdmListaClientes#0" expanded="false" />
+            <element signature="method#mostrarClientes#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#onPreExecute#0;class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
             <element signature="method#doInBackground#0;class#rellenarClientes#0;class#AdmListaClientes#0" expanded="false" />
@@ -2572,73 +2774,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Usuario.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_administracion.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1252236">
-          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7169811">
+          <caret line="93" column="54" selection-start-line="93" selection-start-column="54" selection-end-line="93" selection-end-column="54" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmPuntoVenta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="174" selection-end-column="5" />
-          <folding>
-            <element signature="method#onCreate#0;class#AdmPuntoVenta#0" expanded="false" />
-            <element signature="method#rellenarDatos#0;class#AdmPuntoVenta#0" expanded="false" />
-            <element signature="method#refrescarDatos#0;class#AdmPuntoVenta#0" expanded="false" />
-            <element signature="method#editThis#0;class#AdmPuntoVenta#0" expanded="false" />
-            <element signature="class#GuardarCambios#0;class#AdmPuntoVenta#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#GuardarCambios#0;class#AdmPuntoVenta#0" expanded="false" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_usuario.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_almacen.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5172415">
-          <caret line="215" column="43" selection-start-line="215" selection-start-column="43" selection-end-line="215" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.38490567">
+          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="145" selection-end-column="17" />
           <folding>
-            <element signature="e#325#998#0" expanded="false" />
-            <element signature="e#539#572#0" expanded="true" />
-            <element signature="e#669#978#0" expanded="false" />
-            <element signature="e#1004#2126#0" expanded="false" />
-            <element signature="e#1243#1521#0" expanded="false" />
-            <element signature="e#1531#1812#0" expanded="false" />
-            <element signature="e#1822#2106#0" expanded="false" />
-            <element signature="e#2363#2396#0" expanded="true" />
-            <element signature="e#2624#2779#0" expanded="false" />
-            <element signature="e#2792#3234#0" expanded="false" />
-            <element signature="e#2997#3030#0" expanded="true" />
-            <element signature="e#3248#3406#0" expanded="false" />
-            <element signature="e#3419#3863#0" expanded="false" />
-            <element signature="e#3626#3659#0" expanded="true" />
-            <element signature="e#3877#4029#0" expanded="false" />
-            <element signature="e#4042#4481#0" expanded="false" />
-            <element signature="e#4244#4277#0" expanded="true" />
-            <element signature="e#4495#4653#0" expanded="false" />
-            <element signature="e#4666#5111#0" expanded="false" />
-            <element signature="e#4874#4907#0" expanded="true" />
-            <element signature="e#5125#5283#0" expanded="false" />
-            <element signature="e#5296#5741#0" expanded="false" />
-            <element signature="e#5504#5537#0" expanded="true" />
-            <element signature="e#5755#5913#0" expanded="false" />
-            <element signature="e#5926#6371#0" expanded="false" />
-            <element signature="e#6385#6545#0" expanded="false" />
-            <element signature="e#6558#7001#0" expanded="false" />
-            <element signature="e#6764#6797#0" expanded="true" />
-            <element signature="e#7015#7172#0" expanded="false" />
-            <element signature="e#7185#7629#0" expanded="false" />
-            <element signature="e#7392#7425#0" expanded="true" />
-            <element signature="e#7643#7798#0" expanded="false" />
-            <element signature="e#7811#8251#0" expanded="false" />
-            <element signature="e#8014#8047#0" expanded="true" />
-            <element signature="e#8265#8424#0" expanded="false" />
-            <element signature="e#8437#8917#0" expanded="false" />
-            <element signature="e#8640#8673#0" expanded="true" />
-            <element signature="e#8931#9088#0" expanded="false" />
-            <element signature="e#9259#9292#0" expanded="true" />
+            <element signature="e#325#1066#0" expanded="false" />
+            <element signature="e#1072#2194#0" expanded="false" />
+            <element signature="e#2200#5865#0" expanded="false" />
+            <element signature="e#2692#2847#0" expanded="false" />
+            <element signature="e#2860#3302#0" expanded="false" />
+            <element signature="e#3316#3474#0" expanded="false" />
+            <element signature="e#3487#3932#0" expanded="false" />
+            <element signature="e#3946#4104#0" expanded="false" />
+            <element signature="e#4117#4562#0" expanded="false" />
+            <element signature="e#4576#4734#0" expanded="false" />
+            <element signature="e#4747#5192#0" expanded="false" />
+            <element signature="e#5206#5366#0" expanded="false" />
+            <element signature="e#5379#5822#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2646,47 +2810,191 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaUsuarios.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmCliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="94" selection-start-line="86" selection-start-column="94" selection-end-line="86" selection-end-column="94" />
+          <caret line="66" column="0" selection-start-line="35" selection-start-column="3" selection-end-line="66" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2708#2989#0" expanded="true" />
-            <element signature="e#2988#2989#0" expanded="true" />
-            <element signature="e#3034#3393#0" expanded="true" />
-            <element signature="e#3392#3393#0" expanded="true" />
-            <element signature="class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#rellenarUsers#0;class#AdmListaUsuarios#0" expanded="false" />
+            <element signature="method#onCreate#0;class#AdmCliente#0" expanded="false" />
+            <element signature="method#refrescarDatos#0;class#AdmCliente#0" expanded="false" />
+            <element signature="class#GuardarCambios#0;class#AdmCliente#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GuardarCambios#0;class#AdmCliente#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmUsuario.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaCategorias.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+        <state vertical-scroll-proportion="2.0375671">
+          <caret line="158" column="5" selection-start-line="134" selection-start-column="4" selection-end-line="158" selection-end-column="5" />
           <folding>
-            <element signature="method#onCreate#0;class#AdmUsuario#0" expanded="false" />
-            <element signature="e#3707#3876#0" expanded="true" />
-            <element signature="e#3875#3876#0" expanded="true" />
-            <element signature="e#3912#4054#0" expanded="true" />
-            <element signature="e#4053#4054#0" expanded="true" />
-            <element signature="e#4092#4244#0" expanded="true" />
-            <element signature="e#4243#4244#0" expanded="true" />
-            <element signature="method#rellenarDatos#0;class#AdmUsuario#0" expanded="false" />
-            <element signature="method#editThis#0;class#AdmUsuario#0" expanded="false" />
+            <element signature="method#onCreate#0;class#AdmListaCategorias#0" expanded="false" />
+            <element signature="method#onResume#0;class#AdmListaCategorias#0" expanded="false" />
+            <element signature="method#actualizarCategorias#0;class#AdmListaCategorias#0" expanded="false" />
+            <element signature="class#rellenarCategorias#0;class#AdmListaCategorias#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#rellenarCategorias#0;class#AdmListaCategorias#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#rellenarCategorias#0;class#AdmListaCategorias#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#rellenarCategorias#0;class#AdmListaCategorias#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Login.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Almacen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="96" column="59" selection-start-line="96" selection-start-column="59" selection-end-line="96" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+          <folding>
+            <element signature="method#Almacen#0;class#Almacen#0" expanded="false" />
+            <element signature="method#Almacen#1;class#Almacen#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/org/json/JSONObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33189654">
+          <caret line="446" column="52" selection-start-line="446" selection-start-column="52" selection-end-line="446" selection-end-column="52" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Articulo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+          <folding>
+            <element signature="e#2308#2309#0" expanded="true" />
+            <element signature="e#2337#2338#0" expanded="true" />
+            <element signature="e#2379#2380#0" expanded="true" />
+            <element signature="e#2415#2416#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_categoria.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80754715">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding>
+            <element signature="e#327#1060#0" expanded="false" />
+            <element signature="e#1305#1583#0" expanded="false" />
+            <element signature="e#1593#1874#0" expanded="false" />
+            <element signature="e#2556#2699#0" expanded="false" />
+            <element signature="e#2709#3119#0" expanded="false" />
+            <element signature="e#3129#3401#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adm_articulo.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03773585">
+          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <element signature="e#670#1046#0" expanded="false" />
+            <element signature="e#1056#1235#0" expanded="false" />
+            <element signature="e#1262#2384#0" expanded="false" />
+            <element signature="e#1501#1779#0" expanded="false" />
+            <element signature="e#1789#2070#0" expanded="false" />
+            <element signature="e#2080#2364#0" expanded="false" />
+            <element signature="e#2882#3034#0" expanded="false" />
+            <element signature="e#3047#3486#0" expanded="false" />
+            <element signature="e#3500#3655#0" expanded="false" />
+            <element signature="e#3668#4110#0" expanded="false" />
+            <element signature="e#4124#4282#0" expanded="false" />
+            <element signature="e#4295#4741#0" expanded="false" />
+            <element signature="e#4754#4962#0" expanded="false" />
+            <element signature="e#4976#5131#0" expanded="false" />
+            <element signature="e#5144#5586#0" expanded="false" />
+            <element signature="e#5600#5758#0" expanded="false" />
+            <element signature="e#5771#6216#0" expanded="false" />
+            <element signature="e#6230#6382#0" expanded="false" />
+            <element signature="e#6395#6835#0" expanded="false" />
+            <element signature="e#6848#7050#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmAlmacen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="5" selection-start-line="116" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding>
+            <element signature="method#setUi#0;class#AdmAlmacen#0" expanded="false" />
+            <element signature="method#rellenarDatos#0;class#AdmAlmacen#0" expanded="false" />
+            <element signature="method#editThis#0;class#AdmAlmacen#0" expanded="false" />
+            <element signature="e#5148#5149#0" expanded="true" />
+            <element signature="e#5194#5195#0" expanded="true" />
+            <element signature="class#GuardarAlmacen#0;class#AdmAlmacen#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GuardarAlmacen#0;class#AdmAlmacen#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GuardarAlmacen#0;class#AdmAlmacen#0" expanded="false" />
+            <element signature="e#7569#7611#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmListaArticulos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmListaArticulos#0" expanded="false" />
+            <element signature="method#setUi#0;class#AdmListaArticulos#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#rellenarArticulos#0;class#AdmListaArticulos#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#rellenarArticulos#0;class#AdmListaArticulos#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#rellenarArticulos#0;class#AdmListaArticulos#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/Administracion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="22" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmCategoria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="106" selection-end-column="9" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmCategoria#0" expanded="false" />
+            <element signature="method#setUi#0;class#AdmCategoria#0" expanded="false" />
+            <element signature="method#editThis#0;class#AdmCategoria#0" expanded="false" />
+            <element signature="class#GuardarCategoria#0;class#AdmCategoria#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GuardarCategoria#0;class#AdmCategoria#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GuardarCategoria#0;class#AdmCategoria#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Clases/Categoria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding>
+            <element signature="method#Categoria#0;class#Categoria#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/overant/asako/tpv/Admin/AdmArticulo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65847">
+          <caret line="177" column="6" selection-start-line="177" selection-start-column="6" selection-end-line="177" selection-end-column="6" />
+          <folding>
+            <element signature="method#onCreate#0;class#AdmArticulo#0" expanded="false" />
+            <element signature="method#rellenarDatos#0;class#AdmArticulo#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GuardarArticulo#0;class#AdmArticulo#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -51,9 +51,6 @@ public class AdmListaClientes extends Activity {
     private static final String TAG_EMAIL = "email";
     private static final String TAG_BAJA = "baja";
 
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_MESSAGE = "message";
-
     //Datos
     private JSONParser jsonParser = new JSONParser();
     public List<Cliente> listaClientes;

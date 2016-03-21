@@ -54,6 +54,30 @@
             android:name=".Admin.AdmUsuario"
             android:label="@string/title_activity_adm_usuario" >
         </activity>
+        <activity
+            android:name=".Admin.AdmListaAlmacenes"
+            android:label="@string/title_activity_adm_lista_almacenes" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmAlmacen"
+            android:label="@string/title_activity_adm_almacen" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmListaCategorias"
+            android:label="@string/title_activity_adm_lista_categorias" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmCategoria"
+            android:label="@string/title_activity_adm_categoria" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmListaArticulos"
+            android:label="@string/title_activity_adm_lista_articulos" >
+        </activity>
+        <activity
+            android:name=".Admin.AdmArticulo"
+            android:label="@string/title_activity_adm_articulo" >
+        </activity>
     </application>
 
 </manifest>

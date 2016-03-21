@@ -16,7 +16,7 @@ public class Usuario implements Serializable{
     private String telefono;
     private String mail;
     private String contrasena;
-    private String admin;
+    private String admin = "B";
     private boolean baja = false;
 
     public Usuario (){

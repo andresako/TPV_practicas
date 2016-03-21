@@ -22,4 +22,10 @@
     <string name="title_activity_adm_punto_venta">AdmPuntoVenta</string>
     <string name="title_activity_adm_lista_usuarios">AdmListaUsuarios</string>
     <string name="title_activity_adm_usuario">AdmUsuario</string>
+    <string name="title_activity_adm_lista_almacenes">AdmListaAlmacenes</string>
+    <string name="title_activity_adm_almacen">AdmAlmacen</string>
+    <string name="title_activity_adm_lista_categorias">AdmListaCategorias</string>
+    <string name="title_activity_adm_categoria">AdmCategoria</string>
+    <string name="title_activity_adm_lista_articulos">AdmListaArticulos</string>
+    <string name="title_activity_adm_articulo">AdmArticulo</string>
 </resources>

@@ -13,9 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,28 +24,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import overant.asako.tpv.Clases.Usuario;
+import overant.asako.tpv.Clases.Almacen;
 import overant.asako.tpv.R;
 import overant.asako.tpv.Utils.JSONParser;
 
-public class AdmUsuario extends Activity {
+public class AdmAlmacen extends Activity {
 
-    private static final String URL_GUARDAR = "http://overant.es/json_guardar_usuarios.php";
+    private static final String URL_GUARDAR = "http://overant.es/json_guardar_almacenes.php";
 
     // Tags de mi JSON php Script;
     private static final String TAG_ID = "id";
-    private static final String TAG_ID_PUNTO = "id_punto_venta";
+    private static final String TAG_ID_EMPRESA = "id_empresa";
     private static final String TAG_NOMBRE = "nombre";
-    private static final String TAG_APELLIDO = "apellidos";
-    private static final String TAG_DNI = "dni";
     private static final String TAG_DIRECCION = "direccion";
     private static final String TAG_LOCALIDAD = "localidad";
     private static final String TAG_PROVINCIA = "provincia";
-    private static final String TAG_CPOSTAL = "cpostal";
-    private static final String TAG_TELEFONO = "telefono";
-    private static final String TAG_MAIL = "email";
-    private static final String TAG_PASS = "contrasena";
-    private static final String TAG_ADMIN = "admin";
+    private static final String TAG_C_POSTAL = "cpostal";
     private static final String TAG_BAJA = "baja";
 
     private static final String TAG_SUCCESS = "success";
@@ -56,47 +47,34 @@ public class AdmUsuario extends Activity {
 
     private SharedPreferences sp;
     private JSONParser jsonParser = new JSONParser();
-    private Usuario user;
+    private Almacen almacen;
 
-    private TextView tTitulo, tNombre, tApellido, tDni, tDireccion, tLocalidad, tProvincia, tCPostal, tTelefono, tMail, tPass;
-    private RadioGroup rgPermisos;
-    private RadioButton rbS, rbA, rbB;      //S -> SuperAdmin; A -> Admin; B -> Basic
+    private TextView tTitulo, tNombre, tDireccion, tLocalidad, tProvincia, tCPostal;
     private Button btnOk, btnKo, btnBaja;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adm_usuario);
+        setContentView(R.layout.activity_adm_almacen);
         setUi();
         rellenarDatos();
     }
 
     private void setUi() {
         Intent i = getIntent();
-        user = (Usuario) i.getSerializableExtra("user");
-        sp = PreferenceManager.getDefaultSharedPreferences(AdmUsuario.this);
+        almacen = (Almacen) i.getSerializableExtra("almacen");
+        sp = PreferenceManager.getDefaultSharedPreferences(AdmAlmacen.this);
 
-        tTitulo = (TextView) findViewById(R.id.admUsrTitulo);
-        tNombre = (TextView) findViewById(R.id.admUsrNombre);
-        tApellido = (TextView) findViewById(R.id.admUsrApellido);
-        tDni = (TextView) findViewById(R.id.admUsrDni);
-        tDireccion = (TextView) findViewById(R.id.admUsrDireccion);
-        tLocalidad = (TextView) findViewById(R.id.admUsrLocalidad);
-        tProvincia = (TextView) findViewById(R.id.admUsrProvincia);
-        tCPostal = (TextView) findViewById(R.id.admUsrCPostal);
-        tTelefono = (TextView) findViewById(R.id.admUsrTelefono);
-        tMail = (TextView) findViewById(R.id.admUsrMail);
-        tPass = (TextView) findViewById(R.id.admUsrPass);
+        tTitulo = (TextView) findViewById(R.id.admAlmTitulo);
+        tNombre = (TextView) findViewById(R.id.admAlmNombre);
+        tDireccion = (TextView) findViewById(R.id.admAlmDireccion);
+        tLocalidad = (TextView) findViewById(R.id.admAlmLocalidad);
+        tProvincia = (TextView) findViewById(R.id.admAlmProvincia);
+        tCPostal = (TextView) findViewById(R.id.admAlmCPostal);
 
-        rgPermisos = (RadioGroup) findViewById(R.id.admUsrrGrupo);
-        rbA = (RadioButton) findViewById(R.id.admUsrrbAdmin);
-        rbB = (RadioButton) findViewById(R.id.admUsrrbBasic);
-        rbS = (RadioButton) findViewById(R.id.admUsrrbSuper);
-
-        btnOk = (Button) findViewById(R.id.admUsrBtnOK);
-        btnKo = (Button) findViewById(R.id.admUsrBtnCanc);
-        btnBaja = (Button) findViewById(R.id.admUsrBtnBaja);
+        btnOk = (Button) findViewById(R.id.admAlmBtnOK);
+        btnKo = (Button) findViewById(R.id.admAlmBtnCanc);
+        btnBaja = (Button) findViewById(R.id.admAlmBtnBaja);
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,44 +97,18 @@ public class AdmUsuario extends Activity {
                 finish();
             }
         });
-
-        if (user.getID() == 0) btnBaja.setVisibility(View.GONE);
-
-        String admin = sp.getString("admin", "");
-        if (!admin.equals("S")) {
-            tPass.setVisibility(View.GONE);
-            rgPermisos.setVisibility(View.GONE);
-        }
+        if (almacen.getID() == 0) btnBaja.setVisibility(View.GONE);
     }
 
     private void rellenarDatos() {
-        tTitulo.setText("Usuario Sr/a: " + user.getNombre() + " " + user.getApellidos());
-        tNombre.setText(user.getNombre());
-        tApellido.setText(user.getApellidos());
-        tDni.setText(user.getDNI());
-        tDireccion.setText(user.getDireccion());
-        tLocalidad.setText(user.getLocalidad());
-        tProvincia.setText(user.getProvincia());
-        tCPostal.setText(user.getcPostal());
-        tTelefono.setText(user.getTelefono());
-        tMail.setText(user.getMail());
-        tPass.setText(user.getContrasena());
+        tTitulo.setText("Almacen: " + almacen.getID() + ", " + almacen.getNombre());
+        tNombre.setText(almacen.getNombre());
+        tDireccion.setText(almacen.getDireccion());
+        tLocalidad.setText(almacen.getLocalidad());
+        tProvincia.setText(almacen.getProvincia());
+        tCPostal.setText(almacen.getcPostal());
 
-        switch (user.getAdmin()) {
-            case "A":
-                rbA.setChecked(true);
-                break;
-            case "S":
-                rbS.setChecked(true);
-                break;
-            case "B":
-                rbB.setChecked(true);
-                break;
-            default:
-                rbB.setChecked(true);
-                break;
-        }
-        if (user.isBaja()) {
+        if (almacen.isBaja()) {
             btnBaja.setText("Dar de alta");
             tTitulo.setPaintFlags(tTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
@@ -189,14 +141,14 @@ public class AdmUsuario extends Activity {
     }
 
     private void darBaja() {
-        user.setBaja(!user.isBaja());
+        almacen.setBaja(!almacen.isBaja());
     }
 
     private void guardarDatos() {
-        new GuardarEmpresa().execute();
+        new GuardarAlmacen().execute();
     }
 
-    class GuardarEmpresa extends AsyncTask<String, String, String> {
+    class GuardarAlmacen extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... args) {
@@ -204,42 +156,24 @@ public class AdmUsuario extends Activity {
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("app", "1"));
 
-            if (user.getID() == 0) {     //nueva usuario
+            if (almacen.getID() == 0) {     //nueva almacen
                 params.add(new BasicNameValuePair("json_accion", "1"));
-            } else {                  //actualizar usuario
+            } else {                  //actualizar almacen
                 params.add(new BasicNameValuePair("json_accion", "2"));
-                params.add(new BasicNameValuePair("id", "" + user.getID()));
+                params.add(new BasicNameValuePair(TAG_ID, "" + almacen.getID()));
 
                 String ctBaja = "";
-                if (user.isBaja()) ctBaja = "S";
+                if (almacen.isBaja()) ctBaja = "S";
                 params.add(new BasicNameValuePair(TAG_BAJA, ctBaja));
             }
 
-            params.add(new BasicNameValuePair(TAG_ID_PUNTO, sp.getString("puntoId", "0")));
+            params.add(new BasicNameValuePair(TAG_ID_EMPRESA, sp.getString("empresaId", "0")));
             params.add(new BasicNameValuePair(TAG_NOMBRE, tNombre.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_APELLIDO, tApellido.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_DNI, tDni.getText().toString()));
             params.add(new BasicNameValuePair(TAG_DIRECCION, tDireccion.getText().toString()));
             params.add(new BasicNameValuePair(TAG_LOCALIDAD, tLocalidad.getText().toString()));
             params.add(new BasicNameValuePair(TAG_PROVINCIA, tProvincia.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_CPOSTAL, tCPostal.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_TELEFONO, tTelefono.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_MAIL, tMail.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_PASS, tPass.getText().toString()));
+            params.add(new BasicNameValuePair(TAG_C_POSTAL, tCPostal.getText().toString()));
 
-            String permCt = "";
-            switch (rgPermisos.getCheckedRadioButtonId()) {
-                case R.id.admUsrrbAdmin:
-                    permCt = "A";
-                    break;
-                case R.id.admUsrrbBasic:
-                    permCt = "B";
-                    break;
-                case R.id.admUsrrbSuper:
-                    permCt = "S";
-                    break;
-            }
-            params.add(new BasicNameValuePair(TAG_ADMIN, permCt));
 
             Log.d("request!", "starting");
 
@@ -254,7 +188,7 @@ public class AdmUsuario extends Activity {
                 int success;
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
-                    Log.d("Usuario actualizado!", json.toString());
+                    Log.d("Almacen actualizado!", json.toString());
                     finish();
                     return json.getString(TAG_MESSAGE);
                 } else {
@@ -271,8 +205,9 @@ public class AdmUsuario extends Activity {
             // dismiss the dialog once product deleted
             // pDialog.dismiss();
             if (file_url != null) {
-                Toast.makeText(AdmUsuario.this, file_url, Toast.LENGTH_LONG).show();
+                Toast.makeText(AdmAlmacen.this, file_url, Toast.LENGTH_LONG).show();
             }
         }
     }
+
 }
