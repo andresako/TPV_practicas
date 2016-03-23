@@ -59,4 +59,9 @@ public class Categoria implements Serializable{
     public void setBaja(boolean baja) {
         this.baja = baja;
     }
+
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }

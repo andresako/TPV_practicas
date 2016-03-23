@@ -39,5 +39,10 @@ public class TipoIVA  implements Serializable {
     public void setValor(int valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString(){
+        return this.nombre;
+    }
 }
 

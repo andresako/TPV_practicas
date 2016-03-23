@@ -145,6 +145,9 @@ public class JSONParser {
         }
 
         // return JSON String
+
+        System.out.println(jObj);
+
         return jObj;
     }
 }

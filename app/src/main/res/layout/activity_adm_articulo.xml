@@ -118,11 +118,12 @@
                 android:clickable="true"
                 android:onClick="editThis"
                 android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
             <Spinner
                 android:id="@+id/admArtCategoriaS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:visibility="gone"/>
 
             <TextView
@@ -170,6 +171,7 @@
                 android:id="@+id/admArtIvaS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>

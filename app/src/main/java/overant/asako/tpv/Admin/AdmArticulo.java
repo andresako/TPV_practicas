@@ -2,29 +2,27 @@ package overant.asako.tpv.Admin;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import overant.asako.tpv.Clases.Articulo;
+import overant.asako.tpv.Clases.Categoria;
+import overant.asako.tpv.Clases.TipoIVA;
 import overant.asako.tpv.R;
 import overant.asako.tpv.Utils.Herramientas;
 import overant.asako.tpv.Utils.JSONParser;
@@ -41,26 +41,30 @@ public class AdmArticulo extends Activity {
     private SharedPreferences sp;
 
     // Tags de mi JSON php Script;
+    private static final String URL = "http://overant.es/articulos.php";
     private static final String URL_GUARDAR = "http://overant.es/json_guardar_articulos.php";
 
     private static final String TAG_ID = "id";
     private static final String TAG_ID_EMPRESA = "id_empresa";
     private static final String TAG_ID_IVA = "id_tipo_iva";
-    private static final String TAG_ID_CATEGORIA = "id_categoria";
-    private static final String TAG_NOMBRE = "nombre";
-    private static final String TAG_NOMBRE_IVA = "nombre_iva";
-    private static final String TAG_NOMBRE_CATEGORIA = "nombre_familia";
+    private static final String TAG_ID_CATEGORIA = "id_familia";
+    private static final String TAG_NOMBRE = "nombre";;
     private static final String TAG_EAN = "ean";
     private static final String TAG_FOTO = "foto";
     private static final String TAG_PRECIO = "precio";
     private static final String TAG_DESCUENTO = "descuento";
     private static final String TAG_BAJA = "baja";
+    private static final String TAG_VALOR = "valor";
+    private static final String TAG_CATEGORIAS = "familias";
+    private static final String TAG_TIPOS_IVA = "tipos_iva";
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
     private JSONParser jsonParser = new JSONParser();
     private Articulo articulo;
+    private List<Categoria> listaCat;
+    private List<TipoIVA> listaIva;
 
     private TextView tTitulo, tNombre, tEAN, tPrecio, tDescuento, tCategoria, tIva;
     private ImageView iFoto;
@@ -119,6 +123,51 @@ public class AdmArticulo extends Activity {
             }
         });
         if (articulo.getID() == 0) btnBaja.setVisibility(View.GONE);
+
+        new rellenarLista().execute();
+
+    }
+
+    private void rellenarListas() {
+        listaCat = new ArrayList<>();
+        listaIva = new ArrayList<>();
+
+        List<NameValuePair> params = new ArrayList<>();
+        params.add(new BasicNameValuePair("app", "1"));
+        params.add(new BasicNameValuePair(TAG_ID_EMPRESA, sp.getString("empresaId", "0")));
+
+        JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
+        System.err.println(joDatos);
+        try {
+            JSONArray mCat = joDatos.getJSONArray(TAG_CATEGORIAS);
+
+            for (int i = 0; i < mCat.length(); i++) {
+                JSONObject c = mCat.getJSONObject(i);
+
+                Categoria ctCat = new Categoria(
+                        c.getInt(TAG_ID),
+                        c.getInt(TAG_ID_EMPRESA),
+                        c.getString(TAG_NOMBRE),
+                        c.getString(TAG_FOTO));
+
+                listaCat.add(ctCat);
+            }
+
+            JSONArray mIva = joDatos.getJSONArray(TAG_TIPOS_IVA);
+            for (int i = 0; i < mIva.length(); i++) {
+                JSONObject c = mIva.getJSONObject(i);
+
+                TipoIVA ctIva = new TipoIVA(
+                        c.getInt(TAG_ID),
+                        c.getString(TAG_NOMBRE),
+                        c.getInt(TAG_VALOR));
+                listaIva.add(ctIva);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void rellenarDatos() {
@@ -127,6 +176,7 @@ public class AdmArticulo extends Activity {
         tEAN.setText(articulo.getEAN());
         tPrecio.setText(articulo.getPrecio().toString());
         tDescuento.setText(articulo.getDescuento().toString());
+
         tCategoria.setText(articulo.getNombreCat());
         tIva.setText(articulo.getNombreIva());
 
@@ -134,7 +184,7 @@ public class AdmArticulo extends Activity {
             btnBaja.setText("Dar de alta");
             tTitulo.setPaintFlags(tTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
-        if(!articulo.getFoto().equals("")) {
+        if (articulo.getFoto() != null && !articulo.getFoto().isEmpty()  ) {
             new Herramientas.ponerImagen(iFoto).execute(articulo.getFoto());
         }
 
@@ -145,13 +195,21 @@ public class AdmArticulo extends Activity {
     }
 
     private void guardarDatos() {
+        if(sIva.isShown()){
+            articulo.setIdIva(((TipoIVA)sIva.getSelectedItem()).getID());
+        }
+        if(sCategoria.isShown()){
+            articulo.setIdCategoria(((Categoria) sCategoria.getSelectedItem()).getID());
+        }
+
+
         new GuardarArticulo().execute();
     }
 
     public void editThis(View v) {
         final TextView ct = (TextView) v;
 
-        if(ct.getId() != R.id.admArtIvaT && ct.getId() != R.id.admArtCategoriaT) {
+        if (ct.getId() != R.id.admArtIvaT && ct.getId() != R.id.admArtCategoriaT) {
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Editar el campo");
             alert.setMessage("Anterior: " + ct.getText());
@@ -174,11 +232,16 @@ public class AdmArticulo extends Activity {
                 }
             });
             alert.show();
-        }else{
-//TODO
+        } else if (ct.getId() == R.id.admArtIvaT) {
+            tIva.setVisibility(View.GONE);
+            sIva.setVisibility(View.VISIBLE);
+            sIva.performClick();
+        } else if (ct.getId() == R.id.admArtCategoriaT) {
+            tCategoria.setVisibility(View.GONE);
+            sCategoria.setVisibility(View.VISIBLE);
+            sCategoria.performClick();
         }
     }
-
 
     class GuardarArticulo extends AsyncTask<String, String, String> {
 
@@ -201,14 +264,13 @@ public class AdmArticulo extends Activity {
 
             params.add(new BasicNameValuePair(TAG_ID_EMPRESA, sp.getString("empresaId", "0")));
             params.add(new BasicNameValuePair(TAG_NOMBRE, tNombre.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_NOMBRE_IVA, tIva.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_NOMBRE_CATEGORIA, tCategoria.getText().toString()));
             params.add(new BasicNameValuePair(TAG_EAN, tEAN.getText().toString()));
             params.add(new BasicNameValuePair(TAG_FOTO, articulo.getFoto()));
             params.add(new BasicNameValuePair(TAG_PRECIO, tPrecio.getText().toString()));
             params.add(new BasicNameValuePair(TAG_DESCUENTO, tDescuento.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_ID_IVA, articulo.getIdCategoria() + ""));
-            params.add(new BasicNameValuePair(TAG_ID_CATEGORIA, articulo.getIdIva() + ""));
+
+            params.add(new BasicNameValuePair(TAG_ID_IVA, articulo.getIdIva() + ""));
+            params.add(new BasicNameValuePair(TAG_ID_CATEGORIA, articulo.getIdCategoria() + ""));
 
             Log.d("request!", "starting");
 
@@ -242,4 +304,26 @@ public class AdmArticulo extends Activity {
             }
         }
     }
+    class rellenarLista extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... args) {
+            rellenarListas();
+            return Boolean.parseBoolean(null);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+
+            ArrayAdapter<Categoria> adapterCat = new ArrayAdapter<Categoria>(AdmArticulo.this, android.R.layout.simple_spinner_item, listaCat);
+            adapterCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            sCategoria.setAdapter(adapterCat);
+
+            ArrayAdapter<TipoIVA> adapterIva = new ArrayAdapter<TipoIVA>(AdmArticulo.this, android.R.layout.simple_spinner_item, listaIva);
+            adapterIva.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            sIva.setAdapter(adapterIva);
+        }
+    }
+
 }

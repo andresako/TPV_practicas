@@ -66,13 +66,13 @@ public class AdmCategoria extends Activity {
         categoria = (Categoria) i.getSerializableExtra("categoria");
         sp = PreferenceManager.getDefaultSharedPreferences(AdmCategoria.this);
 
-        tTitulo = (TextView) findViewById(R.id.admAlmTitulo);
-        tNombre = (TextView) findViewById(R.id.admAlmNombre);
+        tTitulo = (TextView) findViewById(R.id.admCatTitulo);
+        tNombre = (TextView) findViewById(R.id.admCatNombre);
         iFoto = (ImageView)findViewById(R.id.admCatFoto);
 
-        btnOk = (Button) findViewById(R.id.admAlmBtnOK);
-        btnKo = (Button) findViewById(R.id.admAlmBtnCanc);
-        btnBaja = (Button) findViewById(R.id.admAlmBtnBaja);
+        btnOk = (Button) findViewById(R.id.admCatBtnOK);
+        btnKo = (Button) findViewById(R.id.admCatBtnCanc);
+        btnBaja = (Button) findViewById(R.id.admCatBtnBaja);
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +102,7 @@ public class AdmCategoria extends Activity {
         tTitulo.setText("Categoria id: " + categoria.getID());
         tNombre.setText(categoria.getNombre());
 
-        if(!categoria.getFoto().equals("")) {
+        if(categoria.getFoto() != null && !categoria.getFoto().isEmpty()) {
             new Herramientas.ponerImagen(iFoto).execute(categoria.getFoto());
         }
         

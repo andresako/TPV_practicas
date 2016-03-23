@@ -2,7 +2,7 @@ package overant.asako.tpv.Clases;
 
 import java.io.Serializable;
 
-public class Articulo  implements Serializable {
+public class Articulo implements Serializable {
 
     private int ID = 0;
     private int idEmpresa;
@@ -16,6 +16,7 @@ public class Articulo  implements Serializable {
     private Long precio;
     private Long descuento;
     private Boolean baja = false;
+    private int stockTotal = 0;
 
     public Articulo() {
     }
@@ -128,5 +129,13 @@ public class Articulo  implements Serializable {
 
     public void setBaja(Boolean baja) {
         this.baja = baja;
+    }
+
+    public int getStockTotal() {
+        return stockTotal;
+    }
+
+    public void setStockTotal(int stockTotal) {
+        this.stockTotal = stockTotal;
     }
 }

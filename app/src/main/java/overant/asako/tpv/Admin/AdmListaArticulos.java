@@ -47,6 +47,7 @@ public class AdmListaArticulos extends Activity {
     private static final String TAG_PRECIO = "precio";
     private static final String TAG_DESCUENTO = "dto";
     private static final String TAG_BAJA = "baja";
+    private static final String TAG_STOCK = "stock";
 
     //Datos
     private JSONParser jsonParser = new JSONParser();
@@ -129,6 +130,8 @@ public class AdmListaArticulos extends Activity {
 
                 if (c.getString(TAG_BAJA).equals("S")) ctArt.setBaja(true);
 
+                if (c.getInt(TAG_STOCK) != 0) ctArt.setStockTotal(c.getInt(TAG_STOCK));
+
                 listaArticulos.add(ctArt);
             }
         } catch (JSONException e) {
@@ -138,7 +141,7 @@ public class AdmListaArticulos extends Activity {
     private void mostrarArticulos() {
         List<String> listaCt = new ArrayList<>();
         for (int x = 0; x < listaArticulos.size(); x++) {
-            listaCt.add(listaArticulos.get(x).getNombre());
+            listaCt.add(listaArticulos.get(x).getNombre() + ", " + listaArticulos.get(x).getStockTotal() +" items");
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaCt);
         lvArticulos.setAdapter(arrayAdapter);
