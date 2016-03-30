@@ -28,4 +28,5 @@
     <string name="title_activity_adm_categoria">AdmCategoria</string>
     <string name="title_activity_adm_lista_articulos">AdmListaArticulos</string>
     <string name="title_activity_adm_articulo">AdmArticulo</string>
+    <string name="title_activity_adm_lista_stock">AdmListaStock</string>
 </resources>

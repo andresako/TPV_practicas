@@ -2,12 +2,15 @@ package overant.asako.tpv.Admin;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,6 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import overant.asako.tpv.Clases.Articulo;
 import overant.asako.tpv.R;
@@ -87,7 +91,7 @@ public class AdmListaArticulos extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(AdmListaArticulos.this, AdmArticulo.class);
-                i.putExtra("categoria", new Articulo());
+                i.putExtra("articulo", new Articulo());
                 startActivity(i);
             }
         });
@@ -107,7 +111,6 @@ public class AdmListaArticulos extends Activity {
         params.add(new BasicNameValuePair(TAG_ID_EMPRESA, sp.getString("empresaId", "0")));
 
         JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
-        System.out.println(joDatos);
         try {
 
             JSONArray mArt = joDatos.getJSONArray(TAG_ARTICULOS);
@@ -125,12 +128,16 @@ public class AdmListaArticulos extends Activity {
                         c.getString(TAG_NOMBRE_IVA),
                         c.getString(TAG_EAN),
                         c.getString(TAG_FOTO),
-                        c.getLong(TAG_PRECIO),
-                        c.getLong(TAG_DESCUENTO));
+                        c.getDouble(TAG_PRECIO),
+                        c.getDouble(TAG_DESCUENTO));
 
                 if (c.getString(TAG_BAJA).equals("S")) ctArt.setBaja(true);
 
-                if (c.getInt(TAG_STOCK) != 0) ctArt.setStockTotal(c.getInt(TAG_STOCK));
+                if (!c.getString(TAG_STOCK).equals("null") ){
+                    ctArt.setStockTotal(c.getInt(TAG_STOCK));
+                }else{
+                    ctArt.setStockTotal(0);
+                }
 
                 listaArticulos.add(ctArt);
             }

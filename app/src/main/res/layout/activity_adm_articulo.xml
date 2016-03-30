@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="#123"
     android:padding="16dp"
-    tools:context="overant.asako.tpv.Admin.AdmArticulo">
+    tools:context="overant.asako.tpv.Admin.AdmArticulo"
+    android:id="@+id/admArtPadre">
 
     <LinearLayout
         android:id="@+id/admArtllTop"
@@ -29,7 +30,7 @@
             android:id="@+id/admArtFoto"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/no_image"/>
+            android:src="@drawable/no_image" />
 
     </LinearLayout>
 
@@ -72,108 +73,116 @@
         android:layout_below="@+id/admArtllTop"
         android:layout_marginBottom="@dimen/activity_vertical_margin">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ficha"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="EAN:" />
-            <TextView
-                android:id="@+id/admArtEAN"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:clickable="true"
-                android:onClick="editThis"
-                android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Nombre:" />
-            <TextView
-                android:id="@+id/admArtNombre"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:clickable="true"
-                android:onClick="editThis"
-                android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Categoria:" />
-            <TextView
-                android:id="@+id/admArtCategoriaT"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:clickable="true"
-                android:onClick="editThis"
-                android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-            <Spinner
-                android:id="@+id/admArtCategoriaS"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:visibility="gone"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Precio:" />
-            <TextView
-                android:id="@+id/admArtPrecio"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:clickable="true"
-                android:onClick="editThis"
-                android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:background="@drawable/ficha"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Descuento:" />
-            <TextView
-                android:id="@+id/admArtDescuento"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:clickable="true"
-                android:onClick="editThis"
-                android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="EAN:" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="IVA:" />
-            <TextView
-                android:id="@+id/admArtIvaT"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:clickable="true"
-                android:onClick="editThis"
-                android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-            <Spinner
-                android:id="@+id/admArtIvaS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:visibility="gone"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/admArtEAN"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:clickable="true"
+                    android:onClick="editThis"
+                    android:singleLine="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre:" />
+
+                <TextView
+                    android:id="@+id/admArtNombre"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:clickable="true"
+                    android:onClick="editThis"
+                    android:singleLine="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Categoria:" />
+
+                <TextView
+                    android:id="@+id/admArtCategoriaT"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:clickable="true"
+                    android:onClick="editThis"
+                    android:singleLine="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Spinner
+                    android:id="@+id/admArtCategoriaS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Precio:" />
+
+                <TextView
+                    android:id="@+id/admArtPrecio"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:clickable="true"
+                    android:onClick="editThis"
+                    android:singleLine="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Descuento:" />
+
+                <TextView
+                    android:id="@+id/admArtDescuento"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:clickable="true"
+                    android:onClick="editThis"
+                    android:singleLine="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="IVA:" />
+
+                <TextView
+                    android:id="@+id/admArtIvaT"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:clickable="true"
+                    android:onClick="editThis"
+                    android:singleLine="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Spinner
+                    android:id="@+id/admArtIvaS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="gone" />
+            </LinearLayout>
     </ScrollView>
-
 </RelativeLayout>

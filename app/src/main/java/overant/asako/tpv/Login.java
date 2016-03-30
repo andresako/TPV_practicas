@@ -106,7 +106,6 @@ public class Login extends Activity implements OnClickListener {
                 // check your log for json response
                 Log.d("Login attempt", json.toString());
 
-
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
@@ -132,8 +131,6 @@ public class Login extends Activity implements OnClickListener {
 
                     edit.putString("admin", admin);
                     edit.commit();
-
-
                     startActivity(i);
 
                     return json.getString(TAG_MESSAGE);
@@ -149,10 +146,7 @@ public class Login extends Activity implements OnClickListener {
 
         protected void onPostExecute(String message) {
             // dismiss the dialog once product deleted
-            pDialog.dismiss();
-            if (message != null) {
-                Toast.makeText(Login.this, message, Toast.LENGTH_LONG).show();
-            }
+            super.onPostExecute(message);
         }
     }
 }

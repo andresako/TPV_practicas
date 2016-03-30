@@ -112,7 +112,6 @@ public class AdmListaClientes extends Activity {
         params.add(new BasicNameValuePair(TAG_ID_EMPRESA, sp.getString("empresaId", "0")));
 
         JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
-        System.out.println(joDatos);
         try {
 
             JSONArray mCliente = joDatos.getJSONArray(TAG_CLIENTE);

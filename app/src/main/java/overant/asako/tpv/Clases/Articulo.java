@@ -13,15 +13,15 @@ public class Articulo implements Serializable {
     private String nombreIva;
     private String EAN;
     private String foto;
-    private Long precio;
-    private Long descuento;
+    private double precio;
+    private double descuento;
     private Boolean baja = false;
     private int stockTotal = 0;
 
     public Articulo() {
     }
 
-    public Articulo(int ID, int idEmpresa, int idCategoria, int idIva, String nombre, String nombreCat, String nombreIva, String EAN, String foto, Long precio, Long descuento) {
+    public Articulo(int ID, int idEmpresa, int idCategoria, int idIva, String nombre, String nombreCat, String nombreIva, String EAN, String foto, double precio, double descuento) {
         this.ID = ID;
         this.idEmpresa = idEmpresa;
         this.idCategoria = idCategoria;
@@ -107,19 +107,19 @@ public class Articulo implements Serializable {
         this.foto = foto;
     }
 
-    public Long getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Long precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
-    public Long getDescuento() {
+    public double getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(Long descuento) {
+    public void setDescuento(double descuento) {
         this.descuento = descuento;
     }
 

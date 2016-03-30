@@ -99,9 +99,6 @@ public class JSONParser {
                 HttpPost httpPost = new HttpPost(url);
                 httpPost.setEntity(new UrlEncodedFormEntity(params));
 
-                System.out.println(params);
-
-
                 HttpResponse httpResponse = httpClient.execute(httpPost);
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
@@ -145,8 +142,6 @@ public class JSONParser {
         }
 
         // return JSON String
-
-        System.out.println(jObj);
 
         return jObj;
     }

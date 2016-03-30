@@ -48,7 +48,7 @@ public class AdmArticulo extends Activity {
     private static final String TAG_ID_EMPRESA = "id_empresa";
     private static final String TAG_ID_IVA = "id_tipo_iva";
     private static final String TAG_ID_CATEGORIA = "id_familia";
-    private static final String TAG_NOMBRE = "nombre";;
+    private static final String TAG_NOMBRE = "nombre";
     private static final String TAG_EAN = "ean";
     private static final String TAG_FOTO = "foto";
     private static final String TAG_PRECIO = "precio";
@@ -122,6 +122,15 @@ public class AdmArticulo extends Activity {
                 finish();
             }
         });
+        iFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AdmArticulo.this, AdmListaStock.class);
+                i.putExtra("articulo", articulo);
+                startActivity(i);
+            }
+        });
+
         if (articulo.getID() == 0) btnBaja.setVisibility(View.GONE);
 
         new rellenarLista().execute();
@@ -174,8 +183,8 @@ public class AdmArticulo extends Activity {
         tTitulo.setText("Articulo: " + articulo.getID() + ", " + articulo.getNombre());
         tNombre.setText(articulo.getNombre());
         tEAN.setText(articulo.getEAN());
-        tPrecio.setText(articulo.getPrecio().toString());
-        tDescuento.setText(articulo.getDescuento().toString());
+        tPrecio.setText(articulo.getPrecio()+"");
+        tDescuento.setText(articulo.getDescuento()+"");
 
         tCategoria.setText(articulo.getNombreCat());
         tIva.setText(articulo.getNombreIva());
@@ -184,7 +193,7 @@ public class AdmArticulo extends Activity {
             btnBaja.setText("Dar de alta");
             tTitulo.setPaintFlags(tTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
-        if (articulo.getFoto() != null && !articulo.getFoto().isEmpty()  ) {
+        if (!articulo.getFoto().equals("null") && !articulo.getFoto().isEmpty()) {
             new Herramientas.ponerImagen(iFoto).execute(articulo.getFoto());
         }
 
@@ -195,10 +204,10 @@ public class AdmArticulo extends Activity {
     }
 
     private void guardarDatos() {
-        if(sIva.isShown()){
-            articulo.setIdIva(((TipoIVA)sIva.getSelectedItem()).getID());
+        if (sIva.isShown()) {
+            articulo.setIdIva(((TipoIVA) sIva.getSelectedItem()).getID());
         }
-        if(sCategoria.isShown()){
+        if (sCategoria.isShown()) {
             articulo.setIdCategoria(((Categoria) sCategoria.getSelectedItem()).getID());
         }
 
@@ -304,6 +313,7 @@ public class AdmArticulo extends Activity {
             }
         }
     }
+
     class rellenarLista extends AsyncTask<Void, Void, Boolean> {
 
         @Override
