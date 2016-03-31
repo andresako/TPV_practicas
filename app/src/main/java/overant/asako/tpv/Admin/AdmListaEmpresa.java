@@ -51,12 +51,11 @@ public class AdmListaEmpresa extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adm_lista);
         setUi();
-
     }
 
     private void setUi() {
         sp = PreferenceManager.getDefaultSharedPreferences(AdmListaEmpresa.this);
-        tituloLista = (TextView)findViewById(R.id.AdmListaTitulo);
+        tituloLista = (TextView) findViewById(R.id.AdmListaTitulo);
         listaEmpresas = (ListView) findViewById(R.id.admListaView);
         bNuevaEmp = (Button) findViewById(R.id.AdmListaBoton);
 
@@ -93,11 +92,6 @@ public class AdmListaEmpresa extends Activity {
     }
 
     public class MostrarListaEmpresas extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
         @Override
         protected String doInBackground(Void... args) {

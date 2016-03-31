@@ -193,10 +193,10 @@ public class AdmUsuario extends Activity {
     }
 
     private void guardarDatos() {
-        new GuardarEmpresa().execute();
+        new GuardarUser().execute();
     }
 
-    class GuardarEmpresa extends AsyncTask<String, String, String> {
+    class GuardarUser extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... args) {

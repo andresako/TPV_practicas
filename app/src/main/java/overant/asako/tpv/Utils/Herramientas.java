@@ -35,10 +35,9 @@ public class Herramientas {
         protected void onPostExecute(Bitmap result) {
             imageView.setImageBitmap(result);
         }
-
     }
 
-    public void mensaje(String msg, Activity act){
+    public void mensaje(String msg, Activity act) {
         Toast.makeText(act, msg, Toast.LENGTH_LONG).show();
     }
 }

@@ -89,4 +89,9 @@ public class Almacen implements Serializable{
     public void setBaja(boolean baja) {
         this.baja = baja;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

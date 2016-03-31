@@ -5,16 +5,21 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import overant.asako.tpv.Clases.Almacen;
 import overant.asako.tpv.Clases.Articulo;
 import overant.asako.tpv.Clases.StockPorArticulo;
 import overant.asako.tpv.R;
@@ -49,6 +55,7 @@ public class AdmListaStock extends Activity {
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
+    private SharedPreferences sp;
     private Context context;
     private ProgressDialog pDialog;
     private JSONParser jsonParser = new JSONParser();
@@ -56,6 +63,7 @@ public class AdmListaStock extends Activity {
     private TextView titulo;
     private Button btn;
     private List<StockPorArticulo> listaStocks;
+    private List<Almacen> listaAlmacenes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +84,7 @@ public class AdmListaStock extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(AdmListaStock.this);
-                alert.setTitle("Secciona los nuevos valores");
+                alert.setTitle("Selecciona los nuevos valores");
 
                 LinearLayout layout = new LinearLayout(context);
                 layout.setOrientation(LinearLayout.VERTICAL);
@@ -108,7 +116,7 @@ public class AdmListaStock extends Activity {
                             changed = true;
                         }
                         if (changed) {
-                            new GuardarStock().execute(position);
+                            new GuardarStock().execute(listaStocks.get(position));
                         }
                     }
                 });
@@ -126,6 +134,67 @@ public class AdmListaStock extends Activity {
         titulo.setText("Stock del articulo:");
 
         btn = (Button) findViewById(R.id.AdmListaBoton);
+        btn.setText("Nuevo stock");
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(AdmListaStock.this);
+                alert.setTitle("Selecciona los valores a añadir");
+
+                LinearLayout layout = new LinearLayout(context);
+                layout.setOrientation(LinearLayout.VERTICAL);
+
+                final Spinner spAlmacen = new Spinner(AdmListaStock.this);
+                spAlmacen.setAdapter(new ArrayAdapter<>(AdmListaStock.this, android.R.layout.simple_spinner_item, listaAlmacenes));
+                layout.addView(spAlmacen);
+
+                final EditText inputStock = new EditText(AdmListaStock.this);
+                inputStock.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                inputStock.setHint("Stock");
+                inputStock.setSingleLine(true);
+                layout.addView(inputStock);
+
+                final EditText inputStockMin = new EditText(AdmListaStock.this);
+                inputStockMin.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                inputStockMin.setHint("Stock minimo");
+                inputStockMin.setSingleLine(true);
+                layout.addView(inputStockMin);
+                alert.setView(layout);
+
+                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Aceptado.
+                        StockPorArticulo ctSPA = new StockPorArticulo();
+                        ctSPA.setId(0);
+                        ctSPA.setArticulo((Articulo) getIntent().getSerializableExtra("articulo"));
+                        Almacen ctAlm = (Almacen) spAlmacen.getSelectedItem();
+                        ctSPA.setIdAlmacen(ctAlm.getID());
+
+                        int valores = 0;
+
+                        if (!inputStock.getText().toString().equals("")) {
+                            ctSPA.setCantidad(Integer.parseInt(inputStock.getText().toString()));
+                            valores++;
+                        }
+                        if (!inputStockMin.getText().toString().equals("")) {
+                            ctSPA.setCantidadMinima(Integer.parseInt(inputStockMin.getText().toString()));
+                            valores++;
+                        }
+                        if (valores == 2) {
+                            new GuardarStock().execute(ctSPA);
+                        }
+                    }
+                });
+
+                alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Cancelado.
+                    }
+                });
+                alert.show();
+            }
+        });
     }
 
     private void rellenarLista() {
@@ -157,15 +226,43 @@ public class AdmListaStock extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        sp = PreferenceManager.getDefaultSharedPreferences(AdmListaStock.this);
+
+        listaAlmacenes = new ArrayList<>();
+        params = new ArrayList<>();
+        params.add(new BasicNameValuePair("app", "1"));
+        params.add(new BasicNameValuePair("id_empresa", sp.getString("empresaId", "0")));
+
+        joDatos = jsonParser.peticionHttp("http://overant.es/almacenes.php", "POST", params);
+        try {
+            JSONArray mAlm = joDatos.getJSONArray("almacenes");
+
+            for (int i = 0; i < mAlm.length(); i++) {
+                JSONObject c = mAlm.getJSONObject(i);
+
+                Almacen ctAlm = new Almacen();
+                ctAlm.setID(c.getInt("id"));
+                ctAlm.setNombre(c.getString("nombre"));
+
+                listaAlmacenes.add(ctAlm);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void borrarThis(View v) {
+        final int pos = (int) v.getTag();
         AlertDialog.Builder alert = new AlertDialog.Builder(AdmListaStock.this);
         alert.setTitle("Desea borrar este stock?");
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                // TODO: 30/03/2016
+                Log.d("Borrar", "" + pos);
+                new BorrarStock().execute(listaStocks.get(pos));
             }
         });
 
@@ -203,13 +300,13 @@ public class AdmListaStock extends Activity {
         }
     }
 
-    class GuardarStock extends AsyncTask<Integer, Void, String> {
+    class GuardarStock extends AsyncTask<StockPorArticulo, Void, String> {
 
         @Override
-        protected String doInBackground(Integer... args) {
+        protected String doInBackground(StockPorArticulo... args) {
             // Building Parameters
-            int pos = args[0];
-            StockPorArticulo spa = listaStocks.get(pos);
+
+            StockPorArticulo spa = args[0];
 
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("app", "1"));
@@ -230,6 +327,51 @@ public class AdmListaStock extends Activity {
 
             try {
                 //Posting user data to script
+                JSONObject json = jsonParser.peticionHttp(URL_GUARDAR, "POST", params);
+
+                // full json response
+                Log.d("Post Comment attempt", json.toString());
+
+                // json success element
+                int success;
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    Log.d("Stock actualizado!", json.toString());
+                    finish();
+                    return json.getString(TAG_MESSAGE);
+                } else {
+                    Log.d("Fallo al guardar!", json.getString(TAG_MESSAGE));
+                    return json.getString(TAG_MESSAGE);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onPostExecute(String file_url) {
+            if (file_url != null) {
+                Toast.makeText(AdmListaStock.this, file_url, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    class BorrarStock extends AsyncTask<StockPorArticulo, Void, String> {
+
+        @Override
+        protected String doInBackground(StockPorArticulo... args) {
+            // Building Parameters
+
+            StockPorArticulo spa = args[0];
+
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("app", "1"));
+            params.add(new BasicNameValuePair("json_accion", "3"));
+            params.add(new BasicNameValuePair(TAG_ID, "" + spa.getId()));
+
+            Log.d("request!", "starting");
+
+            try {
                 JSONObject json = jsonParser.peticionHttp(URL_GUARDAR, "POST", params);
 
                 // full json response

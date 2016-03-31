@@ -91,7 +91,7 @@ public class AdmListaClientes extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(AdmListaClientes.this, AdmCliente.class);
-                i.putExtra("cliente",new Cliente());
+                i.putExtra("cliente", new Cliente());
                 startActivity(i);
             }
         });
@@ -158,11 +158,13 @@ public class AdmListaClientes extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(AdmListaClientes.this);
-            pDialog.setMessage("Cargando datos...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            if (!isFinishing()) {
+                pDialog = new ProgressDialog(AdmListaClientes.this);
+                pDialog.setMessage("Cargando datos...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
         }
 
         @Override

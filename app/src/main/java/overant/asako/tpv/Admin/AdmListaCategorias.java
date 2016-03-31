@@ -136,11 +136,13 @@ public class AdmListaCategorias extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(AdmListaCategorias.this);
-            pDialog.setMessage("Cargando datos...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            if (!isFinishing()) {
+                pDialog = new ProgressDialog(AdmListaCategorias.this);
+                pDialog.setMessage("Cargando datos...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
         }
 
         @Override
@@ -153,7 +155,7 @@ public class AdmListaCategorias extends Activity {
             // dismiss the dialog once product deleted
             super.onPostExecute(resultado);
             mostrarCategorias();
-            pDialog.dismiss();
+            if (!isFinishing()) pDialog.dismiss();
         }
     }
 

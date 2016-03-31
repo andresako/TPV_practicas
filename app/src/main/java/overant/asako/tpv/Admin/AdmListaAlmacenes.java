@@ -100,11 +100,13 @@ public class AdmListaAlmacenes extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(AdmListaAlmacenes.this);
-            pDialog.setMessage("Cargando datos...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            if (!isFinishing()) {
+                pDialog = new ProgressDialog(AdmListaAlmacenes.this);
+                pDialog.setMessage("Cargando datos...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
         }
 
         @Override
@@ -117,7 +119,7 @@ public class AdmListaAlmacenes extends Activity {
             // dismiss the dialog once product deleted
             super.onPostExecute(resultado);
             mostrarAlmacenes();
-            pDialog.dismiss();
+            if (!isFinishing()) pDialog.dismiss();
         }
     }
 
@@ -133,7 +135,6 @@ public class AdmListaAlmacenes extends Activity {
     }
 
     private void actualizarAlmacenes() {
-        //Clientes directamente de la BD
         listaAlmacenes = new ArrayList<>();
 
         List<NameValuePair> params = new ArrayList<>();

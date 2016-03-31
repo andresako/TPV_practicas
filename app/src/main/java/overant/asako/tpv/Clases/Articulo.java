@@ -12,7 +12,7 @@ public class Articulo implements Serializable {
     private String nombreCat;
     private String nombreIva;
     private String EAN;
-    private String foto;
+    private String foto = null;
     private double precio;
     private double descuento;
     private Boolean baja = false;

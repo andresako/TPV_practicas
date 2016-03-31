@@ -175,11 +175,13 @@ public class AdmEmpresa extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(AdmEmpresa.this);
-            pDialog.setMessage("Cargando datos...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            if(!isFinishing()) {
+                pDialog = new ProgressDialog(AdmEmpresa.this);
+                pDialog.setMessage("Cargando datos...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(false);
+                pDialog.show();
+            }
         }
 
         @Override
@@ -193,11 +195,11 @@ public class AdmEmpresa extends Activity {
             return null;
         }
 
-        protected void onPostExecute(String file_url) {
+        protected void onPostExecute(String msg) {
             // dismiss the dialog once product deleted
-            pDialog.dismiss();
-            if (file_url != null) {
-                Toast.makeText(AdmEmpresa.this, file_url, Toast.LENGTH_LONG).show();
+            super.onPostExecute(msg);
+            if (msg != null) {
+                Toast.makeText(AdmEmpresa.this, msg, Toast.LENGTH_LONG).show();
             }
 
             JSONArray mEmpresa;
@@ -239,6 +241,7 @@ public class AdmEmpresa extends Activity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            if(!isFinishing())pDialog.dismiss();
         }
     }
 

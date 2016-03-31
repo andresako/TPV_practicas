@@ -103,11 +103,13 @@ public class AdmListaUsuarios extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(AdmListaUsuarios.this);
-            pDialog.setMessage("Cargando datos...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            if (!isFinishing()) {
+                pDialog = new ProgressDialog(AdmListaUsuarios.this);
+                pDialog.setMessage("Cargando datos...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
         }
 
         @Override
@@ -119,7 +121,7 @@ public class AdmListaUsuarios extends Activity {
         protected void onPostExecute(Boolean resultado) {
             super.onPostExecute(resultado);
             mostrarListaUsers();
-            pDialog.dismiss();
+            if (!isFinishing()) pDialog.dismiss();
         }
     }
 

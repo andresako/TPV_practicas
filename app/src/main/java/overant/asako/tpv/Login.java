@@ -78,11 +78,13 @@ public class Login extends Activity implements OnClickListener {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Login.this);
-            pDialog.setMessage("Logeando...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            if (!isFinishing()) {
+                pDialog = new ProgressDialog(Login.this);
+                pDialog.setMessage("Logeando...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
         }
 
         @Override
@@ -147,6 +149,7 @@ public class Login extends Activity implements OnClickListener {
         protected void onPostExecute(String message) {
             // dismiss the dialog once product deleted
             super.onPostExecute(message);
+            if (!isFinishing()) pDialog.dismiss();
         }
     }
 }

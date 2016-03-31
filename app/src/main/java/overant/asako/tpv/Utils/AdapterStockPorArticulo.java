@@ -54,9 +54,9 @@ public class AdapterStockPorArticulo extends BaseAdapter {
         Holder holder = new Holder();
         View rowView;
 
-        if(convertView == null) {
+        if (convertView == null) {
             rowView = LayoutInflater.from(context).inflate(R.layout.item_lista_stock, null);
-        }else{
+        } else {
             rowView = convertView;
         }
         holder.tvAlmacen = (TextView) rowView.findViewById(R.id.ilsAlmacen);
@@ -67,6 +67,7 @@ public class AdapterStockPorArticulo extends BaseAdapter {
         holder.tvAlmacen.setText(String.valueOf(listaStock.get(position).getNomAlmacen()));
         holder.tvStock.setText(String.valueOf(listaStock.get(position).getCantidad()));
         holder.tvStockMinimo.setText(String.valueOf(listaStock.get(position).getCantidadMinima()));
+        holder.btnBorrar.setTag(position);
 
         return rowView;
     }

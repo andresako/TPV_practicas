@@ -146,7 +146,6 @@ public class AdmArticulo extends Activity {
         params.add(new BasicNameValuePair(TAG_ID_EMPRESA, sp.getString("empresaId", "0")));
 
         JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
-        System.err.println(joDatos);
         try {
             JSONArray mCat = joDatos.getJSONArray(TAG_CATEGORIAS);
 
@@ -193,9 +192,10 @@ public class AdmArticulo extends Activity {
             btnBaja.setText("Dar de alta");
             tTitulo.setPaintFlags(tTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
-        if (!articulo.getFoto().equals("null") && !articulo.getFoto().isEmpty()) {
-            new Herramientas.ponerImagen(iFoto).execute(articulo.getFoto());
-        }
+
+//        if (articulo.getFoto() != null) {
+//            new Herramientas.ponerImagen(iFoto).execute(articulo.getFoto());
+//        }
 
     }
 
@@ -326,11 +326,11 @@ public class AdmArticulo extends Activity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
 
-            ArrayAdapter<Categoria> adapterCat = new ArrayAdapter<Categoria>(AdmArticulo.this, android.R.layout.simple_spinner_item, listaCat);
+            ArrayAdapter<Categoria> adapterCat = new ArrayAdapter<>(AdmArticulo.this, android.R.layout.simple_spinner_item, listaCat);
             adapterCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             sCategoria.setAdapter(adapterCat);
 
-            ArrayAdapter<TipoIVA> adapterIva = new ArrayAdapter<TipoIVA>(AdmArticulo.this, android.R.layout.simple_spinner_item, listaIva);
+            ArrayAdapter<TipoIVA> adapterIva = new ArrayAdapter<>(AdmArticulo.this, android.R.layout.simple_spinner_item, listaIva);
             adapterIva.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             sIva.setAdapter(adapterIva);
         }

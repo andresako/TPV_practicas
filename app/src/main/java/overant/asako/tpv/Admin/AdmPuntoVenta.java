@@ -124,7 +124,7 @@ public class AdmPuntoVenta extends Activity {
             }
         });
 
-        if(puntoVenta.getID() == 0)btnBaja.setVisibility(View.GONE);
+        if (puntoVenta.getID() == 0) btnBaja.setVisibility(View.GONE);
     }
 
     private void rellenarDatos() {

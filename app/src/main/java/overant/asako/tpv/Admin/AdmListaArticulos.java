@@ -160,11 +160,13 @@ public class AdmListaArticulos extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(AdmListaArticulos.this);
-            pDialog.setMessage("Cargando datos...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            if(!isFinishing()) {
+                pDialog = new ProgressDialog(AdmListaArticulos.this);
+                pDialog.setMessage("Cargando datos...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
         }
 
         @Override
@@ -177,7 +179,7 @@ public class AdmListaArticulos extends Activity {
             // dismiss the dialog once product deleted
             super.onPostExecute(resultado);
             mostrarArticulos();
-            pDialog.dismiss();
+            if(!isFinishing()) pDialog.dismiss();
         }
     }
 }

@@ -101,11 +101,13 @@ public class AdmListaPuntoVenta extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(AdmListaPuntoVenta.this);
-            pDialog.setMessage("Cargando datos...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            if (!isFinishing()) {
+                pDialog = new ProgressDialog(AdmListaPuntoVenta.this);
+                pDialog.setMessage("Cargando datos...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
         }
 
         @Override
@@ -117,7 +119,7 @@ public class AdmListaPuntoVenta extends Activity {
         protected void onPostExecute(Boolean resultado) {
             super.onPostExecute(resultado);
             mostrarListaPuntos();
-            pDialog.dismiss();
+            if (!isFinishing()) pDialog.dismiss();
         }
     }
 

@@ -51,8 +51,8 @@ public class AdmCategoria extends Activity {
     private TextView tTitulo, tNombre;
     private ImageView iFoto;
     private Button btnOk, btnKo, btnBaja;
-    
-    
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +68,7 @@ public class AdmCategoria extends Activity {
 
         tTitulo = (TextView) findViewById(R.id.admCatTitulo);
         tNombre = (TextView) findViewById(R.id.admCatNombre);
-        iFoto = (ImageView)findViewById(R.id.admCatFoto);
+        iFoto = (ImageView) findViewById(R.id.admCatFoto);
 
         btnOk = (Button) findViewById(R.id.admCatBtnOK);
         btnKo = (Button) findViewById(R.id.admCatBtnCanc);
@@ -102,10 +102,10 @@ public class AdmCategoria extends Activity {
         tTitulo.setText("Categoria id: " + categoria.getID());
         tNombre.setText(categoria.getNombre());
 
-        if(categoria.getFoto() != null && !categoria.getFoto().isEmpty()) {
+        if (categoria.getFoto() != null && !categoria.getFoto().isEmpty()) {
             new Herramientas.ponerImagen(iFoto).execute(categoria.getFoto());
         }
-        
+
         if (categoria.isBaja()) {
             btnBaja.setText("Dar de alta");
             tTitulo.setPaintFlags(tTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
