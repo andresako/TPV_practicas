@@ -5,38 +5,35 @@
     android:layout_height="match_parent"
     android:background="#123"
     android:padding="16dp"
-    tools:context="overant.asako.tpv.Admin.AdmAlmacen">
+    tools:context="overant.asako.tpv.Admin.AdmProveedor">
 
     <LinearLayout
-        android:id="@+id/admAlmllTop"
+        android:id="@+id/admProllTop"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:background="@drawable/ficha"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/admAlmTitulo"
+            android:id="@+id/admProTitulo"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/ficha"
-            android:gravity="center"
-            android:text="ID"
+            android:text="Administrar el proveedor"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/admAlmllBot"
+        android:id="@+id/admProllBot"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/admAlmBtnOK"
+            android:id="@+id/admProBtnOK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -44,7 +41,7 @@
             android:text="Aceptar" />
 
         <Button
-            android:id="@+id/admAlmBtnCanc"
+            android:id="@+id/admProBtnCanc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,7 +49,7 @@
             android:text="Cancelar" />
 
         <Button
-            android:id="@+id/admAlmBtnBaja"
+            android:id="@+id/admProBtnBaja"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -63,8 +60,8 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/admAlmllBot"
-        android:layout_below="@+id/admAlmllTop"
+        android:layout_below="@+id/admProllTop"
+        android:layout_above="@+id/admProllBot"
         android:layout_marginBottom="@dimen/activity_vertical_margin">
 
         <LinearLayout
@@ -78,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:text="Nombre:" />
             <TextView
-                android:id="@+id/admAlmNombre"
+                android:id="@+id/admProNombre"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -90,9 +87,23 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Direccion:" />
+                android:text="CIF:" />
             <TextView
-                android:id="@+id/admAlmDireccion"
+                android:id="@+id/admProCIF"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:clickable="true"
+                android:onClick="editThis"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Dirección:" />
+            <TextView
+                android:id="@+id/admProDireccion"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -106,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:text="Localidad:" />
             <TextView
-                android:id="@+id/admAlmLocalidad"
+                android:id="@+id/admProLocalidad"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -120,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:text="Provincia:" />
             <TextView
-                android:id="@+id/admAlmProvincia"
+                android:id="@+id/admProProvincia"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -132,9 +143,23 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Cod. Postal:" />
+                android:text="Código postal:" />
             <TextView
-                android:id="@+id/admAlmCPostal"
+                android:id="@+id/admProCodPostal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:clickable="true"
+                android:onClick="editThis"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="E-mail:" />
+            <TextView
+                android:id="@+id/admProMail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -145,4 +170,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>

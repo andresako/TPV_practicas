@@ -174,10 +174,9 @@ public class AdmListaClientes extends Activity {
         }
 
         protected void onPostExecute(Boolean resultado) {
-            // dismiss the dialog once product deleted
             super.onPostExecute(resultado);
             mostrarClientes();
-            pDialog.dismiss();
+            if (!isFinishing()) pDialog.dismiss();
         }
     }
 }

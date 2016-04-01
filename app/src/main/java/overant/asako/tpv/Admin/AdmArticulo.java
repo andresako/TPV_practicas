@@ -182,8 +182,8 @@ public class AdmArticulo extends Activity {
         tTitulo.setText("Articulo: " + articulo.getID() + ", " + articulo.getNombre());
         tNombre.setText(articulo.getNombre());
         tEAN.setText(articulo.getEAN());
-        tPrecio.setText(articulo.getPrecio()+"");
-        tDescuento.setText(articulo.getDescuento()+"");
+        tPrecio.setText(articulo.getPrecio() + "");
+        tDescuento.setText(articulo.getDescuento() + "");
 
         tCategoria.setText(articulo.getNombreCat());
         tIva.setText(articulo.getNombreIva());
@@ -192,11 +192,7 @@ public class AdmArticulo extends Activity {
             btnBaja.setText("Dar de alta");
             tTitulo.setPaintFlags(tTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
-
-//        if (articulo.getFoto() != null) {
-//            new Herramientas.ponerImagen(iFoto).execute(articulo.getFoto());
-//        }
-
+        if(articulo.getID() == 0) iFoto.setVisibility(View.GONE);
     }
 
     private void darBaja() {

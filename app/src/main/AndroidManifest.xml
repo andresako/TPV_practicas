@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="overant.asako.tpv" >
+    package="overant.asako.tpv">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -8,10 +8,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".Login"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,73 +20,54 @@
         </activity>
         <activity
             android:name=".Admin.Administracion"
-            android:label="@string/title_activity_administracion" >
-        </activity>
+            android:label="@string/title_activity_administracion" />
         <activity
             android:name=".Admin.AdmEmpresa"
-            android:label="@string/title_activity_adm_empresa" >
-        </activity>
+            android:label="@string/title_activity_adm_empresa" />
         <activity
             android:name=".Admin.AdmCliente"
-            android:label="@string/title_activity_adm_clientes" >
-        </activity>
+            android:label="@string/title_activity_adm_clientes" />
         <activity
             android:name=".Admin.AdmListaClientes"
-            android:label="@string/title_activity_adm_clientes" >
-        </activity>
+            android:label="@string/title_activity_adm_clientes" />
         <activity
             android:name=".Admin.AdmListaEmpresa"
-            android:label="@string/title_activity_adm_lista_empresa" >
-        </activity>
+            android:label="@string/title_activity_adm_lista_empresa" />
         <activity
             android:name=".Admin.AdmListaPuntoVenta"
-            android:label="@string/title_activity_adm_lista_punto_venta" >
-        </activity>
+            android:label="@string/title_activity_adm_lista_punto_venta" />
         <activity
             android:name=".Admin.AdmPuntoVenta"
-            android:label="@string/title_activity_adm_punto_venta" >
-        </activity>
+            android:label="@string/title_activity_adm_punto_venta" />
         <activity
             android:name=".Admin.AdmListaUsuarios"
-            android:label="@string/title_activity_adm_lista_usuarios" >
-        </activity>
+            android:label="@string/title_activity_adm_lista_usuarios" />
         <activity
             android:name=".Admin.AdmUsuario"
-            android:label="@string/title_activity_adm_usuario" >
-        </activity>
+            android:label="@string/title_activity_adm_usuario" />
         <activity
             android:name=".Admin.AdmListaAlmacenes"
-            android:label="@string/title_activity_adm_lista_almacenes" >
-        </activity>
+            android:label="@string/title_activity_adm_lista_almacenes" />
         <activity
             android:name=".Admin.AdmAlmacen"
-            android:label="@string/title_activity_adm_almacen" >
-        </activity>
+            android:label="@string/title_activity_adm_almacen" />
         <activity
             android:name=".Admin.AdmListaCategorias"
-            android:label="@string/title_activity_adm_lista_categorias" >
-        </activity>
+            android:label="@string/title_activity_adm_lista_categorias" />
         <activity
             android:name=".Admin.AdmCategoria"
-            android:label="@string/title_activity_adm_categoria" >
-        </activity>
+            android:label="@string/title_activity_adm_categoria" />
         <activity
             android:name=".Admin.AdmListaArticulos"
-            android:label="@string/title_activity_adm_lista_articulos" >
-        </activity>
+            android:label="@string/title_activity_adm_lista_articulos" />
         <activity
             android:name=".Admin.AdmArticulo"
-            android:label="@string/title_activity_adm_articulo" >
-        </activity>
+            android:label="@string/title_activity_adm_articulo" />
         <activity
             android:name=".Admin.AdmListaStock"
-            android:label="@string/title_activity_adm_lista_stock" >
-        </activity>
-        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:label="@string/title_activity_adm_lista_stock" />
+        <activity android:name=".Admin.AdmListaProveedores" />
+        <activity android:name=".Admin.AdmProveedor"></activity>
     </application>
 
 </manifest>
