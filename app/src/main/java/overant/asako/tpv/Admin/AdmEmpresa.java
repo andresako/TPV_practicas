@@ -4,11 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,6 +30,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +44,7 @@ public class AdmEmpresa extends Activity {
 
     private static final String URL = "http://overant.es/empresas.php";
     private static final String URL_GUARDAR = "http://overant.es/json_guardar_empresa.php";
+    private static final String RUTA_GALERIA = "http://overant.es/galeria/";
 
     // Respuestas del JSON php Script;
     private static final String TAG_NOMBRE = "nombre";
@@ -67,6 +75,9 @@ public class AdmEmpresa extends Activity {
     private Herramientas tools;
     private JSONObject joDatos;
     private ProgressDialog pDialog;
+    private Bitmap photobmp;
+    private boolean fotonueva = false;
+    private String nombreFoto = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +132,16 @@ public class AdmEmpresa extends Activity {
                 finish();
             }
         });
+        eLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                startActivityForResult(Intent.createChooser(intent, "Complete la acción usando..."), 1);
+            }
+        });
+
         if (!ID.equals("0")) {
             // Relleno datos
             new IntentoRellenarDatos().execute();
@@ -129,6 +150,27 @@ public class AdmEmpresa extends Activity {
             bBaja.setVisibility(View.GONE);
         }
 
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri filePath = data.getData();
+            try {
+                photobmp = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                eLogo.setImageBitmap(photobmp);
+                fotonueva = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
     private void darBaja() {
@@ -175,7 +217,7 @@ public class AdmEmpresa extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if(!isFinishing()) {
+            if (!isFinishing()) {
                 pDialog = new ProgressDialog(AdmEmpresa.this);
                 pDialog.setMessage("Cargando datos...");
                 pDialog.setIndeterminate(false);
@@ -235,13 +277,14 @@ public class AdmEmpresa extends Activity {
                         bBaja.setText("Dar de alta");
                         eTitulo.setPaintFlags(eTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     }
-                    if (joDatos.getString(TAG_LOGO) != null)
-                        new Herramientas.ponerImagen(eLogo).execute(joDatos.getString(TAG_LOGO));
+                    nombreFoto = joDatos.getString(TAG_LOGO);
+                    if (nombreFoto != null&& !nombreFoto.equals("null"))
+                        new Herramientas.ponerImagen(eLogo).execute(RUTA_GALERIA+nombreFoto);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            if(!isFinishing())pDialog.dismiss();
+            if (!isFinishing()) pDialog.dismiss();
         }
     }
 
@@ -264,7 +307,6 @@ public class AdmEmpresa extends Activity {
                 params.add(new BasicNameValuePair(TAG_BAJA, ctBaja));
             }
 
-
             params.add(new BasicNameValuePair(TAG_NOMBRE, eNombre.getText().toString()));
             params.add(new BasicNameValuePair(TAG_RAZON, eRazon.getText().toString()));
             params.add(new BasicNameValuePair(TAG_CIF, eCif.getText().toString()));
@@ -275,6 +317,12 @@ public class AdmEmpresa extends Activity {
             params.add(new BasicNameValuePair(TAG_TELEFONO, eTelefono.getText().toString()));
             params.add(new BasicNameValuePair(TAG_EMAIL, eEmail.getText().toString()));
 
+            if (fotonueva) {
+                params.add(new BasicNameValuePair("foto64", getStringImage(photobmp)));
+                params.add(new BasicNameValuePair("foto", eNombre.getText()+".JPEG"));
+            }else{
+                params.add(new BasicNameValuePair("foto", nombreFoto));
+            }
 
             Log.d("request!", "starting");
 

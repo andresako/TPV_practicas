@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:id="@+id/imageView"
+            android:id="@+id/imgTituloEmpresa"
             android:src="@drawable/logo"
             android:layout_weight="4"/>
 
@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Nombre de la empresa"
-            android:id="@+id/textView"
+            android:id="@+id/tituloEmpresa"
             android:layout_weight="1"/>
     </LinearLayout>
     <ScrollView

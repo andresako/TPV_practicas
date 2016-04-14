@@ -36,7 +36,7 @@ public class Login extends Activity implements OnClickListener {
     private ProgressDialog pDialog;
 
     // JSON parser class
-    JSONParser jsonParser = new JSONParser();
+    private JSONParser jsonParser = new JSONParser();
 
     private static final String LOGIN_URL = "http://overant.es/json_login.php";
 
@@ -44,6 +44,9 @@ public class Login extends Activity implements OnClickListener {
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_ADMIN = "admin";
+    private static final String TAG_EMPRESA = "nombre_empresa";
+    private static final String TAG_LOGO = "logo_empresa";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +127,8 @@ public class Login extends Activity implements OnClickListener {
                     String admin = json.getString(TAG_ADMIN);
                     Intent i = null;
                     if (admin.equalsIgnoreCase("A")) {
+                        edit.putString("empresaNombre",json.getString(TAG_EMPRESA));
+                        edit.putString("empresaLogo",json.getString(TAG_LOGO));
                         i = new Intent(Login.this, Administracion.class);
                         finish();
                     } else if (admin.equalsIgnoreCase("S")) {

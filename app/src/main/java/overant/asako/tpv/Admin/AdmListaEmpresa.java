@@ -36,6 +36,7 @@ public class AdmListaEmpresa extends Activity {
     private static final String TAG_EMPRESAS = "empresas";
     private static final String TAG_NOMBRE = "nombre";
     private static final String TAG_ID = "id_empresa";
+    private static final String TAG_LOGO = "logo";
 
     private JSONArray joLista;
     private ArrayList<HashMap<String, String>> mEmpresasList;
@@ -68,6 +69,8 @@ public class AdmListaEmpresa extends Activity {
                 // save user data
                 SharedPreferences.Editor edit = sp.edit();
                 edit.putString("empresaId", mEmpresasList.get(position).get(TAG_ID));
+                edit.putString("empresaNombre",mEmpresasList.get(position).get(TAG_NOMBRE));
+                edit.putString("empresaLogo",mEmpresasList.get(position).get(TAG_LOGO));
                 edit.apply();
 
                 Intent i = new Intent(AdmListaEmpresa.this, Administracion.class);
@@ -81,6 +84,8 @@ public class AdmListaEmpresa extends Activity {
                 // save user data
                 SharedPreferences.Editor edit = sp.edit();
                 edit.putString("empresaId", "0");
+                edit.putString("empresaNombre","");
+                edit.putString("empresaLogo","");
                 edit.apply();
 
                 Intent i = new Intent(AdmListaEmpresa.this, AdmEmpresa.class);
@@ -111,6 +116,7 @@ public class AdmListaEmpresa extends Activity {
                     HashMap<String, String> map = new HashMap<>();
                     map.put(TAG_NOMBRE, c.getString(TAG_NOMBRE));
                     map.put(TAG_ID, c.get(TAG_ID).toString());
+                    map.put((TAG_LOGO), c.getString(TAG_LOGO));
 
                     // adding HashList to ArrayList
                     mEmpresasList.add(map);

@@ -6,10 +6,14 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -26,6 +30,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,15 +67,19 @@ public class AdmArticulo extends Activity {
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
+    private static final String RUTA_GALERIA = "http://overant.es/galeria/";
+
     private JSONParser jsonParser = new JSONParser();
     private Articulo articulo;
     private List<Categoria> listaCat;
     private List<TipoIVA> listaIva;
+    private boolean fotonueva = false;
 
     private TextView tTitulo, tNombre, tEAN, tPrecio, tDescuento, tCategoria, tIva;
     private ImageView iFoto;
-    private Button btnOk, btnKo, btnBaja;
+    private Button btnOk, btnKo, btnBaja, btnStock;
     private Spinner sCategoria, sIva;
+    private Bitmap photobmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +110,7 @@ public class AdmArticulo extends Activity {
         btnOk = (Button) findViewById(R.id.admArtBtnOK);
         btnKo = (Button) findViewById(R.id.admArtBtnCanc);
         btnBaja = (Button) findViewById(R.id.admArtBtnBaja);
+        btnStock = (Button) findViewById(R.id.admArtStock);
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +133,7 @@ public class AdmArticulo extends Activity {
                 finish();
             }
         });
-        iFoto.setOnClickListener(new View.OnClickListener() {
+        btnStock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(AdmArticulo.this, AdmListaStock.class);
@@ -131,15 +142,47 @@ public class AdmArticulo extends Activity {
             }
         });
 
-        if (articulo.getID() == 0) btnBaja.setVisibility(View.GONE);
+        iFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                startActivityForResult(Intent.createChooser(intent, "Complete la acción usando..."), 1);
+            }
+        });
 
         new rellenarLista().execute();
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri filePath = data.getData();
+            try {
+                photobmp = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                iFoto.setImageBitmap(photobmp);
+                fotonueva = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
     private void rellenarListas() {
         listaCat = new ArrayList<>();
         listaIva = new ArrayList<>();
+
+        System.out.println("Listas cargadas");
+
 
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("app", "1"));
@@ -192,7 +235,11 @@ public class AdmArticulo extends Activity {
             btnBaja.setText("Dar de alta");
             tTitulo.setPaintFlags(tTitulo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
-        if(articulo.getID() == 0) iFoto.setVisibility(View.GONE);
+        if (articulo.getID() == 0) btnStock.setVisibility(View.GONE);
+
+        if (articulo.getFoto() != null && !articulo.getFoto().equals("")) {
+            new Herramientas.ponerImagen(iFoto).execute(RUTA_GALERIA + articulo.getFoto());
+        }
     }
 
     private void darBaja() {
@@ -270,13 +317,18 @@ public class AdmArticulo extends Activity {
             params.add(new BasicNameValuePair(TAG_ID_EMPRESA, sp.getString("empresaId", "0")));
             params.add(new BasicNameValuePair(TAG_NOMBRE, tNombre.getText().toString()));
             params.add(new BasicNameValuePair(TAG_EAN, tEAN.getText().toString()));
-            params.add(new BasicNameValuePair(TAG_FOTO, articulo.getFoto()));
             params.add(new BasicNameValuePair(TAG_PRECIO, tPrecio.getText().toString()));
             params.add(new BasicNameValuePair(TAG_DESCUENTO, tDescuento.getText().toString()));
 
             params.add(new BasicNameValuePair(TAG_ID_IVA, articulo.getIdIva() + ""));
             params.add(new BasicNameValuePair(TAG_ID_CATEGORIA, articulo.getIdCategoria() + ""));
 
+            if (fotonueva) {
+                params.add(new BasicNameValuePair("foto64", getStringImage(photobmp)));
+                params.add(new BasicNameValuePair(TAG_FOTO, articulo.getNombre()+".JPEG"));
+            }else{
+                params.add(new BasicNameValuePair(TAG_FOTO, articulo.getFoto()));
+            }
             Log.d("request!", "starting");
 
             try {

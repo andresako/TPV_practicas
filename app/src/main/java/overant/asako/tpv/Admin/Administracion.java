@@ -1,25 +1,29 @@
 package overant.asako.tpv.Admin;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import overant.asako.tpv.R;
+import overant.asako.tpv.Utils.Herramientas;
 
 public class Administracion extends Activity implements View.OnClickListener {
 
-    LinearLayout llArtExt;
+    private static final String RUTA_GALERIA = "http://overant.es/galeria/";
+    private LinearLayout llArtExt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administracion);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Administracion.this);
 
         // setear botones
         Button mEmpresa = (Button) findViewById(R.id.btnAdmEmpresa);
@@ -39,6 +43,12 @@ public class Administracion extends Activity implements View.OnClickListener {
         mProveedor.setOnClickListener(this);
         mArticuloCat.setOnClickListener(this);
         mArticuloLista.setOnClickListener(this);
+
+        TextView titulo = (TextView)findViewById(R.id.tituloEmpresa);
+        titulo.setText(sp.getString("empresaNombre", "Empresa"));
+
+        ImageView img = (ImageView)findViewById(R.id.imgTituloEmpresa);
+        new Herramientas.ponerImagen(img).execute(RUTA_GALERIA + sp.getString("empresaLogo", ""));
 
         llArtExt = (LinearLayout) findViewById(R.id.admArticuloExt);
     }

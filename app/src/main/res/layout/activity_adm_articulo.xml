@@ -30,7 +30,7 @@
             android:id="@+id/admArtFoto"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/stock" />
+            android:src="@drawable/no_image"/>
 
     </LinearLayout>
 
@@ -66,10 +66,19 @@
             android:text="Dar de baja" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/admArtStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/admArtllBot"
+        android:text="Ver Stock del articulo"
+        />
+
     <ScrollView
+        android:id="@+id/admArtScroll"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/admArtllBot"
+        android:layout_above="@+id/admArtStock"
         android:layout_below="@+id/admArtllTop"
         android:layout_marginBottom="@dimen/activity_vertical_margin">
 
