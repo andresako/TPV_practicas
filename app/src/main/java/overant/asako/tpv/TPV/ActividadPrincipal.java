@@ -1,6 +1,6 @@
 package overant.asako.tpv.TPV;
 
-import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -13,15 +13,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import overant.asako.tpv.R;
+import overant.asako.tpv.Utils.Datos;
 
 public class ActividadPrincipal extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
+    public Datos datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        datos = new Datos(this);
 
         agregarToolbar();
 
@@ -67,16 +70,13 @@ public class ActividadPrincipal extends AppCompatActivity {
 
         switch (itemDrawer.getItemId()) {
             case R.id.item_inicio:
-                fragmentoGenerico = new FragmentoInicio();
-                break;
-            case R.id.item_cuenta:
-                fragmentoGenerico = new FragmentoCuenta();
+                //fragmentoGenerico = new FragmentoInicio();
                 break;
             case R.id.item_categorias:
                 fragmentoGenerico = new FragmentoCategorias();
                 break;
-            case R.id.item_configuracion:
-                startActivity(new Intent(this, ActividadConfiguracion.class));
+            case R.id.item_carrito:
+                //startActivity(new Intent(this, ActividadConfiguracion.class));
                 break;
         }
         if (fragmentoGenerico != null) {

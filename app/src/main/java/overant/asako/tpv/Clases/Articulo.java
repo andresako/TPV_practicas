@@ -2,6 +2,8 @@ package overant.asako.tpv.Clases;
 
 import java.io.Serializable;
 
+import overant.asako.tpv.R;
+
 public class Articulo implements Serializable {
 
     private int ID = 0;
@@ -17,6 +19,7 @@ public class Articulo implements Serializable {
     private double descuento;
     private Boolean baja = false;
     private int stockTotal = 0;
+    private int drawable = R.drawable.no_image;
 
     public Articulo() {
     }
@@ -137,5 +140,11 @@ public class Articulo implements Serializable {
 
     public void setStockTotal(int stockTotal) {
         this.stockTotal = stockTotal;
+    }
+
+    public int getDrawable(){return this.drawable;}
+
+    public void setDrawable(int drawable){
+        this.drawable = drawable;
     }
 }

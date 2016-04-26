@@ -14,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -25,6 +24,7 @@ import java.util.List;
 
 import overant.asako.tpv.Admin.AdmListaEmpresa;
 import overant.asako.tpv.Admin.Administracion;
+import overant.asako.tpv.TPV.ActividadPrincipal;
 import overant.asako.tpv.Utils.JSONParser;
 
 
@@ -133,6 +133,9 @@ public class Login extends Activity implements OnClickListener {
                         finish();
                     } else if (admin.equalsIgnoreCase("S")) {
                         i = new Intent(Login.this, AdmListaEmpresa.class);
+                        finish();
+                    }else{
+                        i = new Intent(Login.this, ActividadPrincipal.class);
                         finish();
                     }
 

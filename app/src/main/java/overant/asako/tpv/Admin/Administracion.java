@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import overant.asako.tpv.R;
+import overant.asako.tpv.TPV.ActividadPrincipal;
 import overant.asako.tpv.Utils.Herramientas;
 import overant.asako.tpv.Utils.JSONParser;
 
@@ -58,6 +59,7 @@ public class Administracion extends Activity implements View.OnClickListener {
         Button mArticuloCat = (Button) findViewById(R.id.btnAdmArticuloCat);
         Button mArticuloLista = (Button) findViewById(R.id.btnAdmArticuloLista);
         Button mUsuarios = (Button) findViewById(R.id.btnAdmUsuario);
+        Button mTpv = (Button) findViewById(R.id.btnAdmTPV);
 
         mEmpresa.setOnClickListener(this);
         mPuntVenta.setOnClickListener(this);
@@ -68,6 +70,7 @@ public class Administracion extends Activity implements View.OnClickListener {
         mArticuloCat.setOnClickListener(this);
         mArticuloLista.setOnClickListener(this);
         mUsuarios.setOnClickListener(this);
+        mTpv.setOnClickListener(this);
 
         TextView titulo = (TextView) findViewById(R.id.tituloEmpresa);
         titulo.setText(sp.getString("empresaNombre", "Empresa"));
@@ -129,8 +132,13 @@ public class Administracion extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.btnAdmUsuario:
-
                 alert.show();
+                break;
+
+            case R.id.btnAdmTPV:
+                Intent tpv = new Intent(Administracion.this, ActividadPrincipal.class);
+                tpv.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(tpv);
                 break;
 
             default:
