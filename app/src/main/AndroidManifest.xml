@@ -3,8 +3,7 @@
     package="overant.asako.tpv">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -69,7 +68,8 @@
             android:name=".Admin.AdmListaStock"
             android:label="@string/title_activity_adm_lista_stock" />
         <activity android:name=".Admin.AdmListaProveedores" />
-        <activity android:name=".Admin.AdmProveedor"></activity>
+        <activity android:name=".Admin.AdmProveedor" />
+        <activity android:name=".TPV.ActividadPrincipal"></activity>
     </application>
 
 </manifest>

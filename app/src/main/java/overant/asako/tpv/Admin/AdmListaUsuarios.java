@@ -98,33 +98,6 @@ public class AdmListaUsuarios extends Activity {
         new rellenarUsers().execute();
     }
 
-    public class rellenarUsers extends AsyncTask<Void, Void, Boolean> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            if (!isFinishing()) {
-                pDialog = new ProgressDialog(AdmListaUsuarios.this);
-                pDialog.setMessage("Cargando datos...");
-                pDialog.setIndeterminate(false);
-                pDialog.setCancelable(true);
-                pDialog.show();
-            }
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... args) {
-            actualizarListaUsers();
-            return Boolean.parseBoolean(null);
-        }
-
-        protected void onPostExecute(Boolean resultado) {
-            super.onPostExecute(resultado);
-            mostrarListaUsers();
-            if (!isFinishing()) pDialog.dismiss();
-        }
-    }
-
     private void actualizarListaUsers() {
         listaUsuarios = new ArrayList<>();
 
@@ -172,5 +145,32 @@ public class AdmListaUsuarios extends Activity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaCt);
         lvUsuarios.setAdapter(arrayAdapter);
         lvUsuarios.setDividerHeight(10);
+    }
+
+    public class rellenarUsers extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (!isFinishing()) {
+                pDialog = new ProgressDialog(AdmListaUsuarios.this);
+                pDialog.setMessage("Cargando datos...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                pDialog.show();
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... args) {
+            actualizarListaUsers();
+            return Boolean.parseBoolean(null);
+        }
+
+        protected void onPostExecute(Boolean resultado) {
+            super.onPostExecute(resultado);
+            mostrarListaUsers();
+            if (!isFinishing()) pDialog.dismiss();
+        }
     }
 }
