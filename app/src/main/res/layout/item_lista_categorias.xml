@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -14,24 +15,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/accentColor"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="@dimen/espacio_norma_1">
 
-        <TextView
-            android:id="@+id/precio_comida"
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/precio_comida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Precio"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/nombre_comida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/addCarro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Precio"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
-            android:textStyle="normal|bold" />
-
-        <TextView
-            android:id="@+id/nombre_comida"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nombre"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
-            android:textSize="12sp" />
-
+            android:background="@drawable/plus_w"/>
     </LinearLayout>
 </LinearLayout>

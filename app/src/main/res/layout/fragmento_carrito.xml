@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="overant.asako.tpv.TPV.FragmentoCarrito">
+
+    <LinearLayout
+        android:id="@+id/car_ll_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/activity_horizontal_margin">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/car_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="0 €"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:textSize="40dp"/>
+        
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/car_ll_total">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/reciclador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+        </android.support.v7.widget.RecyclerView>
+    </ScrollView>
+
+
+</RelativeLayout>

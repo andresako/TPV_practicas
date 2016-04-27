@@ -21,7 +21,6 @@ public class FragmentoCategoria extends Fragment {
     private GridLayoutManager layoutManager;
     private AdaptadorCategorias adaptador;
     private ActividadPrincipal ap;
-    private int idFamilia;
 
     public static FragmentoCategoria nuevaInstancia(int indiceSeccion) {
         FragmentoCategoria fragment = new FragmentoCategoria();
@@ -42,8 +41,7 @@ public class FragmentoCategoria extends Fragment {
 
         int indiceSeccion = getArguments().getInt(INDICE_SECCION);
 
-        adaptador = new AdaptadorCategorias(ap.datos.getListaArticulosPorCat(indiceSeccion));
-
+        adaptador = new AdaptadorCategorias(ap.datos.getListaArticulosPorCat(indiceSeccion), ap);
         reciclador.setAdapter(adaptador);
 
         return view;

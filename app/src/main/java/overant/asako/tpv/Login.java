@@ -121,6 +121,7 @@ public class Login extends Activity implements OnClickListener {
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Login.this);
                     SharedPreferences.Editor edit = sp.edit();
                     edit.putString("username", username);
+                    edit.putInt("userId", json.getInt("id_user"));
                     edit.putString("empresaId", json.getString("id_empresa"));
 
                     // starting intent

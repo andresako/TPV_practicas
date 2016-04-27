@@ -46,7 +46,7 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:singleLine="true"
-        android:text="miguel@gmail.com">
+        android:text="juan@gmail.com">
         <requestFocus />
     </EditText>
 

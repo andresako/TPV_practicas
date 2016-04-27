@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ActividadPrincipal">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_search"
         android:icon="@drawable/busqueda"
         android:orderInCategory="1"
         android:title="Buscar"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_carrito"
+        android:icon="@drawable/carrito_compras"
+        android:orderInCategory="2"
+        android:title="Carrito"
         app:showAsAction="ifRoom" />
 </menu>

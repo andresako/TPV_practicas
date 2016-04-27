@@ -1,5 +1,7 @@
 package overant.asako.tpv.TPV;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,20 +13,30 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import overant.asako.tpv.Clases.Carrito;
 import overant.asako.tpv.R;
 import overant.asako.tpv.Utils.Datos;
 
 public class ActividadPrincipal extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
+    private TextView totalCarrito;
+    private SharedPreferences sp;
+
     public Datos datos;
+    public Carrito carrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        sp = PreferenceManager.getDefaultSharedPreferences(ActividadPrincipal.this);
+
         datos = new Datos(this);
+        carrito = new Carrito(Integer.valueOf(sp.getString("empresaId", "0")), sp.getInt("userId", 0));
 
         agregarToolbar();
 
@@ -35,6 +47,9 @@ public class ActividadPrincipal extends AppCompatActivity {
             prepararDrawer(navigationView);
             // Seleccionar item por defecto
             seleccionarItem(navigationView.getMenu().getItem(0));
+
+            View header =  navigationView.getHeaderView(0);
+            totalCarrito = (TextView) header.findViewById(R.id.texto_total_carrito);
         }
     }
 
@@ -76,7 +91,7 @@ public class ActividadPrincipal extends AppCompatActivity {
                 fragmentoGenerico = new FragmentoCategorias();
                 break;
             case R.id.item_carrito:
-                //startActivity(new Intent(this, ActividadConfiguracion.class));
+                fragmentoGenerico = new FragmentoCarrito();
                 break;
         }
         if (fragmentoGenerico != null) {
@@ -88,6 +103,10 @@ public class ActividadPrincipal extends AppCompatActivity {
 
         // Setear título actual
         setTitle(itemDrawer.getTitle());
+    }
+
+    public void refreshCarro(){
+        totalCarrito.setText(carrito.getTotal()+ " €");
     }
 
     @Override
