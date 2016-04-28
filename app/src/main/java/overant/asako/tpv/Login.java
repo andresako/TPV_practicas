@@ -1,7 +1,5 @@
 package overant.asako.tpv;
 
-import org.apache.http.NameValuePair;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,11 +8,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.View.OnClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,23 +29,18 @@ import overant.asako.tpv.Utils.JSONParser;
 
 public class Login extends Activity implements OnClickListener {
 
-    private EditText user, pass;
-    private Button mSubmit;
-
-    private ProgressDialog pDialog;
-
-    // JSON parser class
-    private JSONParser jsonParser = new JSONParser();
-
     private static final String LOGIN_URL = "http://overant.es/json_login.php";
-
     // Posibles respuestas del JSON php Script;
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_ADMIN = "admin";
     private static final String TAG_EMPRESA = "nombre_empresa";
     private static final String TAG_LOGO = "logo_empresa";
-
+    private EditText user, pass;
+    private Button mSubmit;
+    private ProgressDialog pDialog;
+    // JSON parser class
+    private JSONParser jsonParser = new JSONParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,14 +122,14 @@ public class Login extends Activity implements OnClickListener {
                     String admin = json.getString(TAG_ADMIN);
                     Intent i = null;
                     if (admin.equalsIgnoreCase("A")) {
-                        edit.putString("empresaNombre",json.getString(TAG_EMPRESA));
-                        edit.putString("empresaLogo",json.getString(TAG_LOGO));
+                        edit.putString("empresaNombre", json.getString(TAG_EMPRESA));
+                        edit.putString("empresaLogo", json.getString(TAG_LOGO));
                         i = new Intent(Login.this, Administracion.class);
                         finish();
                     } else if (admin.equalsIgnoreCase("S")) {
                         i = new Intent(Login.this, AdmListaEmpresa.class);
                         finish();
-                    }else{
+                    } else {
                         i = new Intent(Login.this, ActividadPrincipal.class);
                         finish();
                     }

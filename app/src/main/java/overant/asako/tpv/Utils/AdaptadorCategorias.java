@@ -1,6 +1,5 @@
 package overant.asako.tpv.Utils;
 
-import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -36,9 +35,9 @@ public class AdaptadorCategorias extends RecyclerView.Adapter<AdaptadorCategoria
         public ViewHolder(View v) {
             super(v);
 
-            nombre = (TextView) v.findViewById(R.id.nombre_comida);
-            precio = (TextView) v.findViewById(R.id.precio_comida);
-            imagen = (ImageView) v.findViewById(R.id.miniatura_comida);
+            nombre = (TextView) v.findViewById(R.id.nombre_articulo);
+            precio = (TextView) v.findViewById(R.id.precio_articulo);
+            imagen = (ImageView) v.findViewById(R.id.miniatura_articulo);
             boton = (ImageButton) v.findViewById(R.id.addCarro);
         }
     }

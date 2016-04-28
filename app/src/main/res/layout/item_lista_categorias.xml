@@ -7,7 +7,7 @@
     android:padding="1dp">
 
     <ImageView
-        android:id="@+id/miniatura_comida"
+        android:id="@+id/miniatura_articulo"
         android:layout_width="match_parent"
         android:layout_height="192dp" />
 
@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:background="@color/accentColor"
         android:orientation="horizontal"
-        android:padding="@dimen/espacio_norma_1">
+        android:padding="@dimen/espacio_norma_1"
+        android:layout_marginBottom="@dimen/espacio_norma_2">
 
 
         <LinearLayout
@@ -26,7 +27,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/precio_comida"
+                android:id="@+id/nombre_articulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Precio"
@@ -34,7 +35,7 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/nombre_comida"
+                android:id="@+id/precio_articulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre"

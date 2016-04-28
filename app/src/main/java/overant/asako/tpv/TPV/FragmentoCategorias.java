@@ -1,6 +1,8 @@
 package overant.asako.tpv.TPV;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -8,9 +10,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,8 +19,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,11 +108,23 @@ public class FragmentoCategorias extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.action_carrito:
-                Log.d("boton ", "carrito pulsado");
-                return false;
+            case R.id.action_add_varios:
+                Log.d("menuItem ", "Añadiendo varios");
+                Intent i = new Intent(getContext(), AddVarios.class);
+                startActivityForResult(i, 111);
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 111) {
+            if (resultCode == Activity.RESULT_OK) {
+
+            }
+        }
     }
 
     @Override

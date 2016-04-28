@@ -15,7 +15,6 @@
     <string name="action_example">Example action</string>
     <string name="title_activity_administracion">Administracion</string>
     <string name="title_activity_adm_empresa">Empresa</string>
-    <string name="andresako">andresako</string>
     <string name="title_activity_adm_clientes">AdmClientes</string>
     <string name="title_activity_adm_lista_empresa">AdmListaEmpresa</string>
     <string name="title_activity_adm_lista_punto_venta">AdmListaPuntoVenta</string>
@@ -32,5 +31,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="action_reset">resetear carrito</string>
+    <string name="action_reset">Resetear carrito</string>
+    <string name="cerrar_carrito">Cerrar carrito</string>
+    <string name="nuevo_carrito">Nuevo carrito</string>
 </resources>

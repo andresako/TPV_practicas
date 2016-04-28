@@ -71,7 +71,8 @@
         <activity android:name=".Admin.AdmProveedor" />
         <activity
             android:name=".TPV.ActividadPrincipal"
-            android:theme="@style/Theme.ConNavigationDrawer"/>
+            android:theme="@style/Theme.ConNavigationDrawer" />
+        <activity android:name=".TPV.AddVarios"></activity>
     </application>
 
 </manifest>

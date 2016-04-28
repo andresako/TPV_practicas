@@ -1,6 +1,9 @@
 package overant.asako.tpv.TPV;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -9,7 +12,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,12 +24,11 @@ import overant.asako.tpv.Utils.Datos;
 
 public class ActividadPrincipal extends AppCompatActivity {
 
+    public Datos datos;
+    public Carrito carrito;
     private DrawerLayout drawerLayout;
     private TextView totalCarrito;
     private SharedPreferences sp;
-
-    public Datos datos;
-    public Carrito carrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class ActividadPrincipal extends AppCompatActivity {
             // Seleccionar item por defecto
             seleccionarItem(navigationView.getMenu().getItem(0));
 
-            View header =  navigationView.getHeaderView(0);
+            View header = navigationView.getHeaderView(0);
             totalCarrito = (TextView) header.findViewById(R.id.texto_total_carrito);
         }
     }
@@ -93,6 +94,9 @@ public class ActividadPrincipal extends AppCompatActivity {
             case R.id.item_carrito:
                 fragmentoGenerico = new FragmentoCarrito();
                 break;
+            case R.id.item_tickets:
+                fragmentoGenerico = new FragmentoTickets();
+                break;
         }
         if (fragmentoGenerico != null) {
             fragmentManager
@@ -105,8 +109,8 @@ public class ActividadPrincipal extends AppCompatActivity {
         setTitle(itemDrawer.getTitle());
     }
 
-    public void refreshCarro(){
-        totalCarrito.setText(carrito.getTotal()+ " €");
+    public void refreshCarro() {
+        totalCarrito.setText(carrito.getTotal() + " €");
     }
 
     @Override
@@ -123,5 +127,24 @@ public class ActividadPrincipal extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(ActividadPrincipal.this);
+        alert.setTitle("Quiere salir de la apicación?");
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        finish();
+                    }
+                }
+        );
+        alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //Do nothing
+                    }
+                }
+        );
+        alert.show();
     }
 }

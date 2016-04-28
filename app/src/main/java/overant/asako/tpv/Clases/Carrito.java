@@ -1,5 +1,6 @@
 package overant.asako.tpv.Clases;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -37,11 +38,11 @@ public class Carrito {
         }
     }
 
-    public void delItem(int cantidad, Articulo art){
-        if (listaLineas.containsKey(art.getNombre())){
-            Linea l = listaLineas.get(art.getNombre());
+    public void delItem(String nombreArt){
+        if (listaLineas.containsKey(nombreArt)){
+            Linea l = listaLineas.get(nombreArt);
             this.total -= l.precioTotal;
-            this.listaLineas.remove(art.getNombre());
+            this.listaLineas.remove(nombreArt);
         }
     }
 
@@ -60,6 +61,7 @@ public class Carrito {
     public HashMap<String, Linea> getHashLineas() {
         return listaLineas;
     }
+
 
 }
 

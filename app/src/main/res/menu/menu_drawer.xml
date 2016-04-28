@@ -15,6 +15,10 @@
             android:id="@+id/item_carrito"
             android:icon="@drawable/carro"
             android:title="Carrito" />
+        <item
+            android:id="@+id/item_tickets"
+            android:icon="@drawable/ticket"
+            android:title="Tickets" />
     </group>
 
 </menu>
