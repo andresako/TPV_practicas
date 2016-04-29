@@ -19,7 +19,6 @@ public class Articulo implements Serializable {
     private double descuento;
     private Boolean baja = false;
     private int stockTotal = 0;
-    private int drawable = R.drawable.no_image;
 
     public Articulo() {
     }
@@ -142,9 +141,4 @@ public class Articulo implements Serializable {
         this.stockTotal = stockTotal;
     }
 
-    public int getDrawable(){return this.drawable;}
-
-    public void setDrawable(int drawable){
-        this.drawable = drawable;
-    }
 }

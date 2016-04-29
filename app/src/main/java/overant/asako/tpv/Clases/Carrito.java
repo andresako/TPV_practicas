@@ -11,6 +11,7 @@ public class Carrito {
     private int ID_usuario;
     private int numero;
     private Date fecha;
+
     private double total;
     private HashMap<String,Linea> listaLineas;
 
@@ -44,6 +45,11 @@ public class Carrito {
             this.total -= l.precioTotal;
             this.listaLineas.remove(nombreArt);
         }
+    }
+
+    public void newCarro(){
+        this.listaLineas = new HashMap<>();
+        this.total = 0;
     }
 
     public int getID_empresa() {

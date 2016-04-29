@@ -1,17 +1,25 @@
 package overant.asako.tpv.Utils;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import overant.asako.tpv.Clases.Articulo;
 import overant.asako.tpv.Clases.Carrito;
 import overant.asako.tpv.R;
 import overant.asako.tpv.TPV.ActividadPrincipal;
@@ -64,7 +72,7 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.item_carro_editar:
-
+                        editarItem(pos);
                         break;
                     case R.id.item_carro_borrar:
                         carrito.delItem(listaLineas.get(pos));
@@ -80,6 +88,50 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
         popup.show();
     }
 
+    private void editarItem(final int pos) {
+
+        Context cntx = pa.getApplication();
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(pa);
+        alert.setTitle("Selecciona el nuevo valor");
+
+        LinearLayout layout = new LinearLayout(cntx);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        final EditText newValue = new EditText(cntx);
+        newValue.setInputType(InputType.TYPE_CLASS_NUMBER);
+        newValue.setHint(carrito.getHashLineas().get(listaLineas.get(pos)).cantidad + "");
+        newValue.setSingleLine(true);
+        newValue.setHintTextColor(Color.LTGRAY);
+        newValue.setTextColor(Color.RED);
+        layout.addView(newValue);
+        alert.setView(layout);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Aceptado.
+                if (!newValue.getText().toString().equals("")) {
+                    Articulo art = carrito.getHashLineas().get(listaLineas.get(pos)).art;
+                    carrito.delItem(listaLineas.get(pos));
+                    listaLineas.remove(pos);
+                    carrito.addItem(Integer.valueOf(newValue.getText().toString()), art);
+                    listaLineas.add(art.getNombre());
+                    pa.refreshCarro();
+                    total.setText(carrito.getTotal() + " €");
+                    notifyDataSetChanged();
+                }
+            }
+        });
+
+        alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Cancelado.
+            }
+        });
+        alert.show();
+
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
@@ -91,7 +143,7 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
 
         public ViewHolder(View v) {
             super(v);
-            cardView = (CardView)v;
+            cardView = (CardView) v;
             imagen = (ImageView) v.findViewById(R.id.cArt_foto);
             titulo = (TextView) v.findViewById(R.id.cArt_titulo);
             precio = (TextView) v.findViewById(R.id.cArt_precio);

@@ -2,8 +2,11 @@ package overant.asako.tpv;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -70,7 +73,10 @@ public class Login extends Activity implements OnClickListener {
         }
     }
 
-    class IntentoLogeo extends AsyncTask<String, String, String> {
+    class IntentoLogeo extends AsyncTask<String, String, Boolean> {
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Login.this);
+        Intent i;
 
         @Override
         protected void onPreExecute() {
@@ -85,74 +91,82 @@ public class Login extends Activity implements OnClickListener {
         }
 
         @Override
-        protected String doInBackground(String... args) {
+        protected Boolean doInBackground(String... args) {
 
-            // Check for success tag
-            int success;
-            String username = user.getText().toString();
-            String password = pass.getText().toString();
-            try {
-                // Building Parameters
-                List<NameValuePair> params = new ArrayList<>();
-                params.add(new BasicNameValuePair("username", username));
-                params.add(new BasicNameValuePair("password", password));
+            if(isNetworkAvailable()) {
+                // Check for success tag
+                int success;
+                String username = user.getText().toString();
+                String password = pass.getText().toString();
+                try {
+                    // Building Parameters
+                    List<NameValuePair> params = new ArrayList<>();
+                    params.add(new BasicNameValuePair("username", username));
+                    params.add(new BasicNameValuePair("password", password));
 
-                Log.d("request!", "starting user:" + username + ", pass:" + password);
+                    Log.d("request!", "starting user:" + username + ", pass:" + password);
 
-                // getting product details by making HTTP request
-                JSONObject json = jsonParser.peticionHttp(LOGIN_URL, "POST", params);
+                    // getting product details by making HTTP request
+                    JSONObject json = jsonParser.peticionHttp(LOGIN_URL, "POST", params);
 
-                // check your log for json response
-                Log.d("Login attempt", json.toString());
+                    // check your log for json response
+                    Log.d("Login attempt", json.toString());
 
-                // json success tag
-                success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
+                    // json success tag
+                    success = json.getInt(TAG_SUCCESS);
+                    if (success == 1) {
 
-                    Log.d("Login Successful!", json.toString());
+                        Log.d("Login Successful!", json.toString());
 
-                    // save user data
-                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Login.this);
-                    SharedPreferences.Editor edit = sp.edit();
-                    edit.putString("username", username);
-                    edit.putInt("userId", json.getInt("id_user"));
-                    edit.putString("empresaId", json.getString("id_empresa"));
+                        // save user data
+                        SharedPreferences.Editor edit = sp.edit();
+                        edit.putString("username", username);
+                        edit.putInt("userId", json.getInt("id_user"));
+                        edit.putString("empresaId", json.getString("id_empresa"));
 
-                    // starting intent
-                    String admin = json.getString(TAG_ADMIN);
-                    Intent i = null;
-                    if (admin.equalsIgnoreCase("A")) {
-                        edit.putString("empresaNombre", json.getString(TAG_EMPRESA));
-                        edit.putString("empresaLogo", json.getString(TAG_LOGO));
-                        i = new Intent(Login.this, Administracion.class);
-                        finish();
-                    } else if (admin.equalsIgnoreCase("S")) {
-                        i = new Intent(Login.this, AdmListaEmpresa.class);
-                        finish();
+                        // starting intent
+                        String admin = json.getString(TAG_ADMIN);
+                        i = null;
+                        if (admin.equalsIgnoreCase("A")) {
+                            edit.putString("empresaNombre", json.getString(TAG_EMPRESA));
+                            edit.putString("empresaLogo", json.getString(TAG_LOGO));
+                            i = new Intent(Login.this, Administracion.class);
+                            finish();
+                        } else if (admin.equalsIgnoreCase("S")) {
+                            i = new Intent(Login.this, AdmListaEmpresa.class);
+                            finish();
+                        } else {
+                            i = new Intent(Login.this, ActividadPrincipal.class);
+                            finish();
+                        }
+
+                        edit.putString("admin", admin);
+                        edit.commit();
+
+                        return true;
                     } else {
-                        i = new Intent(Login.this, ActividadPrincipal.class);
-                        finish();
+                        Log.d("Login Failure!", json.getString(TAG_MESSAGE));
+                        return false;
                     }
-
-                    edit.putString("admin", admin);
-                    edit.commit();
-                    startActivity(i);
-
-                    return json.getString(TAG_MESSAGE);
-                } else {
-                    Log.d("Login Failure!", json.getString(TAG_MESSAGE));
-                    return json.getString(TAG_MESSAGE);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
-            return null;
+            return false;
         }
 
-        protected void onPostExecute(String message) {
-            // dismiss the dialog once product deleted
-            super.onPostExecute(message);
-            if (!isFinishing()) pDialog.dismiss();
+        protected void onPostExecute(Boolean msg) {
+            if(msg){
+                startActivity(i);
+            }
+            super.onPostExecute(msg);
+            pDialog.dismiss();
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

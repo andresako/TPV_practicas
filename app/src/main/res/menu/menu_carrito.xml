@@ -4,19 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_reset"
+        android:id="@+id/accion_carro_borrar"
         android:icon="@drawable/factura_del"
         android:orderInCategory="3"
         android:title="@string/action_reset"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_close"
+        android:id="@+id/accion_carro_cerrar"
         android:icon="@drawable/factura"
         android:orderInCategory="2"
         android:title="@string/cerrar_carrito"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_new_fact"
+        android:id="@+id/accion_carro_nuevo"
         android:icon="@drawable/factura_new"
         android:orderInCategory="1"
         android:title="@string/nuevo_carrito"
