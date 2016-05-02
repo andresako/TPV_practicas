@@ -2,7 +2,6 @@ package overant.asako.tpv.Utils;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.os.Looper;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,7 +21,6 @@ import overant.asako.tpv.Clases.Articulo;
 import overant.asako.tpv.R;
 import overant.asako.tpv.TPV.ActividadPrincipal;
 
-import static overant.asako.tpv.R.drawable.no_image;
 
 public class AdaptadorCategorias extends RecyclerView.Adapter<AdaptadorCategorias.ViewHolder> {
 
