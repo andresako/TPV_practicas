@@ -21,6 +21,11 @@
         android:orderInCategory="1"
         android:title="@string/nuevo_carrito"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/accion_carro_detalles"
+        android:orderInCategory="100"
+        android:title="Detalles"
+        app:showAsAction="never" />
 
 
 </menu>

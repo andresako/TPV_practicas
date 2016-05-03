@@ -50,10 +50,10 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.cardView.setTag(position);
         holder.cardView.setOnClickListener(this);
-        holder.titulo.setText((carrito.getHashLineas().get(listaLineas.get(position)).art).getNombre());
-        holder.precio.setText((carrito.getHashLineas().get(listaLineas.get(position)).art).getPrecio() + " €");
-        holder.cantidad.setText(carrito.getHashLineas().get(listaLineas.get(position)).cantidad + "");
-        holder.total.setText(carrito.getHashLineas().get(listaLineas.get(position)).precioTotal + " €");
+        holder.titulo.setText((carrito.getHashLineas().get(listaLineas.get(position)).getArt()).getNombre());
+        holder.precio.setText((carrito.getHashLineas().get(listaLineas.get(position)).getArt()).getPrecio() + " €");
+        holder.cantidad.setText(carrito.getHashLineas().get(listaLineas.get(position)).getCantidad() + "");
+        holder.total.setText(carrito.getHashLineas().get(listaLineas.get(position)).getPrecioTotal() + " €");
     }
 
     @Override
@@ -100,7 +100,7 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
 
         final EditText newValue = new EditText(cntx);
         newValue.setInputType(InputType.TYPE_CLASS_NUMBER);
-        newValue.setHint(carrito.getHashLineas().get(listaLineas.get(pos)).cantidad + "");
+        newValue.setHint(carrito.getHashLineas().get(listaLineas.get(pos)).getCantidad() + "");
         newValue.setSingleLine(true);
         newValue.setHintTextColor(Color.LTGRAY);
         newValue.setTextColor(Color.RED);
@@ -111,11 +111,8 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Aceptado.
                 if (!newValue.getText().toString().equals("")) {
-                    Articulo art = carrito.getHashLineas().get(listaLineas.get(pos)).art;
-                    carrito.delItem(listaLineas.get(pos));
-                    listaLineas.remove(pos);
-                    carrito.addItem(Integer.valueOf(newValue.getText().toString()), art);
-                    listaLineas.add(art.getNombre());
+                    carrito.modItem(carrito.getHashLineas().get(listaLineas.get(pos)),Integer.valueOf(newValue.getText().toString()));
+
                     pa.refreshCarro();
                     total.setText(carrito.getTotal() + " €");
                     notifyDataSetChanged();

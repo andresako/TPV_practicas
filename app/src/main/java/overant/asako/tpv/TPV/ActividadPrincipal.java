@@ -3,6 +3,7 @@ package overant.asako.tpv.TPV;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
@@ -13,14 +14,27 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import overant.asako.tpv.Clases.Carrito;
+import overant.asako.tpv.Clases.Linea;
 import overant.asako.tpv.R;
 import overant.asako.tpv.Utils.Datos;
+import overant.asako.tpv.Utils.JSONParser;
 
 public class ActividadPrincipal extends AppCompatActivity {
 
@@ -29,15 +43,20 @@ public class ActividadPrincipal extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private TextView totalCarrito;
     private SharedPreferences sp;
+    private JSONParser jsonParser;
+
+    private int empresaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         sp = PreferenceManager.getDefaultSharedPreferences(ActividadPrincipal.this);
+        jsonParser = new JSONParser();
 
-        datos = new Datos(this);
-        carrito = new Carrito(Integer.valueOf(sp.getString("empresaId", "0")), sp.getInt("userId", 0));
+        empresaId = sp.getInt("empresaId", 0);
+        datos = Datos.getInstance(empresaId);
+        //carrito = new Carrito(sp.getInt("empresaId", 0), sp.getInt("userId", 0));
 
         agregarToolbar();
 
@@ -52,6 +71,7 @@ public class ActividadPrincipal extends AppCompatActivity {
             View header = navigationView.getHeaderView(0);
             totalCarrito = (TextView) header.findViewById(R.id.texto_total_carrito);
         }
+        new recuperarCarrito().execute();
     }
 
     private void agregarToolbar() {
@@ -112,6 +132,58 @@ public class ActividadPrincipal extends AppCompatActivity {
     public void refreshCarro() {
         totalCarrito.setText(carrito.getTotal() + " €");
     }
+
+    class recuperarCarrito extends AsyncTask<Void, Void, Boolean> {
+
+        String URL = "http://overant.es/TPV_java.php";
+
+        @Override
+        protected Boolean doInBackground(Void... args) {
+
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("accion", "8"));
+            params.add(new BasicNameValuePair("empresaId", empresaId+""));
+            JSONObject json = jsonParser.peticionHttp(URL, "POST", params);
+
+            try {
+                int resp = json.getInt("Res");
+
+                if (resp == 1){
+
+                    HashMap<String,Linea> listaLineas = new HashMap<>();
+
+                    carrito = new Carrito(
+                            json.getInt("id"),
+                            json.getInt("empresa"),
+                            json.getInt("user"),
+                            json.getInt("numero"),
+                            json.getString("fecha"),
+                            json.getDouble("total"));
+
+                    JSONArray jsonArray = json.getJSONArray("ticket");
+                    for(int x = 0; x < jsonArray.length(); x++){
+                        JSONObject c = jsonArray.getJSONObject(x);
+                        listaLineas.put(datos.getArticuloId(c.getInt("articulo")).getNombre(),
+                                new Linea(c.getInt("id"), c.getInt("cantidad"), datos.getArticuloId(c.getInt("articulo"))));
+                    }
+                    carrito.setListaLineas(listaLineas);
+                }else
+                    carrito = new Carrito(sp.getInt("empresaId", 0), sp.getInt("userId", 0));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            refreshCarro();
+            super.onPostExecute(aBoolean);
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,10 +1,10 @@
 package overant.asako.tpv.Utils;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -18,24 +18,29 @@ import java.util.List;
 
 import overant.asako.tpv.Clases.Articulo;
 
-public class Datos extends Application {
+public class Datos {
 
-    private static Context context;
-    private static Datos mDatos = null;
+    private static Datos mDatos;
     public boolean haTerminado = false;
+    private static int empresaId;
     private ArrayList<Articulo> listaArticulos;
     private HashMap<Integer, String> listaIdCat;
+    private HashMap<Integer, Articulo> listaArt;
 
-    public Datos(Context context) {
-        Datos.context = context;
+    public Datos() {
         new rellenarDatos().execute();
     }
 
-    public static Datos getInstance() {
+    public synchronized static Datos getInstance(int empresa) {
         if (mDatos == null) {
-            mDatos = new Datos(context);
+            empresaId = empresa;
+            mDatos = new Datos();
         }
         return mDatos;
+    }
+
+    public Articulo getArticuloId(int id){
+        return listaArt.get(id);
     }
 
     public ArrayList<Articulo> getListaArticulosPorCat(int key) {
@@ -48,23 +53,21 @@ public class Datos extends Application {
         }
         return fin;
     }
-
     public ArrayList<Integer> getListaIdCat() {
         return new ArrayList<>(listaIdCat.keySet());
     }
 
     public class rellenarDatos extends AsyncTask<Void, Void, Boolean> {
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-
         @Override
         protected Boolean doInBackground(Void... args) {
             listaArticulos = new ArrayList<>();
             listaIdCat = new HashMap<>();
+            listaArt = new HashMap<>();
 
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("app", "1"));
-            params.add(new BasicNameValuePair("id_empresa", sp.getString("empresaId", "0")));
+            params.add(new BasicNameValuePair("id_empresa", empresaId+""));
 
             JSONParser jsonParser = new JSONParser();
             JSONObject joDatos = jsonParser.peticionHttp("http://overant.es/articulos.php", "POST", params);
@@ -98,6 +101,7 @@ public class Datos extends Application {
 
                     listaIdCat.put(c.getInt("id_familia"), c.getString("nombre_familia"));
                     listaArticulos.add(ctArt);
+                    listaArt.put(ctArt.getID(),ctArt);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -107,6 +111,7 @@ public class Datos extends Application {
 
         protected void onPostExecute(Boolean resultado) {
             haTerminado = true;
+            Log.d("DATOS", "datos cargados");
             super.onPostExecute(resultado);
         }
     }

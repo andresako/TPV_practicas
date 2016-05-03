@@ -1,73 +1,224 @@
 package overant.asako.tpv.Clases;
 
+import android.os.AsyncTask;
+import android.util.Log;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+
+import overant.asako.tpv.Utils.JSONParser;
 
 public class Carrito {
+
+    private String URL = "http://overant.es/TPV_java.php";
+    private JSONParser jsonParser = new JSONParser();
 
     private int ID;
     private int ID_empresa;
     private int ID_usuario;
     private int numero;
-    private Date fecha;
+    private String fecha;
 
     private double total;
-    private HashMap<String,Linea> listaLineas;
+    private HashMap<String, Linea> listaLineas;
 
-    public Carrito(int empresa, int user){
+    public Carrito(int empresa, int user) {
         this.ID_empresa = empresa;
         this.ID_usuario = user;
-        this.fecha = new Date();
-        this.listaLineas = new HashMap<>();
-        this.total = 0;
+
+        newCarro();
     }
 
-    public void addItem(int cantidad, Articulo art){
-        Linea l;
-        if (!listaLineas.containsKey(art.getNombre())) {    //Si el articulo no está en el carro
-            l = new Linea(cantidad, art);                       //creo nueva linea en el carrito
-            this.listaLineas.put(art.getNombre(), l);           //la key de esa linea, es el nombre del articulo
-            this.total += l.precioTotal;                        //actualizo el total del carrito
-        }else{                                              //Si el articulo ESTÁ en el carrito
-            l = listaLineas.get(art.getNombre());               //localizo la linea
-            l.cantidad += cantidad;                             //añado la nueva cantidad del articulo
-            this.total -= l.precioTotal;                        //resto la cantidad correspondiente al total (antiguo)
-            l.precioTotal = l.art.getPrecio() * l.cantidad;     //actualizo la cantidad total de la linea
-            this.total += l.precioTotal;                        //sumo el total de la lina al del carrito
+    public Carrito(int ID, int ID_empresa, int ID_usuario, int numero, String fecha, double total) {
+        this.ID = ID;
+        this.ID_empresa = ID_empresa;
+        this.ID_usuario = ID_usuario;
+        this.numero = numero;
+        this.fecha = fecha;
+        this.total = total;
+        listaLineas = new HashMap<>();
+    }
 
+    public void addItem(int cantidad, Articulo art) {
+        Linea l;
+        if (!listaLineas.containsKey(art.getNombre())) {            //Si el articulo no está en el carro
+            addLinea task = new addLinea();
+            task.params(new Integer[]{cantidad, art.getID()}, art);
+            task.execute();
+        } else {                                                    //Si el articulo ESTÁ en el carrito
+            l = listaLineas.get(art.getNombre());
+            l.setCantidad(l.getCantidad() + cantidad);
+            new modLinea().execute(new Integer[]{l.getID(), l.getCantidad()});
         }
     }
-
-    public void delItem(String nombreArt){
-        if (listaLineas.containsKey(nombreArt)){
+    public void modItem(Linea linea, int cantidad) {
+        linea.setCantidad(cantidad);
+        new modLinea().execute(new Integer[]{linea.getID(), cantidad});
+    }
+    public void delItem(String nombreArt) {
+        if (listaLineas.containsKey(nombreArt)) {
             Linea l = listaLineas.get(nombreArt);
-            this.total -= l.precioTotal;
+            this.total -= l.getPrecioTotal();
             this.listaLineas.remove(nombreArt);
         }
     }
 
-    public void newCarro(){
-        this.listaLineas = new HashMap<>();
-        this.total = 0;
+    public void newCarro() {
+        new newTicket().execute();
+    }
+
+    public int getNumero() {
+        return this.numero;
     }
 
     public int getID_empresa() {
         return ID_empresa;
     }
+
     public int getID_usuario() {
         return ID_usuario;
     }
-    public Date getFecha() {
+
+    public String getFecha() {
         return fecha;
     }
+
     public double getTotal() {
         return total;
     }
+
     public HashMap<String, Linea> getHashLineas() {
         return listaLineas;
     }
 
+    public void setListaLineas(HashMap<String, Linea> lista) {
+        this.listaLineas = lista;
+    }
+
+    public void vaciarTicket() {
+        listaLineas = new HashMap<>();
+        total = 0;
+    }
+
+    private class newTicket extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... args) {
+            listaLineas = new HashMap<>();
+            total = 0;
+
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("accion", "3"));
+            params.add(new BasicNameValuePair("empresaId", ID_empresa + ""));
+            params.add(new BasicNameValuePair("usuarioId", ID_usuario + ""));
+
+            JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
+
+            Log.d("CARRITO", "Nuevo ticket " + joDatos.toString());
+            try {
+                int result = joDatos.getInt("Res");
+
+                if (result == 1) {
+                    ID = joDatos.getInt("Id");
+                    fecha = joDatos.getString("Fecha");
+                    numero = joDatos.getInt("Numero");
+                } else {
+                    return false;
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    private class addLinea extends AsyncTask<Void, Void, Boolean> {
+
+        private int articuloId, cantidad;
+        private Articulo art;
+
+        public void params(Integer[] args, Articulo art) {
+            this.art = art;
+            this.cantidad = args[0];
+            this.articuloId = args[1];
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... args) {
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("accion", "4"));
+            params.add(new BasicNameValuePair("ticketId", ID + ""));
+            params.add(new BasicNameValuePair("cantidad", cantidad + ""));
+            params.add(new BasicNameValuePair("articuloId", articuloId + ""));
+
+            JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
+            try {
+                int result = joDatos.getInt("Res");
+                if (result == 1) {
+                    Linea ln = new Linea(joDatos.getInt("Id"), cantidad, art);
+                    listaLineas.put(art.getNombre(), ln);
+                    total = joDatos.getDouble("Total");
+                } else {
+                    return false;
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            return true;
+        }
+
+    }
+
+    private class modLinea extends AsyncTask<Integer[], Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Integer[]... args) {
+            Integer[] array = args[0];
+
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("accion", "5"));
+            params.add(new BasicNameValuePair("lineaId", array[0] + ""));
+            params.add(new BasicNameValuePair("cantidad", array[1] + ""));
+
+            JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
+            try {
+                int result = joDatos.getInt("Res");
+                if (result == 1) {
+                    total = joDatos.getDouble("Total");
+                } else {
+                    return false;
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean msg) {
+            if (msg){
+
+            }
+
+            super.onPostExecute(msg);
+        }
+    }
 
 }
 

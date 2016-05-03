@@ -68,7 +68,7 @@ public class AdmListaEmpresa extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // save user data
                 SharedPreferences.Editor edit = sp.edit();
-                edit.putString("empresaId", mEmpresasList.get(position).get(TAG_ID));
+                edit.putInt("empresaId", Integer.valueOf(mEmpresasList.get(position).get(TAG_ID)));
                 edit.putString("empresaNombre",mEmpresasList.get(position).get(TAG_NOMBRE));
                 edit.putString("empresaLogo",mEmpresasList.get(position).get(TAG_LOGO));
                 edit.apply();
@@ -83,7 +83,7 @@ public class AdmListaEmpresa extends Activity {
             public void onClick(View v) {
                 // save user data
                 SharedPreferences.Editor edit = sp.edit();
-                edit.putString("empresaId", "0");
+                edit.putInt("empresaId", 0);
                 edit.putString("empresaNombre","");
                 edit.putString("empresaLogo","");
                 edit.apply();

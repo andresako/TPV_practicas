@@ -1,7 +1,9 @@
 package overant.asako.tpv.Utils;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,6 +16,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -26,12 +36,14 @@ public class AdaptadorCategorias extends RecyclerView.Adapter<AdaptadorCategoria
 
     private static final String RUTA_GALERIA = "http://overant.es/galeria/";
 
-    private final List<Articulo> items;
+    private List<Articulo> items;
+    private SharedPreferences sp;
     private ActividadPrincipal ap;
 
     public AdaptadorCategorias(List<Articulo> items, ActividadPrincipal context) {
         this.items = items;
         this.ap = context;
+        sp = PreferenceManager.getDefaultSharedPreferences(ap);
     }
 
     @Override
@@ -63,13 +75,7 @@ public class AdaptadorCategorias extends RecyclerView.Adapter<AdaptadorCategoria
         Articulo item = items.get(i);
         final String urlFoto = RUTA_GALERIA + item.getFoto();
 
-//        Glide.with(viewHolder.itemView.getContext())
-//                .load(item.getDrawable())
-//                .centerCrop()
-//                .into(viewHolder.imagen);
         final Bitmap[] theBM = {null};
-
-        //viewHolder.imagen.setImageBitmap(theBM[0]);
         viewHolder.nombre.setText(item.getNombre());
         viewHolder.precio.setText(item.getPrecio() + " €");
         viewHolder.artId = item.getID();
@@ -119,4 +125,5 @@ public class AdaptadorCategorias extends RecyclerView.Adapter<AdaptadorCategoria
             boton = (ImageButton) v.findViewById(R.id.addCarro);
         }
     }
+
 }

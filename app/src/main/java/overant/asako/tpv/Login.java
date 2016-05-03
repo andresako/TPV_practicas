@@ -27,6 +27,7 @@ import java.util.List;
 import overant.asako.tpv.Admin.AdmListaEmpresa;
 import overant.asako.tpv.Admin.Administracion;
 import overant.asako.tpv.TPV.ActividadPrincipal;
+import overant.asako.tpv.Utils.Datos;
 import overant.asako.tpv.Utils.JSONParser;
 
 
@@ -71,6 +72,13 @@ public class Login extends Activity implements OnClickListener {
             default:
                 break;
         }
+
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     class IntentoLogeo extends AsyncTask<String, String, Boolean> {
@@ -93,7 +101,7 @@ public class Login extends Activity implements OnClickListener {
         @Override
         protected Boolean doInBackground(String... args) {
 
-            if(isNetworkAvailable()) {
+            if (isNetworkAvailable()) {
                 // Check for success tag
                 int success;
                 String username = user.getText().toString();
@@ -122,22 +130,23 @@ public class Login extends Activity implements OnClickListener {
                         SharedPreferences.Editor edit = sp.edit();
                         edit.putString("username", username);
                         edit.putInt("userId", json.getInt("id_user"));
-                        edit.putString("empresaId", json.getString("id_empresa"));
+                        edit.putInt("empresaId", json.getInt("id_empresa"));
 
                         // starting intent
                         String admin = json.getString(TAG_ADMIN);
                         i = null;
+                        Datos datos = Datos.getInstance(json.getInt("id_empresa"));
                         if (admin.equalsIgnoreCase("A")) {
                             edit.putString("empresaNombre", json.getString(TAG_EMPRESA));
                             edit.putString("empresaLogo", json.getString(TAG_LOGO));
                             i = new Intent(Login.this, Administracion.class);
-                            finish();
+
                         } else if (admin.equalsIgnoreCase("S")) {
                             i = new Intent(Login.this, AdmListaEmpresa.class);
-                            finish();
+
                         } else {
                             i = new Intent(Login.this, ActividadPrincipal.class);
-                            finish();
+
                         }
 
                         edit.putString("admin", admin);
@@ -156,17 +165,12 @@ public class Login extends Activity implements OnClickListener {
         }
 
         protected void onPostExecute(Boolean msg) {
-            if(msg){
+            if (msg) {
                 startActivity(i);
+                finish();
             }
             super.onPostExecute(msg);
             pDialog.dismiss();
         }
-    }
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
