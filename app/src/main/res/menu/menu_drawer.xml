@@ -3,11 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/item_inicio"
-            android:checked="true"
-            android:icon="@drawable/home"
-            android:title="Inicio" />
-        <item
             android:id="@+id/item_categorias"
             android:icon="@drawable/categorias"
             android:title="Categorias" />

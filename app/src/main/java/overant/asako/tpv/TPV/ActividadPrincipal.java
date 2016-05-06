@@ -14,7 +14,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import overant.asako.tpv.Clases.Articulo;
 import overant.asako.tpv.Clases.Carrito;
 import overant.asako.tpv.Clases.Linea;
 import overant.asako.tpv.R;
@@ -40,12 +40,11 @@ public class ActividadPrincipal extends AppCompatActivity {
 
     public Datos datos;
     public Carrito carrito;
+    public int empresaId;
     private DrawerLayout drawerLayout;
     private TextView totalCarrito;
     private SharedPreferences sp;
     private JSONParser jsonParser;
-
-    private int empresaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +65,7 @@ public class ActividadPrincipal extends AppCompatActivity {
         if (navigationView != null) {
             prepararDrawer(navigationView);
             // Seleccionar item por defecto
-            seleccionarItem(navigationView.getMenu().getItem(0));
+            seleccionarItem(navigationView.getMenu().getItem(navigationView.getMenu().size()-1));
 
             View header = navigationView.getHeaderView(0);
             totalCarrito = (TextView) header.findViewById(R.id.texto_total_carrito);
@@ -105,9 +104,9 @@ public class ActividadPrincipal extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (itemDrawer.getItemId()) {
-            case R.id.item_inicio:
-                //fragmentoGenerico = new FragmentoInicio();
-                break;
+//            case R.id.item_inicio:
+//                //fragmentoGenerico = new FragmentoInicio();
+//                break;
             case R.id.item_categorias:
                 fragmentoGenerico = new FragmentoCategorias();
                 break;
@@ -132,58 +131,6 @@ public class ActividadPrincipal extends AppCompatActivity {
     public void refreshCarro() {
         totalCarrito.setText(carrito.getTotal() + " €");
     }
-
-    class recuperarCarrito extends AsyncTask<Void, Void, Boolean> {
-
-        String URL = "http://overant.es/TPV_java.php";
-
-        @Override
-        protected Boolean doInBackground(Void... args) {
-
-            List<NameValuePair> params = new ArrayList<>();
-            params.add(new BasicNameValuePair("accion", "8"));
-            params.add(new BasicNameValuePair("empresaId", empresaId+""));
-            JSONObject json = jsonParser.peticionHttp(URL, "POST", params);
-
-            try {
-                int resp = json.getInt("Res");
-
-                if (resp == 1){
-
-                    HashMap<String,Linea> listaLineas = new HashMap<>();
-
-                    carrito = new Carrito(
-                            json.getInt("id"),
-                            json.getInt("empresa"),
-                            json.getInt("user"),
-                            json.getInt("numero"),
-                            json.getString("fecha"),
-                            json.getDouble("total"));
-
-                    JSONArray jsonArray = json.getJSONArray("ticket");
-                    for(int x = 0; x < jsonArray.length(); x++){
-                        JSONObject c = jsonArray.getJSONObject(x);
-                        listaLineas.put(datos.getArticuloId(c.getInt("articulo")).getNombre(),
-                                new Linea(c.getInt("id"), c.getInt("cantidad"), datos.getArticuloId(c.getInt("articulo"))));
-                    }
-                    carrito.setListaLineas(listaLineas);
-                }else
-                    carrito = new Carrito(sp.getInt("empresaId", 0), sp.getInt("userId", 0));
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                return false;
-            }
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            refreshCarro();
-            super.onPostExecute(aBoolean);
-        }
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -218,5 +165,79 @@ public class ActividadPrincipal extends AppCompatActivity {
                 }
         );
         alert.show();
+    }
+
+    class recuperarCarrito extends AsyncTask<Void, Void, Boolean> {
+
+        String URL = "http://overant.es/TPV_java.php";
+
+        @Override
+        protected Boolean doInBackground(Void... args) {
+
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("accion", "8"));
+            params.add(new BasicNameValuePair("empresaId", empresaId + ""));
+            JSONObject json = jsonParser.peticionHttp(URL, "POST", params);
+
+            try {
+                int resp = json.getInt("Res");
+
+                if (resp == 1) {
+
+                    HashMap<String, Linea> listaLineas = new HashMap<>();
+
+                    carrito = new Carrito(
+                            json.getInt("id"),
+                            json.getInt("empresa"),
+                            json.getInt("user"),
+                            json.getInt("numero"),
+                            json.getString("fecha"),
+                            json.getDouble("total"));
+
+                    JSONArray jsonArray = json.getJSONArray("ticket");
+                    for (int x = 0; x < jsonArray.length(); x++) {
+                        JSONObject c = jsonArray.getJSONObject(x);
+
+                        Articulo ar = datos.getArticuloId(c.getInt("articulo"));
+                        Articulo ar2 = new Articulo(
+                                ar.getID(),
+                                ar.getIdEmpresa(),
+                                ar.getIdCategoria(),
+                                ar.getIdIva(),
+                                ar.getNombre(),
+                                ar.getNombreCat(),
+                                ar.getNombreIva(),
+                                ar.getEAN(),
+                                ar.getFoto(),
+                                c.getDouble("precio"),
+                                ar.getDescuento()
+                        );
+
+                        if (c.getInt("articulo") != datos.getVariosID()) {
+                            listaLineas.put(datos.getArticuloId(c.getInt("articulo")).getNombre(),
+                                    new Linea(c.getInt("id"), c.getInt("cantidad"), ar));
+                        } else {
+                            listaLineas.put(ar.getNombre() + c.getInt("id"),
+                                    new Linea(c.getInt("id"), c.getInt("cantidad"), ar2));
+                        }
+                    }
+                    carrito.setListaLineas(listaLineas);
+                } else
+                    carrito = new Carrito(sp.getInt("empresaId", 0), sp.getInt("userId", 0));
+
+                carrito.setMain(ActividadPrincipal.this);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            refreshCarro();
+            super.onPostExecute(aBoolean);
+        }
     }
 }

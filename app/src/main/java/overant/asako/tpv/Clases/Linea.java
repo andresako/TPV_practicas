@@ -1,6 +1,9 @@
 package overant.asako.tpv.Clases;
 
-public class Linea {
+import java.io.Serializable;
+import java.text.DecimalFormat;
+
+public class Linea implements Serializable{
 
     private int ID;
     private int cantidad;
@@ -14,6 +17,9 @@ public class Linea {
         this.precioTotal = art.getPrecio()*cantidad;
     }
 
+    public void setPrecio(double precioUnitario){
+        this.precioTotal = precioUnitario * this.cantidad;
+    }
     public int getID() {
         return ID;
     }
@@ -21,7 +27,9 @@ public class Linea {
         return cantidad;
     }
     public double getPrecioTotal() {
-        return precioTotal;
+
+        return precioTotal = Math.round(precioTotal*1e2)/1e2;
+
     }
     public Articulo getArt() {
         return art;

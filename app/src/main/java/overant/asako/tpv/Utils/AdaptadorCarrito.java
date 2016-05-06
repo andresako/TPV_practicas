@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -13,14 +14,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import overant.asako.tpv.Clases.Articulo;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import overant.asako.tpv.Clases.Carrito;
+import overant.asako.tpv.Clases.Linea;
 import overant.asako.tpv.R;
 import overant.asako.tpv.TPV.ActividadPrincipal;
 
@@ -63,29 +70,41 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
 
     @Override
     public void onClick(View v) {
-        final int pos = (int) v.getTag();
 
-        PopupMenu popup = new PopupMenu(pa, v);
-        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+        if (!pa.carrito.isCerrado()) {
+            final int pos = (int) v.getTag();
 
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.item_carro_editar:
-                        editarItem(pos);
-                        break;
-                    case R.id.item_carro_borrar:
-                        carrito.delItem(listaLineas.get(pos));
-                        listaLineas.remove(pos);
-                        pa.refreshCarro();
-                        total.setText(carrito.getTotal() + " €");
-                        notifyDataSetChanged();
-                        break;
+            PopupMenu popup = new PopupMenu(pa, v);
+            popup.getMenuInflater().inflate(R.menu.popup_menu_carro, popup.getMenu());
+
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.item_carro_editar:
+                            editarItem(pos);
+                            break;
+                        case R.id.item_carro_borrar:
+                            carrito.delItem(listaLineas.get(pos));
+                            listaLineas.remove(pos);
+                            pa.refreshCarro();
+                            total.setText(carrito.getTotal() + " €");
+                            notifyDataSetChanged();
+                            break;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
-        popup.show();
+            });
+            popup.show();
+        } else {
+            AlertDialog.Builder alert = new AlertDialog.Builder(pa);
+            alert.setTitle("ATENCION!\nEl carro está cerrado");
+            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        }
+                    }
+            );
+            alert.show();
+        }
     }
 
     private void editarItem(final int pos) {
@@ -111,11 +130,14 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Aceptado.
                 if (!newValue.getText().toString().equals("")) {
-                    carrito.modItem(carrito.getHashLineas().get(listaLineas.get(pos)),Integer.valueOf(newValue.getText().toString()));
 
-                    pa.refreshCarro();
-                    total.setText(carrito.getTotal() + " €");
-                    notifyDataSetChanged();
+                    Linea linea = carrito.getHashLineas().get(listaLineas.get(pos));
+                    int cantidad = Integer.valueOf(newValue.getText().toString());
+
+                    carrito.modItem(linea, cantidad);
+
+                    new modLinea().execute(new Integer[]{linea.getID(), cantidad});
+
                 }
             }
         });
@@ -129,10 +151,8 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
 
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
-        public ImageView imagen;
         public TextView precio;
         public TextView cantidad;
         public TextView titulo;
@@ -141,11 +161,53 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.View
         public ViewHolder(View v) {
             super(v);
             cardView = (CardView) v;
-            imagen = (ImageView) v.findViewById(R.id.cArt_foto);
             titulo = (TextView) v.findViewById(R.id.cArt_titulo);
             precio = (TextView) v.findViewById(R.id.cArt_precio);
             cantidad = (TextView) v.findViewById(R.id.cArt_cantidad);
             total = (TextView) v.findViewById(R.id.cArt_total);
+        }
+    }
+
+    private class modLinea extends AsyncTask<Integer[], Void, Boolean> {
+
+        JSONParser jsonParser = new JSONParser();
+        String URL = "http://overant.es/TPV_java.php";
+
+        @Override
+        protected Boolean doInBackground(Integer[]... args) {
+            Integer[] array = args[0];
+
+            List<NameValuePair> params = new ArrayList<>();
+            params.add(new BasicNameValuePair("accion", "5"));
+            params.add(new BasicNameValuePair("lineaId", array[0] + ""));
+            params.add(new BasicNameValuePair("cantidad", array[1] + ""));
+
+            JSONObject joDatos = jsonParser.peticionHttp(URL, "POST", params);
+            try {
+                int result = joDatos.getInt("Res");
+                if (result == 1) {
+                    carrito.setTotal(joDatos.getDouble("Total"));
+                } else {
+                    return false;
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean msg) {
+            if (msg) {
+                notifyDataSetChanged();
+                total.setText(carrito.getTotal() + " €");
+                pa.refreshCarro();
+            }
+
+            super.onPostExecute(msg);
         }
     }
 }

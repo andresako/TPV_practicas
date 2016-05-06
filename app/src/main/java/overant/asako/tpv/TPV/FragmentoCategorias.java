@@ -2,6 +2,8 @@ package overant.asako.tpv.TPV;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,10 +22,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import overant.asako.tpv.Clases.Articulo;
 import overant.asako.tpv.R;
 
 public class FragmentoCategorias extends Fragment {
@@ -110,11 +116,80 @@ public class FragmentoCategorias extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_add_varios:
                 Log.d("menuItem ", "Añadiendo varios");
-                Intent i = new Intent(getContext(), AddVarios.class);
-                startActivityForResult(i, 111);
+//                Intent i = new Intent(getContext(), VisualizarTicket.class);
+//                startActivityForResult(i, 111);
+
+
+                addVarios();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void addVarios() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(ap);
+        alert.setTitle("Añadir Varios");
+
+        LinearLayout layout = new LinearLayout(ap.getApplicationContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        final EditText inputCantidad = new EditText(ap);
+        inputCantidad.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+        inputCantidad.setHint("Cantidad");
+        inputCantidad.setSingleLine(true);
+        layout.addView(inputCantidad);
+
+        final EditText inputPrecio = new EditText(ap);
+        inputPrecio.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        inputPrecio.setHint("Precio unitario");
+        inputPrecio.setSingleLine(true);
+        layout.addView(inputPrecio);
+        alert.setView(layout);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Aceptado.
+                int todoOk = 0;
+                Articulo art = ap.datos.getArticuloId(ap.datos.getVariosID());
+                int cantidad = 0;
+                double precio = 0;
+
+                if (!inputCantidad.getText().toString().equals("")
+                        && Integer.valueOf(inputCantidad.getText().toString()) > 0) {
+                    cantidad = Integer.valueOf(inputCantidad.getText().toString());
+                    todoOk++;
+                }
+                if (!inputPrecio.getText().toString().equals("")
+                        && Double.valueOf(inputPrecio.getText().toString()) > 0) {
+                    precio = Double.valueOf(inputPrecio.getText().toString());
+                    todoOk++;
+                }
+                if (todoOk == 2) {
+                    Articulo ar2 = new Articulo(
+                            art.getID(),
+                            art.getIdEmpresa(),
+                            art.getIdCategoria(),
+                            art.getIdIva(),
+                            art.getNombre(),
+                            art.getNombreCat(),
+                            art.getNombreIva(),
+                            art.getEAN(),
+                            art.getFoto(),
+                            precio,
+                            art.getDescuento()
+                    );
+
+                    ap.carrito.addItem(cantidad,ar2);
+                }
+            }
+        });
+
+        alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Cancelado.
+            }
+        });
+        alert.show();
     }
 
     @Override

@@ -2,8 +2,6 @@ package overant.asako.tpv.Clases;
 
 import java.io.Serializable;
 
-import overant.asako.tpv.R;
-
 public class Articulo implements Serializable {
 
     private int ID = 0;

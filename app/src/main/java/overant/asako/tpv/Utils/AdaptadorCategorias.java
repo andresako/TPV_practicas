@@ -1,5 +1,7 @@
 package overant.asako.tpv.Utils;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -59,11 +61,23 @@ public class AdaptadorCategorias extends RecyclerView.Adapter<AdaptadorCategoria
             @Override
             public void onClick(View v) {
                 Log.d("boton", "Articulo " + items.get(vh.getAdapterPosition()).getNombre());
-                ap.carrito.addItem(1, items.get(vh.getAdapterPosition()));
-                ap.refreshCarro();
-                Snackbar.make(v, items.get(vh.getAdapterPosition()).getNombre() + " añadido al carro", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null)
-                        .show();
+                if (!ap.carrito.isCerrado()) {
+                    ap.carrito.addItem(1, items.get(vh.getAdapterPosition()));
+                    //ap.refreshCarro();
+                    Snackbar.make(v, items.get(vh.getAdapterPosition()).getNombre() + " añadido al carro", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null)
+                            .show();
+                }
+                else{
+                    AlertDialog.Builder alert = new AlertDialog.Builder(ap);
+                    alert.setTitle("ATENCION!\nEl carro está cerrado\nSeleccione uno abierto");
+                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                }
+                            }
+                    );
+                    alert.show();
+                }
             }
         });
 

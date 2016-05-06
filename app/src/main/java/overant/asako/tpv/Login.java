@@ -150,7 +150,7 @@ public class Login extends Activity implements OnClickListener {
                         }
 
                         edit.putString("admin", admin);
-                        edit.commit();
+                        edit.apply();
 
                         return true;
                     } else {
